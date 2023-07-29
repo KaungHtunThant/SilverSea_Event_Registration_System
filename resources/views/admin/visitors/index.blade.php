@@ -22,6 +22,10 @@
 						</tr>
 						@endforeach
 					</table>
+					<br>
+					<div class="container-fluid align-item-center">
+						{{ $visitors->links('pagination::bootstrap-4') }}
+					</div>
 				</div>
 			</div>
 		</div>

@@ -20,6 +20,11 @@ class VisitorController extends Controller
         else{
             $visitors = Visitor::orderBy($request->orderBy)->paginate($request->paginate);
         }
+        $visitors->appends([
+            'orderBy' => $request->orderBy,
+            'searchVal' => $request->searchVal,
+            'paginate' => $request->paginate
+        ]);
 
         return view('admin.visitors.index')
             ->with('visitors', $visitors)
@@ -31,6 +36,13 @@ class VisitorController extends Controller
                 'type' => 'success',
                 'text' => 'Visitor view read.'
             ]);
+    }
+
+    public function view_visitors(Request $request)
+    {
+        $visitors = Visitor::orderBy('conf_id')->paginate(10);
+
+        return $visitors;
     }
 
     public function store(Request $request)
