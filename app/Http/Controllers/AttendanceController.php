@@ -47,7 +47,7 @@ class AttendanceController extends Controller
                 )->paginate($request->paginate);
         }
 
-        return view('admin.dashboard.index')
+        return view('admin.index')
             ->with('visitors', $visitors)
             ->with('page', $request->page)
             ->with('searchVal', $request->searchVal)
