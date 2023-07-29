@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\WinnerController;
 use App\Http\Controllers\VisitorController;
 use App\Http\Middleware\EnsurekeyExist;
@@ -20,9 +21,7 @@ use App\Http\Controllers\TestPreparer;
 */
 //Private routes
 Route::middleware(EnsurekeyExist::class)->group(function () {
-    Route::get('/', function () {
-        return view('admin.index');
-    });
+    Route::get('/', [AttendanceController::class, 'index']);
 
     Route::get('/users', function () {
         return view('users.index');
