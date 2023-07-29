@@ -6,6 +6,9 @@
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title">Visitors list</h4>
+					<div class="container-fluid">
+						{{ $visitors->links('pagination::bootstrap-5') }}
+					</div>
 					<table class="table table-sm table-hover">
 						<thead>
 							<tr>
@@ -27,7 +30,7 @@
 						</tbody>
 					</table>
 					<br>
-					<div class="container-fluid align-item-center">
+					<div class="container-fluid">
 						{{ $visitors->links('pagination::bootstrap-5') }}
 					</div>
 				</div>

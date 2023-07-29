@@ -81,7 +81,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/visitors?orderBy=conf_id&paginate=10" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" href="/visitors?orderBy=conf_id&paginate=10&page=1" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">Visitors</span>
             </a>
