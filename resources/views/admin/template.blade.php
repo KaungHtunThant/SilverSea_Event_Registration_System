@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{{ url('vendors/feather/feather.css') }}">
   <link rel="stylesheet" href="{{ url('vendors/ti-icons/css/themify-icons.css') }}">
   <link rel="stylesheet" href="{{ url('vendors/css/vendor.bundle.base.css') }}">
+  <link rel="stylesheet" href="{{ url('vendors/mdi/css/materialdesignicons.min.css') }}">
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="{{ url('vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
