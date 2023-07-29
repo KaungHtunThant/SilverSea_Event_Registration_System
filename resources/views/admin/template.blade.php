@@ -152,8 +152,7 @@
   <script src="{{ url('js/todolist.js') }}"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="{{ url('js/dashboard.js') }}"></script>
-  <script src="{{ url('js/Chart.roundedBarCharts.js') }}"></script>
+  @yield('customjs')
   <!-- End custom js for this page-->
 </body>
 
