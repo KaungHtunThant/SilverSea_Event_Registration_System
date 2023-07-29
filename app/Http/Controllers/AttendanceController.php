@@ -43,7 +43,8 @@ class AttendanceController extends Controller
                     'visitors.company',
                     'visitors.sex',
                     'visitors.dob',
-                    'visitors.card'
+                    'visitors.card',
+                    'attendances.created_at',
                 )->paginate($request->paginate);
         }
 
