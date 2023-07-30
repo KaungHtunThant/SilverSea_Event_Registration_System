@@ -11,9 +11,9 @@ class VisitorController extends Controller
     public function index(Request $request)
     {
         if ($request->searchVal != '') {
-            $visitors =  Visitor::where('conf_id', 'LIKE', '%'.$searchVal.'%')
-            ->orwhere('name', 'LIKE', '%'.$searchVal.'%')
-            ->orwhere('phone', 'LIKE', '%'.$searchVal.'%')
+            $visitors =  Visitor::where('conf_id', 'LIKE', '%'.$request->searchVal.'%')
+            ->orwhere('name', 'LIKE', '%'.$request->searchVal.'%')
+            ->orwhere('phone', 'LIKE', '%'.$request->searchVal.'%')
             ->orderBy($request->orderBy)
             ->paginate($request->paginate);
         }

@@ -53,7 +53,7 @@ class AuthController extends Controller
             Session::put('token', $token);
         }
 
-        return redirect('/')->with('status', [
+        return redirect('/?paginate=10')->with('status', [
             'type' => 'success',
             'text' => 'User logged in successfully!'
         ]);

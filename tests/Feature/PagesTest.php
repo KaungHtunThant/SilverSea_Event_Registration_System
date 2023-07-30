@@ -34,7 +34,7 @@ class PagesTest extends TestCase
             'password' => 'admin123!',
         ]);
 
-        $response = $this->withHeader('Authorization', 'Bearer ' . Session::get('token'))->get('/', [
+        $response = $this->withHeader('Authorization', 'Bearer ' . Session::get('token'))->get('', [
             'page' => 1,
             'searchVal' => '',
             'orderBy' => 'id',
