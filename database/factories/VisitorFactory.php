@@ -19,13 +19,8 @@ class VisitorFactory extends Factory
     public function definition(): array
     {
         $sex = array('Male', 'Female', 'Other');
-
-        $lastid = Visitor::latest('id')->first();
-        if ($lastid == Null) {
-            $lastid = 0;
-        }
         
-        $id = 'MME-Vis-'.rand(1001, 2000);
+        $id = 'MME-VIS-'.rand(1001, 2000);
         return [
             'conf_id' => $id,
             'name' => fake()->name(),
