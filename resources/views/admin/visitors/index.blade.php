@@ -2,10 +2,85 @@
 @section('title', 'Visitors')
 @section('contents')
 	<div class="row">
-		<div class="col-md-8 grid-margin stretch-card">
+		<div class="col-md-3 grid-margin stretch-card">
+			<div class="row">
+				<div class="col-md-12 mb-4 stretch-card transparent">
+					<div class="card card-tale">
+						<div class="card-body">
+							<p class="mb-4">Today’s Bookings</p>
+							<p class="fs-30 mb-2">4006</p>
+							<p>10.00% (30 days)</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 stretch-card transparent">
+					<div class="card card-dark-blue">
+						<div class="card-body">
+							<p class="mb-4">Today’s Bookings</p>
+							<p class="fs-30 mb-2">4006</p>
+							<p>10.00% (30 days)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-5 grid-margin stretch-card">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">Visitors list</h4>
+					<h4 class="card-title">Doughnut chart</h4>
+					<canvas id="doughnutChart"></canvas>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<p class="card-title">Charts</p>
+					<div class="charts-data">
+						<div class="mt-3">
+							<p class="mb-0">Data 1</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="progress progress-md flex-grow-1 mr-4">
+									<div class="progress-bar bg-inf0" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<p class="mb-0">5k</p>
+							</div>
+						</div>
+						<div class="mt-3">
+							<p class="mb-0">Data 2</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="progress progress-md flex-grow-1 mr-4">
+									<div class="progress-bar bg-info" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<p class="mb-0">1k</p>
+							</div>
+						</div>
+						<div class="mt-3">
+							<p class="mb-0">Data 3</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="progress progress-md flex-grow-1 mr-4">
+									<div class="progress-bar bg-info" role="progressbar" style="width: 48%" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<p class="mb-0">992</p>
+							</div>
+						</div>
+						<div class="mt-3">
+							<p class="mb-0">Data 4</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="progress progress-md flex-grow-1 mr-4">
+									<div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<p class="mb-0">687</p>
+							</div>
+						</div>
+					</div>  
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title mb-4">Visitors list</h4>
 					<div class="row">
 						<div class="col-md-10">
 							<form action="/visitors" method="GET">
@@ -65,7 +140,7 @@
 					<div class="container-fluid">
 						{{ $visitors->links('pagination::bootstrap-5') }}
 					</div>
-					<div class="d-none d-md-block ">
+					<div class="table-responsive">
 						<table class="table table-sm table-hover text-center">
 							<thead>
 								<tr>
@@ -110,61 +185,10 @@
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 
-											@if($orderBy=='created_at')
+											@if($orderBy=='email')
 											btn-link
 											@endif
-											" name="orderBy" value="created_at">Registered Date</button>
-										</form>
-									</th>
-									<th>
-										<button type="submit" class="btn">Config</button>
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach ($visitors as $visitor)
-								<tr>
-									<td>{{ ($loop->index)+($paginate * $page)-($paginate-1) }}</td>
-									<td>{{ $visitor->conf_id }}</td>
-									<td>{{ $visitor->name }}</td>
-									<td>{{ $visitor->phone }}</td>
-									<td>{{ $visitor->created_at }}</td>
-									<td>
-										<div class="dropdown">
-											<button class="btn btn-outline-primary btn-sm" type="button" id="{{ $visitor->id }}-more" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<i class="mdi mdi-dots-vertical"></i>
-											</button>
-											<div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-more">
-												<div class="dropdown-item">
-													<button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#{{ $visitor->id }}-details">
-														Details
-													</button>
-												</div>
-												<button class="btn btn-link dropdown-item">Delete</button>
-											</div>
-										</div>
-									</td>
-								</tr>
-								@endforeach
-							</tbody>
-						</table>
-					</div>
-					<div class="d-md-none">
-						<table class="table table-sm table-hover table-responsive text-center">
-							<thead>
-								<tr>
-									<th>
-										<button type="submit" class="btn">#</button>
-									</th>
-									<th>
-										<form action="/visitors" method="GET">
-											<input type="hidden" name="paginate" value="{{ $paginate }}">
-											<input type="hidden" name="page" value="{{ $page }}">
-											<button type="submit" class="btn 
-											@if($orderBy=='conf_id')
-											btn-link
-											@endif
-											" name="orderBy" value="conf_id">Confirmation ID</button>
+											" name="orderBy" value="email">Email</button>
 										</form>
 									</th>
 									<th>
@@ -172,10 +196,10 @@
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 
-											@if($orderBy=='name')
+											@if($orderBy=='dob')
 											btn-link
 											@endif
-											" name="orderBy" value="name">Name</button>
+											" name="orderBy" value="dob">Date of Birth</button>
 										</form>
 									</th>
 									<th>
@@ -183,10 +207,21 @@
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 
-											@if($orderBy=='phone')
+											@if($orderBy=='company')
 											btn-link
 											@endif
-											" name="orderBy" value="phone">Phone</button>
+											" name="orderBy" value="company">Company</button>
+										</form>
+									</th>
+									<th>
+										<form action="/visitors" method="GET">
+											<input type="hidden" name="paginate" value="{{ $paginate }}">
+											<input type="hidden" name="page" value="{{ $page }}">
+											<button type="submit" class="btn 
+											@if($orderBy=='sex')
+											btn-link
+											@endif
+											" name="orderBy" value="sex">Sex</button>
 										</form>
 									</th>
 									<th>
@@ -211,7 +246,11 @@
 									<td>{{ ($loop->index)+($paginate * $page)-($paginate-1) }}</td>
 									<td>{{ $visitor->conf_id }}</td>
 									<td class="text-left">{{ $visitor->name }}</td>
-									<td>{{ $visitor->phone }}</td>
+									<td class="text-left">{{ $visitor->phone }}</td>
+									<td class="text-left">{{ $visitor->email }}</td>
+									<td>{{ $visitor->dob }}</td>
+									<td>{{ $visitor->company }}</td>
+									<td>{{ $visitor->sex }}</td>
 									<td>{{ $visitor->created_at }}</td>
 									<td>
 										<div class="dropdown">
@@ -219,8 +258,8 @@
 												<i class="mdi mdi-dots-vertical"></i>
 											</button>
 											<div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
-												<button class="btn btn-link dropdown-item my-2">Details</button>
-												<button class="btn btn-link dropdown-item my-2">Delete</button>
+												<a class="text-primary dropdown-item py-3" href="#">Download ID Card</a>
+												<a class="text-danger dropdown-item py-3" href="#">Delete</a>
 											</div>
 										</div>
 									</td>
@@ -236,53 +275,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4 grid-margin">
-			<div class="card">
-				<div class="card-body">
-					<h4 class="card-title">Doughnut chart</h4>
-					<canvas id="doughnutChart"></canvas>
-				</div>
-			</div>
-		</div>
 	</div>
+	
 @endsection
 @section('customjs')
-	@foreach ($visitors as $visitor)
-    <!-- <div class="modal fade" id="" tabindex="-1" aria-labelledby="{{ $visitor->id }}-details" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content bg-custom text-light">
-                <div class="modal-header bg-dark">
-                    <h6 class="modal-title">{{$visitor->conf_id}}<br>{{$visitor->name}}</h6>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                   
-                </div>
-                <div class="modal-footer bg-dark">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-	<div class="modal fade" id="{{ $visitor->id }}-details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">{{$visitor->name}}</h5>
-					<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<p>This is a modal with default size</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-    @endforeach
 <script type="text/javascript" src="{{ url('js/visitor_chart.js') }}"></script>
 @endsection
