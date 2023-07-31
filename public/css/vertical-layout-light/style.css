@@ -20235,6 +20235,10 @@ code {
   font-size: 30px;
 }
 
+.fs-40 {
+  font-size: 40px;
+}
+
 .chartjs-legend ul {
   margin-bottom: 0;
   list-style: none;
