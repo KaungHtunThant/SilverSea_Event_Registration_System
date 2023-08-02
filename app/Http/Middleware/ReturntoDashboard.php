@@ -17,7 +17,7 @@ class ReturntoDashboard
     public function handle(Request $request, Closure $next): Response
     {
         if(Session::has('token')) {
-            return redirect('/');
+            return redirect('/?paginate=10&page=1&orderBy=att.created_at');
         }
         return $next($request);
     }

@@ -16,18 +16,20 @@ class AttendanceController extends Controller
             $visitors =  DB::table('attendances')
                 ->join('visitors', 'attendances.vis_id', '=', 'visitors.id')
                 ->select(
-                    'attendances.id',
-                    'visitors.conf_id',
-                    'visitors.name',
-                    'visitors.email',
-                    'visitors.phone',
-                    'visitors.company',
-                    'visitors.sex',
-                    'visitors.dob',
-                    'visitors.card'
-                )->where('conf_id', 'LIKE', '%'.$searchVal.'%')
-                ->orwhere('name', 'LIKE', '%'.$searchVal.'%')
-                ->orwhere('phone', 'LIKE', '%'.$searchVal.'%')
+                    'attendances.id as id',
+                    'visitors.conf_id as conf_id',
+                    'visitors.name as name',
+                    'visitors.email as email',
+                    'visitors.phone as phone',
+                    'visitors.company as company',
+                    'visitors.sex as sex',
+                    'visitors.dob as dob',
+                    'visitors.card as card',
+                    'attendances.created_at as att_created_at',
+                    'visitors.created_at as vis_created_at',
+                )->where('conf_id', 'LIKE', '%'.$request->searchVal.'%')
+                ->orwhere('name', 'LIKE', '%'.$request->searchVal.'%')
+                ->orwhere('phone', 'LIKE', '%'.$request->searchVal.'%')
                 ->orderBy($request->orderBy)
                 ->paginate($request->paginate);
         }
@@ -35,18 +37,24 @@ class AttendanceController extends Controller
             $visitors =  DB::table('attendances')
                 ->join('visitors', 'attendances.vis_id', '=', 'visitors.id')
                 ->select(
-                    'attendances.id',
-                    'visitors.conf_id',
-                    'visitors.name',
-                    'visitors.email',
-                    'visitors.phone',
-                    'visitors.company',
-                    'visitors.sex',
-                    'visitors.dob',
-                    'visitors.card',
-                    'attendances.created_at',
+                    'attendances.id as id',
+                    'visitors.conf_id as conf_id',
+                    'visitors.name as name',
+                    'visitors.email as email',
+                    'visitors.phone as phone',
+                    'visitors.company as company',
+                    'visitors.sex as sex',
+                    'visitors.dob as dob',
+                    'visitors.card as card',
+                    'attendances.created_at as att_created_at',
+                    'visitors.created_at as vis_created_at',
                 )->paginate($request->paginate);
         }
+        $visitors->appends([
+            'orderBy' => $request->orderBy,
+            'searchVal' => $request->searchVal,
+            'paginate' => $request->paginate
+        ]);
 
         return view('admin.index')
             ->with('visitors', $visitors)

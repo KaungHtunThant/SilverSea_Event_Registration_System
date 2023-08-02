@@ -41,7 +41,7 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
     //lottery
     Route::get('/lottery', function () {
         // return view('admin.lottery.index'); 
-        return view('admin.index');
+        return redirect('/?page=1&paginate=10&orderBy=att.created_at');
     });
     
     Route::post('/winners', [WinnerController::class, 'rng']);
