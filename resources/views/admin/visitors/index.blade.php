@@ -1,5 +1,88 @@
 @extends('admin.template')
 @section('title', 'Visitors')
+@section('add_form')
+    <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="mdi mdi-account-plus"></i></div>
+        <div id="theme-settings" class="settings-panel">
+            <i class="settings-close ti-close"></i>
+            <p class="settings-heading text-primary">Add New Visitor</p>
+            <form action="/users" method="POST" class="mx-2 mt-3" autocomplete="off">
+                @csrf
+                <div class="form-group">
+                	<p>Name</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-account"></i>
+                            </span>
+                        </div>
+                        <input type="text" name="name" class="form-control" placeholder="Enter name.">
+                    </div>
+                    <p>Phone</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-cellphone"></i>
+                            </span>
+                        </div>
+                        <input type="text" name="phone" class="form-control" placeholder="Enter phone.">
+                    </div>
+                    <p>Email</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-email"></i>
+                            </span>
+                        </div>
+                        <input type="email" name="email" class="form-control" placeholder="Enter email.">
+                    </div>
+                    <p>Date of Birth</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-calendar"></i>
+                            </span>
+                        </div>
+                        <input type="date" name="dob" class="form-control">
+                    </div>
+                    <p>Sex</p>
+                    
+                    <div class="mb-3">
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input" name="sex" id="optionsRadios1" value="male" checked>
+								Male
+							</label>
+						</div>
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input" name="sex" id="optionsRadios2" value="female">
+								Female
+							</label>
+						</div>
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input" name="sex" id="optionsRadios3" value="other">
+								Other
+							</label>
+						</div>
+                    </div>
+                    <p>Company</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-account-multiple"></i>
+                            </span>
+                        </div>
+                        <input type="text" name="company" class="form-control" placeholder="Enter Company.">
+                    </div>
+                    <hr>
+                    <input type="submit" name="Submit" value="Create" class="btn btn-primary my-2">
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
 @section('contents')
 	<div class="row">
 		<div class="col-md-12 grid-margin stretch-card">
@@ -9,6 +92,7 @@
 					<div class="row">
 						<div class="col-md-10">
 							<form action="/visitors" method="GET">
+								@csrf
 								<div class="form-group">
 									<div class="row">
 										<div class="col-md-3 mb-3">
@@ -54,6 +138,7 @@
 						</div>
 						<div class="col-md-2">
 							<form action="/visitors">
+								@csrf
 								<input type="hidden" name="paginate" value="10">
 								<input type="hidden" name="orderBy" value="conf_id">
 								<input type="hidden" name="page" value="1">
@@ -74,6 +159,7 @@
 									</th>
 									<th>
 										<form action="/visitors" method="GET">
+											@csrf
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 
@@ -85,6 +171,7 @@
 									</th>
 									<th>
 										<form action="/visitors" method="GET">
+											@csrf
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 
@@ -96,6 +183,7 @@
 									</th>
 									<th>
 										<form action="/visitors" method="GET">
+											@csrf
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 
@@ -107,6 +195,7 @@
 									</th>
 									<th>
 										<form action="/visitors" method="GET">
+											@csrf
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 
@@ -118,6 +207,7 @@
 									</th>
 									<th>
 										<form action="/visitors" method="GET">
+											@csrf
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 
@@ -129,6 +219,7 @@
 									</th>
 									<th>
 										<form action="/visitors" method="GET">
+											@csrf
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 
@@ -140,6 +231,7 @@
 									</th>
 									<th>
 										<form action="/visitors" method="GET">
+											@csrf
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 
@@ -151,6 +243,7 @@
 									</th>
 									<th>
 										<form action="/visitors" method="GET">
+											@csrf
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 

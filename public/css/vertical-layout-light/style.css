@@ -19141,7 +19141,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .infinite-spin, #settings-trigger i {
-  animation-name: spin;
+/*  animation-name: spin;*/
   animation-duration: 3s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
@@ -30549,10 +30549,10 @@ div.tagsinput span.tag a {
 
 #settings-trigger {
   position: fixed;
-  bottom: 40px;
+  bottom: 90px;
   right: 30px;
-  height: 45px;
-  width: 45px;
+  height: 70px;
+  width: 70px;
   background: #4B49AC;
   z-index: 99;
   display: -webkit-flex;
@@ -30577,11 +30577,12 @@ div.tagsinput span.tag a {
   -ms-animation-fill-mode: both;
   -o-animation-fill-mode: both;
   animation-fill-mode: both;
+  cursor: pointer;
 }
 
 #settings-trigger i {
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 2rem;
   line-height: 1rem;
 }
 

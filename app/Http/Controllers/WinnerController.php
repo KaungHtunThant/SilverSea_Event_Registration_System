@@ -5,38 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Visitor;
 use App\Models\Winner;
+use Illuminate\Support\Facades\DB;
 
 class WinnerController extends Controller
 {
-    // public function index(Request $request)
-    // {
-    //     if ($request->searchVal != '') {
-    //         $Winners =  Winner::where('vis_id', 'LIKE', '%'.$searchVal.'%')
-    //         // ->orwhere('name', 'LIKE', '%'.$search_value.'%')
-    //         // ->orwhere('phone', 'LIKE', '%'.$search_value.'%')
-    //         ->orderBy($request->orderBy)
-    //         ->paginate($request->paginate);
-    //     }
-    //     else{
-    //         $winners = Winner::orderBy($request->orderBy)->paginate($request->paginate);
-    //     }
-
-    //     return view('admin.winners.index')
-    //         ->with('winners', $winners)
-    //         ->with('page', $request->page)
-    //         ->with('searchVal', $request->searchVal)
-    //         ->with('orderBy', $request->orderBy)
-    //         ->with('paginate', $request->paginate)
-    //         ->with('status', [
-    //             'type' => 'success',
-    //             'text' => 'Visitor view read.'
-    //         ]);
-    // }
-
     public function index(Request $request)
     {
         if ($request->searchVal != '') {
-            $visitors =  DB::table('winners')
+            $winners =  DB::table('winners')
                 ->join('visitors', 'winners.vis_id', '=', 'visitors.id')
                 ->select(
                     'winners.id as id',
@@ -57,7 +33,7 @@ class WinnerController extends Controller
                 ->paginate($request->paginate);
         }
         else{
-            $visitors =  DB::table('winners')
+            $winners =  DB::table('winners')
                 ->join('visitors', 'winners.vis_id', '=', 'visitors.id')
                 ->select(
                     'winners.id as id',
@@ -73,14 +49,14 @@ class WinnerController extends Controller
                     'visitors.created_at as vis_created_at',
                 )->paginate($request->paginate);
         }
-        $visitors->appends([
+        $winners->appends([
             'orderBy' => $request->orderBy,
             'searchVal' => $request->searchVal,
             'paginate' => $request->paginate
         ]);
 
-        return view('admin.index')
-            ->with('visitors', $visitors)
+        return view('admin.winners.index')
+            ->with('winners', $winners)
             ->with('page', $request->page)
             ->with('searchVal', $request->searchVal)
             ->with('orderBy', $request->orderBy)
@@ -102,7 +78,7 @@ class WinnerController extends Controller
             'desc' => 'toBeFilled',
         ]);
 
-        return redirect('/winners')->with('status', [
+        return redirect('/test')->with('status', [
             'type' => 'success',
             'winner' => $visitor
         ]);

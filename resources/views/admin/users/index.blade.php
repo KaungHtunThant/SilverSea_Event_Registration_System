@@ -1,15 +1,67 @@
 @extends('admin.template')
-@section('title', 'Winners')
+@section('title', 'Users')
+@section('add_form')
+    <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="mdi mdi-account-plus"></i></div>
+        <div id="theme-settings" class="settings-panel">
+            <i class="settings-close ti-close"></i>
+            <p class="settings-heading text-primary">Add New User</p>
+            <form action="/users" method="POST" class="mx-2 mt-3" autocomplete="off">
+                @csrf
+                <input type="hidden" name="orderBy" value="{{ $orderBy }}">
+                <input type="hidden" name="page" value="{{ $page }}">
+                <input type="hidden" name="paginate" value="{{ $paginate }}">
+                <input type="hidden" name="searchVal" value="{{ $searchVal }}">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-account"></i>
+                            </span>
+                        </div>
+                        <input type="text" name="name" class="form-control" placeholder="Enter name.">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-email"></i>
+                            </span>
+                        </div>
+                        <input type="email" name="email" class="form-control" placeholder="Enter email.">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-key"></i>
+                            </span>
+                        </div>
+                        <input type="password" name="password" class="form-control" placeholder="Enter Password.">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-key"></i>
+                            </span>
+                        </div>
+                        <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password.">
+                    </div>
+                    <hr>
+                    <input type="submit" name="Submit" value="Create" class="btn btn-primary my-2">
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
 @section('contents')
 	<div class="row">
-		<div class="col-md-12 grid-margin stretch-card">
+		<div class="col-lg-8 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Winners List</h4>
+                    <h4 class="card-title mb-4">Users List</h4>
                     <div class="row">
                         <div class="col-md-10">
-                            <form action="/winners" method="GET">
-                            	@csrf
+                            <form action="/users" method="GET">
+                                @csrf
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3 mb-3">
@@ -54,10 +106,10 @@
                             </form>
                         </div>
                         <div class="col-md-2">
-                            <form action="/winners">
-                            	@csrf
+                            <form action="/users">
+                                @csrf
                                 <input type="hidden" name="paginate" value="10">
-                                <input type="hidden" name="orderBy" value="attendances.created_at">
+                                <input type="hidden" name="orderBy" value="id">
                                 <input type="hidden" name="page" value="1">
                                 <input type="submit" name="reset" value="Reset" class="btn btn-primary float-right">
                             </form>
@@ -65,7 +117,7 @@
                     </div>
                     <div class="d-md-none mb-4"> </div>
                     <div class="container-fluid">
-                        {{ $winners->links('pagination::bootstrap-5') }}
+                        {{ $users->links('pagination::bootstrap-5') }}
                     </div>
                     <div class="table-responsive">
                         <table class="table table-sm table-hover text-center">
@@ -75,32 +127,8 @@
                                         <button type="submit" class="btn">#</button>
                                     </th>
                                     <th>
-                                        <form action="/winners" method="GET">
-                                        	@csrf
-                                            <input type="hidden" name="paginate" value="{{ $paginate }}">
-                                            <input type="hidden" name="page" value="{{ $page }}">
-                                            <button type="submit" class="btn 
-                                            @if($orderBy=='attendances.created_at')
-                                            btn-link
-                                            @endif
-                                            " name="orderBy" value="attendances.created_at">Won Date</button>
-                                        </form>
-                                    </th>
-                                    <th>
-                                        <form action="/winners" method="GET">
-                                        	@csrf
-                                            <input type="hidden" name="paginate" value="{{ $paginate }}">
-                                            <input type="hidden" name="page" value="{{ $page }}">
-                                            <button type="submit" class="btn 
-                                            @if($orderBy=='conf_id')
-                                            btn-link
-                                            @endif
-                                            " name="orderBy" value="conf_id">Confirmation ID</button>
-                                        </form>
-                                    </th>
-                                    <th>
-                                        <form action="/winners" method="GET">
-                                        	@csrf
+                                        <form action="/users" method="GET">
+                                            @csrf
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
@@ -111,20 +139,8 @@
                                         </form>
                                     </th>
                                     <th>
-                                        <form action="/winners" method="GET">
-                                        	@csrf
-                                            <input type="hidden" name="paginate" value="{{ $paginate }}">
-                                            <input type="hidden" name="page" value="{{ $page }}">
-                                            <button type="submit" class="btn 
-                                            @if($orderBy=='phone')
-                                            btn-link
-                                            @endif
-                                            " name="orderBy" value="phone">Phone</button>
-                                        </form>
-                                    </th>
-                                    <th>
-                                        <form action="/winners" method="GET">
-                                        	@csrf
+                                        <form action="/users" method="GET">
+                                            @csrf
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
@@ -135,51 +151,15 @@
                                         </form>
                                     </th>
                                     <th>
-                                        <form action="/winners" method="GET">
-                                        	@csrf
+                                        <form action="/users" method="GET">
+                                            @csrf
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
-                                            @if($orderBy=='dob')
+                                            @if($orderBy=='created_at')
                                             btn-link
                                             @endif
-                                            " name="orderBy" value="dob">Date of Birth</button>
-                                        </form>
-                                    </th>
-                                    <th>
-                                        <form action="/winners" method="GET">
-                                        	@csrf
-                                            <input type="hidden" name="paginate" value="{{ $paginate }}">
-                                            <input type="hidden" name="page" value="{{ $page }}">
-                                            <button type="submit" class="btn 
-                                            @if($orderBy=='company')
-                                            btn-link
-                                            @endif
-                                            " name="orderBy" value="company">Company</button>
-                                        </form>
-                                    </th>
-                                    <th>
-                                        <form action="/winners" method="GET">
-                                        	@csrf
-                                            <input type="hidden" name="paginate" value="{{ $paginate }}">
-                                            <input type="hidden" name="page" value="{{ $page }}">
-                                            <button type="submit" class="btn 
-                                            @if($orderBy=='sex')
-                                            btn-link
-                                            @endif
-                                            " name="orderBy" value="sex">Sex</button>
-                                        </form>
-                                    </th>
-                                    <th>
-                                        <form action="/" method="GET">
-                                        	@csrf
-                                            <input type="hidden" name="paginate" value="{{ $paginate }}">
-                                            <input type="hidden" name="page" value="{{ $page }}">
-                                            <button type="submit" class="btn 
-                                            @if($orderBy=='winners.created_at')
-                                            btn-link
-                                            @endif
-                                            " name="orderBy" value="winners.created_at">Registered Date</button>
+                                            " name="orderBy" value="created_at">Registered Date</button>
                                         </form>
                                     </th>
                                     <th>
@@ -188,25 +168,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($winners as $winner)
+                                @foreach ($users as $user)
                                 <tr>
                                     <td>{{ ($loop->index)+($paginate * $page)-($paginate-1) }}</td>
-                                    <td>{{ $winner->att_created_at }}</td>
-                                    <td>{{ $winner->conf_id }}</td>
-                                    <td class="text-left">{{ $winner->name }}</td>
-                                    <td class="text-left">{{ $winner->phone }}</td>
-                                    <td class="text-left">{{ $winner->email }}</td>
-                                    <td>{{ $winner->dob }}</td>
-                                    <td>{{ $winner->company }}</td>
-                                    <td>{{ $winner->sex }}</td>
-                                    <td>{{ $winner->vis_created_at }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->created_at }}</td>
                                     <td>
                                         <div class="dropdown">
-                                            <button class="btn btn-outline-primary btn-sm" type="button" id="{{ $winner->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn btn-outline-primary btn-sm" type="button" id="{{ $user->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="mdi mdi-dots-vertical"></i>
                                             </button>
-                                            <div class="dropdown-menu" aria-labelledby="{{ $winner->id }}-details">
-                                                <a class="text-primary dropdown-item py-3" href="#">Download ID Card</a>
+                                            <div class="dropdown-menu" aria-labelledby="{{ $user->id }}-details">
+                                                <a class="text-dark dropdown-item py-3" href="#">Password reset</a>
                                                 <a class="text-danger dropdown-item py-3" href="#">Delete</a>
                                             </div>
                                         </div>
@@ -218,7 +192,7 @@
                     </div>
                     <br>
                     <div class="container-fluid">
-                        {{ $winners->links('pagination::bootstrap-5') }}
+                        {{ $users->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
             </div>

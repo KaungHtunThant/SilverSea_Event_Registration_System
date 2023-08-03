@@ -27,8 +27,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="{{ url('/') }}"><img src="{{ url('images/logo.svg') }}" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="{{ url('/') }}"><img src="{{ url('images/logo-mini.svg') }}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="{{ url('/?orderBy=conf_id&paginate=10&page=1') }}"><img src="{{ url('images/logo.svg') }}" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="{{ url('/?orderBy=conf_id&paginate=10&page=1') }}"><img src="{{ url('images/logo-mini.svg') }}" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -72,6 +72,7 @@
     </nav>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
+      @yield('add_form')
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
@@ -99,7 +100,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/users" aria-expanded="false" aria-controls="charts">
+            <a class="nav-link" href="/users?orderBy=id&paginate=10&page=1" aria-expanded="false" aria-controls="charts">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">Users</span>
             </a>
@@ -119,11 +120,8 @@
         </div>
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="{{ url('https://www.bootstrapdash.com/') }}" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="/?orderBy=conf_id&paginate=10&page=1" target="_blank" class="">IMS Silver Sea Event Registration System</a> by <a href="https://www.powerglobal.com.mm" class="bg-dark py-1 px-2 rounded"><span class="text-danger">Power</span> <span class="text-light">GLobal</span></a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="{{ url('https://www.themewagon.com/') }}" target="_blank">Themewagon</a></span> 
           </div>
         </footer>
         <!-- partial -->

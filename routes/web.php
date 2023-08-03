@@ -23,9 +23,8 @@ use App\Http\Controllers\TestPreparer;
 Route::middleware(EnsurekeyExist::class)->group(function () {
     Route::get('/', [AttendanceController::class, 'index']);
 
-    Route::get('/users', function () {
-        return view('users.index');
-    });
+    Route::get('/users', [AuthController::class, 'index']);
+
     Route::post('/users', [AuthController::class, 'register']);
 
     Route::get('/logout', [AuthController::class, 'logout']);
@@ -34,17 +33,13 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
     Route::resource('/visitors', VisitorController::class);
 
     //winners
-    Route::get('/winners', function () {
-        return view('admin.winners.index'); 
-    });
+    Route::get('/winners', [WinnerController::class, 'index']);
 
     //lottery
     Route::get('/lottery', function () {
         // return view('admin.lottery.index'); 
         return redirect('/?page=1&paginate=10&orderBy=att.created_at');
     });
-    
-    Route::post('/winners', [WinnerController::class, 'rng']);
 });
 
 //Public routes
@@ -55,6 +50,12 @@ Route::get('/login', function () {
 
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::post('/winners', [WinnerController::class, 'rng']);
+
 Route::get('/barcode', function () {
     return view('test.index');
+});
+
+Route::get('/form', function () {
+    return view('form.index');
 });

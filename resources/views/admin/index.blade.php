@@ -149,6 +149,7 @@
                                     </th>
                                     <th>
                                         <form action="/" method="GET">
+                                            @csrf
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
@@ -160,6 +161,7 @@
                                     </th>
                                     <th>
                                         <form action="/" method="GET">
+                                            @csrf
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
@@ -171,6 +173,7 @@
                                     </th>
                                     <th>
                                         <form action="/" method="GET">
+                                            @csrf
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
@@ -182,6 +185,7 @@
                                     </th>
                                     <th>
                                         <form action="/" method="GET">
+                                            @csrf
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
@@ -193,6 +197,7 @@
                                     </th>
                                     <th>
                                         <form action="/" method="GET">
+                                            @csrf
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
@@ -204,6 +209,7 @@
                                     </th>
                                     <th>
                                         <form action="/" method="GET">
+                                            @csrf
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
@@ -215,6 +221,7 @@
                                     </th>
                                     <th>
                                         <form action="/" method="GET">
+                                            @csrf
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
@@ -226,6 +233,7 @@
                                     </th>
                                     <th>
                                         <form action="/" method="GET">
+                                            @csrf
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
@@ -237,6 +245,7 @@
                                     </th>
                                     <th>
                                         <form action="/" method="GET">
+                                            @csrf
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
