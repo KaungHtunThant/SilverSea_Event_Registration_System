@@ -3,7 +3,7 @@
 @section('add_form')
     <div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="mdi mdi-account-plus"></i></div>
-        <div id="theme-settings" class="settings-panel">
+        <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
             <i class="settings-close ti-close"></i>
             <p class="settings-heading text-primary">Add New User</p>
             <form action="/users" method="POST" class="mx-2 mt-3" autocomplete="off">
