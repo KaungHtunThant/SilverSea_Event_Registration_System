@@ -3,7 +3,7 @@
 @section('add_form')
     <div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="mdi mdi-account-plus"></i></div>
-        <div id="theme-settings" class="settings-panel">
+        <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
             <i class="settings-close ti-close"></i>
             <p class="settings-heading text-primary">Add New Visitor</p>
             <form action="/users" method="POST" class="mx-2 mt-3" autocomplete="off">
@@ -78,6 +78,8 @@
                     </div>
                     <hr>
                     <input type="submit" name="Submit" value="Create" class="btn btn-primary my-2">
+                    <br class="mb-5">
+                    <br class="mb-3">
                 </div>
             </form>
         </div>

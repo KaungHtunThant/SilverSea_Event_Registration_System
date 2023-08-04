@@ -53,7 +53,7 @@ class VisitorController extends Controller
             'phone' => 'required|string',
             'dob' => 'required|string',
             'sex' => 'required|string',
-            'company' => 'required|string'
+            'company' => 'string'
         ]);
 
         $lastid = Visitor::latest('id')->first();
@@ -63,6 +63,53 @@ class VisitorController extends Controller
         $dob = date('Y-m-d', strtotime($fields['dob']));
 
         $card = 'MME-Vis-'.$lastid+1001;
+
+        if($fields['company']==''){
+            $fields['company'] = 'None';
+        }
+
+        $user = Visitor::create([
+            'conf_id' => 'MME-Vis-'.$lastid+1001,
+            'name' => $fields['name'],
+            'email' => $fields['email'],
+            'phone' => $fields['phone'],
+            'dob' => $dob,
+            'sex' => $fields['sex'],
+            'company' => $fields['company'],
+            'card' => $card,
+        ]);
+
+        // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
+        // exec($cmd);
+
+        return redirect('/visitors')->with('status', [
+                'type' => 'success',
+                'text' => 'Visitor record created successfully!'
+            ]);
+    }
+
+    public function form_add(Request $request)
+    {
+        $fields = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'phone' => 'required|string',
+            'dob' => 'required|string',
+            'sex' => 'required|string',
+            'company' => 'string'
+        ]);
+
+        $lastid = Visitor::latest('id')->first();
+        if ($lastid == Null) {
+            $lastid = 0;
+        }
+        $dob = date('Y-m-d', strtotime($fields['dob']));
+
+        $card = 'MME-Vis-'.$lastid+1001;
+
+        if($fields['company']==''){
+            $fields['company'] = 'None';
+        }
 
         $user = Visitor::create([
             'conf_id' => 'MME-Vis-'.$lastid+1001,

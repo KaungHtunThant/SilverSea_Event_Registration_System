@@ -59,3 +59,5 @@ Route::get('/barcode', function () {
 Route::get('/form', function () {
     return view('form.index');
 });
+
+Route::post('/form', [VisitorController::class, 'form_add']);
