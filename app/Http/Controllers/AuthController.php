@@ -56,10 +56,6 @@ class AuthController extends Controller
         $response = 'User registered';
 
         return redirect('/users?orderBy=id&paginate=10&page=1')
-            // ->with('page', $request->page)
-            // ->with('searchVal', $request->searchVal)
-            // ->with('orderBy', $request->orderBy)
-            // ->with('paginate', $request->paginate)
             ->with('status', [
                 'type' => 'success',
                 'text' => 'User record created successfully!'

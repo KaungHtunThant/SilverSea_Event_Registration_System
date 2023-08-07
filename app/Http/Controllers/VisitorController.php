@@ -62,14 +62,14 @@ class VisitorController extends Controller
         }
         $dob = date('Y-m-d', strtotime($fields['dob']));
 
-        $card = 'MME-Vis-'.$lastid+1001;
+        $card = 'MME-VIS-'.$lastid->id+1001;
 
         if($fields['company']==''){
             $fields['company'] = 'None';
         }
 
         $user = Visitor::create([
-            'conf_id' => 'MME-Vis-'.$lastid+1001,
+            'conf_id' => $card,
             'name' => $fields['name'],
             'email' => $fields['email'],
             'phone' => $fields['phone'],
@@ -125,7 +125,7 @@ class VisitorController extends Controller
         // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
         // exec($cmd);
 
-        return redirect('/visitors')->with('status', [
+        return redirect('/form')->with('status', [
                 'type' => 'success',
                 'text' => 'Visitor record created successfully!'
             ]);
