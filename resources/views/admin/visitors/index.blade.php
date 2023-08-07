@@ -6,8 +6,11 @@
         <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
             <i class="settings-close ti-close"></i>
             <p class="settings-heading text-primary">Add New Visitor</p>
-            <form action="/users" method="POST" class="mx-2 mt-3" autocomplete="off">
+            <form action="/visitors" method="POST" class="mx-2 mt-3" autocomplete="off">
                 @csrf
+                <input type="hidden" name="orderBy" value="conf_id">
+				<input type="hidden" name="page" value="1">
+				<input type="hidden" name="pagination" value="10">
                 <div class="form-group">
                 	<p>Name</p>
                     <div class="input-group mb-3">
@@ -50,19 +53,19 @@
                     <div class="mb-3">
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="sex" id="optionsRadios1" value="male" checked>
+								<input type="radio" class="form-check-input" name="sex" id="optionsRadios1" value="Male" checked>
 								Male
 							</label>
 						</div>
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="sex" id="optionsRadios2" value="female">
+								<input type="radio" class="form-check-input" name="sex" id="optionsRadios2" value="Female">
 								Female
 							</label>
 						</div>
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="sex" id="optionsRadios3" value="other">
+								<input type="radio" class="form-check-input" name="sex" id="optionsRadios3" value="Other">
 								Other
 							</label>
 						</div>

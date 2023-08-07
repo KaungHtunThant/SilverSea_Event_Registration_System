@@ -105,14 +105,14 @@ class VisitorController extends Controller
         }
         $dob = date('Y-m-d', strtotime($fields['dob']));
 
-        $card = 'MME-Vis-'.$lastid+1001;
+        $card = 'MME-VIS-'.$lastid->id+1001;
 
         if($fields['company']==''){
             $fields['company'] = 'None';
         }
 
         $user = Visitor::create([
-            'conf_id' => 'MME-Vis-'.$lastid+1001,
+            'conf_id' => $card,
             'name' => $fields['name'],
             'email' => $fields['email'],
             'phone' => $fields['phone'],

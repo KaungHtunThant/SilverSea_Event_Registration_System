@@ -2,9 +2,9 @@
 @section('title', 'Dashboard')
 @section('contents')
     <div class="row">
-        <div class="col-md-3 grid-margin stretch-card">
+        <div class="col-md-4 grid-margin stretch-card">
             <div class="row">
-                <div class="col-md-12 mb-4 stretch-card transparent">
+                <div class="col-md-6 mb-4 stretch-card transparent">
                     <div class="card card-tale">
                         <div class="card-body">
                             <p class="mb-4">Today’s Bookings</p>
@@ -13,7 +13,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 stretch-card transparent">
+                <div class="col-md-6 mb-4 stretch-card transparent">
+                    <div class="card card-dark-blue">
+                        <div class="card-body">
+                            <p class="mb-4">Today’s Bookings</p>
+                            <p class="fs-30 mb-2">4006</p>
+                            <p>10.00% (30 days)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 stretch-card transparent">
+                    <div class="card card-dark-blue">
+                        <div class="card-body">
+                            <p class="mb-4">Today’s Bookings</p>
+                            <p class="fs-30 mb-2">4006</p>
+                            <p>10.00% (30 days)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 stretch-card transparent">
                     <div class="card card-dark-blue">
                         <div class="card-body">
                             <p class="mb-4">Today’s Bookings</p>
@@ -24,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5 grid-margin stretch-card">
+        <div class="col-md-4 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Doughnut chart</h4>
