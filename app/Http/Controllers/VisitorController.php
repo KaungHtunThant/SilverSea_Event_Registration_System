@@ -49,11 +49,9 @@ class VisitorController extends Controller
     {
         $fields = $request->validate([
             'name' => 'required|string',
-            'email' => 'required|string',
             'phone' => 'required|string',
             'dob' => 'required|string',
             'sex' => 'required|string',
-            'company' => 'string'
         ]);
 
         $lastid = Visitor::latest('id')->first();
@@ -64,8 +62,11 @@ class VisitorController extends Controller
 
         $card = 'MME-VIS-'.$lastid->id+1001;
 
-        if($fields['company']==''){
+        if(!isset($fields['company'])){
             $fields['company'] = 'None';
+        }
+        if(!isset($fields['email'])){
+            $fields['email'] = 'None';
         }
 
         $user = Visitor::create([
@@ -82,7 +83,7 @@ class VisitorController extends Controller
         // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
         // exec($cmd);
 
-        return redirect('/visitors')->with('status', [
+        return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
                 'type' => 'success',
                 'text' => 'Visitor record created successfully!'
             ]);
@@ -92,7 +93,6 @@ class VisitorController extends Controller
     {
         $fields = $request->validate([
             'name' => 'required|string',
-            'email' => 'required|string',
             'phone' => 'required|string',
             'dob' => 'required|string',
             'sex' => 'required|string',
@@ -107,8 +107,11 @@ class VisitorController extends Controller
 
         $card = 'MME-VIS-'.$lastid->id+1001;
 
-        if($fields['company']==''){
+        if(!isset($fields['company'])){
             $fields['company'] = 'None';
+        }
+        if(!isset($fields['email'])){
+            $fields['email'] = 'None';
         }
 
         $user = Visitor::create([
