@@ -48,7 +48,7 @@
                         </div>
                         <input type="date" name="dob" class="form-control">
                     </div>
-                    <p>Sex</p>
+                    <p>Gender</p>
                     
                     <div class="mb-3">
 						<div class="form-check">
@@ -243,7 +243,7 @@
 											@if($orderBy=='sex')
 											btn-link
 											@endif
-											" name="orderBy" value="sex">Sex</button>
+											" name="orderBy" value="sex">Gender</button>
 										</form>
 									</th>
 									<th>

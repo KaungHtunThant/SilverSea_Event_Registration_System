@@ -167,7 +167,7 @@
                                             @if($orderBy=='sex')
                                             btn-link
                                             @endif
-                                            " name="orderBy" value="sex">Sex</button>
+                                            " name="orderBy" value="sex">Gender</button>
                                         </form>
                                     </th>
                                     <th>
