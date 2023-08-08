@@ -88,7 +88,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/winners?orderBy=id&paginate=10&page=1" aria-expanded="false" aria-controls="form-elements">
+            <a class="nav-link" href="/winners?orderBy=id&paginate=10&page=1&orderBy=attendances.created_at" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>
               <span class="menu-title">Winners</span>
             </a>
