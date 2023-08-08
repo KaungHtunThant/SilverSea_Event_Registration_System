@@ -281,7 +281,7 @@
 												<i class="mdi mdi-dots-vertical"></i>
 											</button>
 											<div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
-												<a class="text-primary dropdown-item py-3" href="#">Download ID Card</a>
+												<a class="text-primary dropdown-item py-3" href="/visitors/{{ $visitor->id }}">Download ID Card</a>
 												<a class="text-danger dropdown-item py-3" href="#">Delete</a>
 											</div>
 										</div>

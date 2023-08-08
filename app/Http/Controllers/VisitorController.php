@@ -209,4 +209,22 @@ class VisitorController extends Controller
             'text' => 'Visitor record deleted successfully!'
         ]);
     }
+
+    public function show(Request $request, $id)
+    {
+        $visitor = Visitor::find($id);
+        if ($visitor == Null) {
+            return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
+                'type' => 'fail',
+                'text' => 'Visitor record deletion failed! Visitor not found.'
+            ]);
+        }
+        return view('admin.visitors.download')
+            ->with('visitor', $visitor)
+            ->with('status', [
+                'type' => 'success',
+                'text' => 'Visitor Details read.'
+            ]
+        );
+    }
 }

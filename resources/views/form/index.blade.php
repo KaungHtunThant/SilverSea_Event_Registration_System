@@ -40,7 +40,7 @@
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="email" placeholder="E-MAIL" name="email" required>
+                                    <input class="input--style-1" type="email" placeholder="E-MAIL (OPTIONAL)" name="email">
                                 </div>
                             </div>
                             <div class="col-2">
