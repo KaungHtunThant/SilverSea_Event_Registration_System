@@ -24,6 +24,7 @@ class VisitorController extends Controller
             $visitors =  Visitor::where('conf_id', 'LIKE', '%'.$request->searchVal.'%')
             ->orwhere('name', 'LIKE', '%'.$request->searchVal.'%')
             ->orwhere('phone', 'LIKE', '%'.$request->searchVal.'%')
+            ->orwhere('email', 'LIKE', '%'.$request->searchVal.'%')
             ->orderBy($request->orderBy)
             ->paginate($request->paginate);
         }

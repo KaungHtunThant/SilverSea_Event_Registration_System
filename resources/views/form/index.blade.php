@@ -45,7 +45,7 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="text" placeholder="PHONE" name="phone" required>
+                                    <input class="input--style-1" type="number" placeholder="PHONE" name="phone" required>
                                 </div>
                             </div>
                             <div class="col-2">

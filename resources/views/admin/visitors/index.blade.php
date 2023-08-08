@@ -19,7 +19,7 @@
                                 <i class="mdi mdi-account"></i>
                             </span>
                         </div>
-                        <input type="text" name="name" class="form-control" placeholder="Enter name.">
+                        <input type="number" name="name" class="form-control" placeholder="Enter name.">
                     </div>
                     <p>Phone</p>
                     <div class="input-group mb-3">
