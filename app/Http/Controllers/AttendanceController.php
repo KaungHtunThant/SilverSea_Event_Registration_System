@@ -69,11 +69,11 @@ class AttendanceController extends Controller
         ]);
 
         $Vtotal = Visitor::get()->count();
-        $Vtoday = Visitor::where('created_at', '>',date('Y-m-d'))
+        $Vtoday = Visitor::whereDate('created_at', date('Y-m-d'))
                     ->count();
 
         $Atotal = Attendance::get()->count();
-        $Atoday = Attendance::where('created_at', '>',date('Y-m-d'))
+        $Atoday = Attendance::whereDate('created_at', date('Y-m-d'))
                     ->groupBy('vis_id')
                     ->count();
 
