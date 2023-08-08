@@ -7,7 +7,7 @@
 </head>
 <body>
 	@php
-		echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG('01001', 'C39+',1.5,40) . '" alt="barcode"   />';
+		echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG('MME-VIS-1001-nd', 'C39+',1.5,40) . '" alt="barcode"   />';
 	@endphp
 </body>
 </html>
