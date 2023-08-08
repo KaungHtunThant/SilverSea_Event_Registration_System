@@ -40,7 +40,7 @@ class AttendanceController extends Controller
                 )->where('conf_id', 'LIKE', '%'.$request->searchVal.'%')
                 ->orwhere('name', 'LIKE', '%'.$request->searchVal.'%')
                 ->orwhere('phone', 'LIKE', '%'.$request->searchVal.'%')
-                ->orderBy($request->orderBy)
+                ->orderBy($request->orderBy, 'DESC')
                 ->paginate($request->paginate);
         }
         else{
@@ -58,7 +58,9 @@ class AttendanceController extends Controller
                     'visitors.card as card',
                     'attendances.created_at as att_created_at',
                     'visitors.created_at as vis_created_at',
-                )->paginate($request->paginate);
+                )
+                ->orderBy($request->orderBy, 'DESC')
+                ->paginate($request->paginate);
         }
         $visitors->appends([
             'orderBy' => $request->orderBy,
@@ -81,6 +83,14 @@ class AttendanceController extends Controller
         $Ftotal = Visitor::where('sex','Female')->count();
         $Ototal = Visitor::where('sex','Other')->count();
 
+        $u18 = Visitor::where('dob', '>=', date('Y-m-d', strtotime('-18 year')))
+                    ->count();
+        $u30 = Visitor::where('dob', '<=', date('Y-m-d', strtotime('-19 year')))
+                    ->where('dob', '>=', date('Y-m-d', strtotime('-30 year')))
+                    ->count();
+        $a50 = Visitor::where('dob', '>', date('Y-m-d', strtotime('-30 year')))
+                    ->count();
+
         return view('admin.index')
             ->with('visitors', $visitors)
             ->with('page', $request->page)
@@ -94,6 +104,9 @@ class AttendanceController extends Controller
             ->with('Mtotal', $Mtotal)
             ->with('Ftotal', $Ftotal)
             ->with('Ototal', $Ototal)
+            ->with('u18', $u18)
+            ->with('u30', $u30)
+            ->with('a50', $a50)
             ->with('status', [
                 'type' => 'success',
                 'text' => 'Attendances view read.'

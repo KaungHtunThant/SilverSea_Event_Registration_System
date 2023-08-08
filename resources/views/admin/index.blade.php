@@ -62,7 +62,7 @@
                                 <div class="progress progress-md flex-grow-1 mr-4">
                                     <div class="progress-bar bg-inf0" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p class="mb-0">u18</p>
+                                <p class="mb-0">{{ $u18 }}</p>
                             </div>
                         </div>
                         <div class="mt-3">
@@ -71,7 +71,7 @@
                                 <div class="progress progress-md flex-grow-1 mr-4">
                                     <div class="progress-bar bg-info" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p class="mb-0">u30</p>
+                                <p class="mb-0">{{ $u30 }}</p>
                             </div>
                         </div>
                         <div class="mt-3">
@@ -80,7 +80,7 @@
                                 <div class="progress progress-md flex-grow-1 mr-4">
                                     <div class="progress-bar bg-info" role="progressbar" style="width: 48%" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p class="mb-0">a50</p>
+                                <p class="mb-0">{{ $a50 }}</p>
                             </div>
                         </div>
                     </div>  

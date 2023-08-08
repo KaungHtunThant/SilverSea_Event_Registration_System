@@ -120,8 +120,7 @@
         </div>
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="/?orderBy=conf_id&paginate=10&page=1" target="_blank" class="">IMS Silver Sea Event Registration System</a> by <a href="https://www.powerglobal.com.mm" class="bg-dark py-1 px-2 rounded"><span class="text-danger">Power</span> <span class="text-light">GLobal</span></a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="/?orderBy=conf_id&paginate=10&page=1" target="_blank" class="">IMS Silver Sea Event Registration System</a> by <a href="https://www.powerglobal.com.mm"><span class="text-danger">Power</span> <span class="text-secondary">GLobal</span></a>. All rights reserved.</span>
           </div>
         </footer>
         <!-- partial -->
