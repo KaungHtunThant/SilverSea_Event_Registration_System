@@ -92,7 +92,7 @@ class AuthController extends Controller
             Session::put('token', $token);
         }
 
-        return redirect('/?paginate=10&page=1&orderBy=att.created_at')->with('status', [
+        return redirect('/?paginate=10&page=1&orderBy=attendances.created_at')->with('status', [
             'type' => 'success',
             'text' => 'User logged in successfully!'
         ]);

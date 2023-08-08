@@ -171,7 +171,7 @@ class VisitorController extends Controller
         $visitor = Visitor::find($id);
 
         if ($visitor == Null) {
-            return redirect('/visitors')->with('status', [
+            return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
                 'type' => 'fail',
                 'text' => 'Visitor record update failed! Visitor not found.'
             ]);
@@ -188,7 +188,7 @@ class VisitorController extends Controller
 
         // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
         // exec($cmd);
-        return redirect('/visitors')->with('status', [
+        return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
             'type' => 'success',
             'text' => 'Visitor record updated successfully!'
         ]);
@@ -198,13 +198,13 @@ class VisitorController extends Controller
     {
         $visitor = Visitor::find($id);
         if ($visitor == Null) {
-            return redirect('/visitors')->with('status', [
+            return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
                 'type' => 'fail',
                 'text' => 'Visitor record deletion failed! Visitor not found.'
             ]);
         }
         $visitor->delete();
-        return redirect('/visitors')->with('status', [
+        return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
             'type' => 'success',
             'text' => 'Visitor record deleted successfully!'
         ]);

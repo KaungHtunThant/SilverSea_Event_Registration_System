@@ -76,7 +76,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="/?paginate=10&page=1&orderBy=att.created_at">
+            <a class="nav-link" href="/?paginate=10&page=1&orderBy=attendances.created_at">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
