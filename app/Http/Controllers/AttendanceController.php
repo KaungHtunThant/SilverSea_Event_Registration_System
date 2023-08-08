@@ -74,7 +74,7 @@ class AttendanceController extends Controller
 
         $Atotal = Attendance::get()->count();
         $Atoday = Attendance::whereDate('created_at', date('Y-m-d'))
-                    ->groupBy('vis_id')
+                    ->unique('vis_id')
                     ->count();
 
         $Mtotal = Visitor::where('sex','Male')->count();
