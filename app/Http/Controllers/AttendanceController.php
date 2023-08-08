@@ -85,10 +85,10 @@ class AttendanceController extends Controller
 
         $u18 = Visitor::where('dob', '>=', date('Y-m-d', strtotime('-18 year')))
                     ->count();
-        $u30 = Visitor::where('dob', '<=', date('Y-m-d', strtotime('-19 year')))
-                    ->where('dob', '>=', date('Y-m-d', strtotime('-30 year')))
+        $u30 = Visitor::where('dob', '<', date('Y-m-d', strtotime('-19 year')))
+                    ->where('dob', '>', date('Y-m-d', strtotime('-30 year')))
                     ->count();
-        $a50 = Visitor::where('dob', '>', date('Y-m-d', strtotime('-30 year')))
+        $a50 = Visitor::where('dob', '>=', date('Y-m-d', strtotime('-30 year')))
                     ->count();
 
         return view('admin.index')
