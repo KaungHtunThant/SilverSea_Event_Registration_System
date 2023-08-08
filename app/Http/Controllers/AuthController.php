@@ -12,6 +12,16 @@ class AuthController extends Controller
 {
     public function index(Request $request)
     {
+        if (!isset($request->orderBy)) {
+            $request->orderBy = 'conf_id';
+        }
+        if (!isset($request->paginate)) {
+            $request->paginate = '10';
+        }
+        if (!isset($request->page)) {
+            $request->page = '1';
+        }
+
         if ($request->searchVal != '') {
             $users =  User::where('name', 'LIKE', '%'.$request->searchVal.'%')
             ->orwhere('email', 'LIKE', '%'.$request->searchVal.'%')

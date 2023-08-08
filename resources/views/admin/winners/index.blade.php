@@ -57,7 +57,7 @@
                             <form action="/winners">
                             	@csrf
                                 <input type="hidden" name="paginate" value="10">
-                                <input type="hidden" name="orderBy" value="attendances.created_at">
+                                <input type="hidden" name="orderBy" value="winners.created_at">
                                 <input type="hidden" name="page" value="1">
                                 <input type="submit" name="reset" value="Reset" class="btn btn-primary float-right">
                             </form>
@@ -80,10 +80,10 @@
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
-                                            @if($orderBy=='attendances.created_at')
+                                            @if($orderBy=='winners.created_at')
                                             btn-link
                                             @endif
-                                            " name="orderBy" value="attendances.created_at">Won Date</button>
+                                            " name="orderBy" value="winners.created_at">Won Date</button>
                                         </form>
                                     </th>
                                     <th>

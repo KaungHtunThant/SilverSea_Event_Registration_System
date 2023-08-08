@@ -11,6 +11,16 @@ class WinnerController extends Controller
 {
     public function index(Request $request)
     {
+        if (!isset($request->orderBy)) {
+            $request->orderBy = 'winners.created_at';
+        }
+        if (!isset($request->paginate)) {
+            $request->paginate = '10';
+        }
+        if (!isset($request->page)) {
+            $request->page = '1';
+        }
+
         if ($request->searchVal != '') {
             $winners =  DB::table('winners')
                 ->join('visitors', 'winners.vis_id', '=', 'visitors.id')
@@ -24,7 +34,7 @@ class WinnerController extends Controller
                     'visitors.sex as sex',
                     'visitors.dob as dob',
                     'visitors.card as card',
-                    'winners.created_at as att_created_at',
+                    'winners.created_at as win_created_at',
                     'visitors.created_at as vis_created_at',
                 )->where('conf_id', 'LIKE', '%'.$request->searchVal.'%')
                 ->orwhere('name', 'LIKE', '%'.$request->searchVal.'%')
@@ -45,7 +55,7 @@ class WinnerController extends Controller
                     'visitors.sex as sex',
                     'visitors.dob as dob',
                     'visitors.card as card',
-                    'winners.created_at as att_created_at',
+                    'winners.created_at as win_created_at',
                     'visitors.created_at as vis_created_at',
                 )->paginate($request->paginate);
         }

@@ -10,6 +10,16 @@ class VisitorController extends Controller
 {
     public function index(Request $request)
     {
+        if (!isset($request->orderBy)) {
+            $request->orderBy = 'conf_id';
+        }
+        if (!isset($request->paginate)) {
+            $request->paginate = '10';
+        }
+        if (!isset($request->page)) {
+            $request->page = '1';
+        }
+
         if ($request->searchVal != '') {
             $visitors =  Visitor::where('conf_id', 'LIKE', '%'.$request->searchVal.'%')
             ->orwhere('name', 'LIKE', '%'.$request->searchVal.'%')
@@ -49,9 +59,11 @@ class VisitorController extends Controller
     {
         $fields = $request->validate([
             'name' => 'required|string',
+            'email' => 'nullable|string',
             'phone' => 'required|string',
             'dob' => 'required|string',
             'sex' => 'required|string',
+            'company' => 'nullable|string',
         ]);
 
         $lastid = Visitor::latest('id')->first();
@@ -62,11 +74,11 @@ class VisitorController extends Controller
 
         $card = 'MME-VIS-'.$lastid->id+1001;
 
-        if(!isset($fields['company'])){
-            $fields['company'] = 'None';
+        if($fields['company'] == Null){
+            $fields['company'] = '-';
         }
-        if(!isset($fields['email'])){
-            $fields['email'] = 'None';
+        if($fields['email'] == Null){
+            $fields['email'] = '-';
         }
 
         $user = Visitor::create([
@@ -93,10 +105,11 @@ class VisitorController extends Controller
     {
         $fields = $request->validate([
             'name' => 'required|string',
+            'email' => 'nullable|string',
             'phone' => 'required|string',
             'dob' => 'required|string',
             'sex' => 'required|string',
-            'company' => 'string'
+            'company' => 'nullable|string',
         ]);
 
         $lastid = Visitor::latest('id')->first();
@@ -107,11 +120,11 @@ class VisitorController extends Controller
 
         $card = 'MME-VIS-'.$lastid->id+1001;
 
-        if(!isset($fields['company'])){
-            $fields['company'] = 'None';
+        if($fields['company'] == Null){
+            $fields['company'] = '-';
         }
-        if(!isset($fields['email'])){
-            $fields['email'] = 'None';
+        if($fields['email'] == Null){
+            $fields['email'] = '-';
         }
 
         $user = Visitor::create([
@@ -136,6 +149,16 @@ class VisitorController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (!isset($request->orderBy)) {
+            $request->orderBy = 'conf_id';
+        }
+        if (!isset($request->paginate)) {
+            $request->paginate = '10';
+        }
+        if (!isset($request->page)) {
+            $request->page = '1';
+        }
+        
         $fields = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string',

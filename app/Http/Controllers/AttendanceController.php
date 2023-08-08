@@ -12,6 +12,16 @@ class AttendanceController extends Controller
 {
     public function index(Request $request)
     {
+        if (!isset($request->orderBy)) {
+            $request->orderBy = 'attendances.created_at';
+        }
+        if (!isset($request->paginate)) {
+            $request->paginate = '10';
+        }
+        if (!isset($request->page)) {
+            $request->page = '1';
+        }
+
         if ($request->searchVal != '') {
             $visitors =  DB::table('attendances')
                 ->join('visitors', 'attendances.vis_id', '=', 'visitors.id')
@@ -56,12 +66,34 @@ class AttendanceController extends Controller
             'paginate' => $request->paginate
         ]);
 
+        $Vtotal = Visitor::get()->count();
+        $Vtoday = Visitor::where('created_at', '>', date('Y-m-d'))
+                    ->where('created_at', '<', date('Y-m-d', strtotime("+1 day")))
+                    ->count();
+
+        $Atotal = Attendance::get()->count();
+        $Atoday = Attendance::where('created_at', '>', date('Y-m-d'))
+                    ->where('created_at', '<', date('Y-m-d', strtotime("+1 day")))
+                    ->groupBy('vis_id')
+                    ->count();
+
+        $Mtotal = Visitor::where('sex','Male')->count();
+        $Ftotal = Visitor::where('sex','Female')->count();
+        $Ototal = Visitor::where('sex','Other')->count();
+
         return view('admin.index')
             ->with('visitors', $visitors)
             ->with('page', $request->page)
             ->with('searchVal', $request->searchVal)
             ->with('orderBy', $request->orderBy)
             ->with('paginate', $request->paginate)
+            ->with('Atotal', $Atotal)
+            ->with('Atoday', $Atoday)
+            ->with('Vtotal', $Vtotal)
+            ->with('Vtoday', $Vtoday)
+            ->with('Mtotal', $Mtotal)
+            ->with('Ftotal', $Ftotal)
+            ->with('Ototal', $Ototal)
             ->with('status', [
                 'type' => 'success',
                 'text' => 'Attendances view read.'

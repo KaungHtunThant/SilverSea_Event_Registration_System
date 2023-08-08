@@ -7,36 +7,36 @@
                 <div class="col-md-6 mb-4 stretch-card transparent">
                     <div class="card card-tale">
                         <div class="card-body">
-                            <p class="mb-4">Today’s Bookings</p>
-                            <p class="fs-30 mb-2">4006</p>
-                            <p>10.00% (30 days)</p>
+                            <p class="mb-4">Total Visitors</p>
+                            <p class="fs-30 mb-2">{{ $Vtotal }}</p>
+                            <p>18-Aug - 20-Aug</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4 stretch-card transparent">
-                    <div class="card card-dark-blue">
+                    <div class="card card-tale">
                         <div class="card-body">
-                            <p class="mb-4">Today’s Bookings</p>
-                            <p class="fs-30 mb-2">4006</p>
-                            <p>10.00% (30 days)</p>
+                            <p class="mb-4">Today’s Visitors</p>
+                            <p class="fs-30 mb-2">{{ $Vtoday }}</p>
+                            <p>{{ date('d-M') }}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-4 stretch-card transparent">
+                <div class="col-md-6 stretch-card transparent">
                     <div class="card card-dark-blue">
                         <div class="card-body">
-                            <p class="mb-4">Today’s Bookings</p>
-                            <p class="fs-30 mb-2">4006</p>
-                            <p>10.00% (30 days)</p>
+                            <p class="mb-4">Total Attendances</p>
+                            <p class="fs-30 mb-2">{{ $Atotal }}</p>
+                            <p>18-Aug - 20-Aug</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-4 stretch-card transparent">
+                <div class="col-md-6 stretch-card transparent">
                     <div class="card card-dark-blue">
                         <div class="card-body">
-                            <p class="mb-4">Today’s Bookings</p>
-                            <p class="fs-30 mb-2">4006</p>
-                            <p>10.00% (30 days)</p>
+                            <p class="mb-4">Today’s Attendances</p>
+                            <p class="fs-30 mb-2">{{ $Atoday }}</p>
+                            <p>{{ date('d-M') }}</p>
                         </div>
                     </div>
                 </div>
@@ -45,50 +45,42 @@
         <div class="col-md-4 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Doughnut chart</h4>
-                    <canvas id="doughnutChart"></canvas>
+                    <h4 class="card-title mb-4">Visitors' Genders</h4>
+                    <canvas id="gender-chart"></canvas>
+                    <div id="gender-legend"></div>
                 </div>
             </div>
         </div>
         <div class="col-md-4 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <p class="card-title">Charts</p>
+                    <p class="card-title">Visitors' Age Ranges</p>
                     <div class="charts-data">
                         <div class="mt-3">
-                            <p class="mb-0">Data 1</p>
+                            <p class="mb-0">Under 18 yrs</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="progress progress-md flex-grow-1 mr-4">
                                     <div class="progress-bar bg-inf0" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p class="mb-0">5k</p>
+                                <p class="mb-0">u18</p>
                             </div>
                         </div>
                         <div class="mt-3">
-                            <p class="mb-0">Data 2</p>
+                            <p class="mb-0">19 - 30 yrs</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="progress progress-md flex-grow-1 mr-4">
                                     <div class="progress-bar bg-info" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p class="mb-0">1k</p>
+                                <p class="mb-0">u30</p>
                             </div>
                         </div>
                         <div class="mt-3">
-                            <p class="mb-0">Data 3</p>
+                            <p class="mb-0">Above 30 yrs</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="progress progress-md flex-grow-1 mr-4">
                                     <div class="progress-bar bg-info" role="progressbar" style="width: 48%" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p class="mb-0">992</p>
-                            </div>
-                        </div>
-                        <div class="mt-3">
-                            <p class="mb-0">Data 4</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="progress progress-md flex-grow-1 mr-4">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mb-0">687</p>
+                                <p class="mb-0">a50</p>
                             </div>
                         </div>
                     </div>  
@@ -258,7 +250,7 @@
                                             @if($orderBy=='sex')
                                             btn-link
                                             @endif
-                                            " name="orderBy" value="sex">Sex</button>
+                                            " name="orderBy" value="sex">Gender</button>
                                         </form>
                                     </th>
                                     <th>
@@ -322,5 +314,79 @@
     let today = document.getElementById("today");
     today.innerHTML = new Date().toLocaleDateString("en-US", options);
 </script>
-<script type="text/javascript" src="{{ url('js/visitor_chart.js') }}"></script>
+<script>
+    if ($("#gender-chart").length) {
+      var areaData = {
+        labels: ["Male", "Female", "Other"],
+        datasets: [{
+            data: [{{ $Mtotal }}, {{ $Ftotal }}, {{ $Ototal }}],
+            backgroundColor: [
+               "rgba(54, 162, 235, 0.5)","rgba(255, 99, 132, 0.5)", "rgba(255, 206, 86, 0.5)",
+            ],
+            borderColor: "rgba(0,0,0,0)"
+          }
+        ]
+      };
+      var areaOptions = {
+        responsive: true,
+        maintainAspectRatio: true,
+        segmentShowStroke: false,
+        cutoutPercentage: 78,
+        elements: {
+          arc: {
+              borderWidth: 4
+          }
+        },      
+        legend: {
+          display: false
+        },
+        tooltips: {
+          enabled: true
+        },
+        legendCallback: function(chart) { 
+          var text = [];
+          text.push('<div class="report-chart">');
+            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[0] + '"></div><p class="mb-0">Male</p></div>');
+            text.push('<p class="mb-0">{{ $Mtotal }}</p>');
+            text.push('</div>');
+            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[1] + '"></div><p class="mb-0">Female</p></div>');
+            text.push('<p class="mb-0">{{ $Ftotal }}</p>');
+            text.push('</div>');
+            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[2] + '"></div><p class="mb-0">Other</p></div>');
+            text.push('<p class="mb-0">{{ $Ototal }}</p>');
+            text.push('</div>');
+          text.push('</div>');
+          return text.join("");
+        },
+      }
+      var northAmericaChartPlugins = {
+        beforeDraw: function(chart) {
+          var width = chart.chart.width,
+              height = chart.chart.height,
+              ctx = chart.chart.ctx;
+      
+          ctx.restore();
+          var fontSize = 3.125;
+          ctx.font = "500 " + fontSize + "em sans-serif";
+          ctx.textBaseline = "middle";
+          ctx.fillStyle = "#13381B";
+      
+          var text = "{{ $Vtotal }}",
+              textX = Math.round((width - ctx.measureText(text).width) / 2),
+              textY = height / 2;
+      
+          ctx.fillText(text, textX, textY);
+          ctx.save();
+        }
+      }
+      var northAmericaChartCanvas = $("#gender-chart").get(0).getContext("2d");
+      var northAmericaChart = new Chart(northAmericaChartCanvas, {
+        type: 'doughnut',
+        data: areaData,
+        options: areaOptions,
+        plugins: northAmericaChartPlugins
+      });
+      document.getElementById('gender-legend').innerHTML = northAmericaChart.generateLegend();
+    }
+</script>
 @endsection
