@@ -74,8 +74,8 @@ class AttendanceController extends Controller
                     ->count();
 
         $Atotal = Attendance::get()->count();
-        $Atoday = Attendance::where('created_at', '>', date('Y-m-d'))
-                    ->where('created_at', '<', date('Y-m-d', strtotime("+1 day")))
+        $Atoday = Attendance::where('created_at', '<', date('Y-m-d'))
+                    ->where('created_at', '>', date('Y-m-d', strtotime("+1 day")))
                     ->groupBy('vis_id')
                     ->count();
 
