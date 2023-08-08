@@ -1,5 +1,5 @@
 @extends('admin.template')
-@section('title', 'Visitors')
+@section('title', 'IMS Silver Sea - Visitors')
 @section('add_form')
     <div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="mdi mdi-account-plus"></i></div>

@@ -38,7 +38,7 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
     //lottery
     Route::get('/lottery', function () {
         // return view('admin.lottery.index'); 
-        return redirect('/?page=1&paginate=10&orderBy=att.created_at');
+        return redirect('/?page=1&paginate=10&orderBy=attendances.created_at');
     });
 });
 

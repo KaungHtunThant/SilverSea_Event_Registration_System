@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Test</title>
+	<title>IMS Silver Sea - ID Card</title>
 </head>
 <body>
 	<h3>{{ $visitor->conf_id }}</h3>

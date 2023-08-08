@@ -1,5 +1,5 @@
 @extends('admin.template')
-@section('title', 'Dashboard')
+@section('title', 'IMS Silver Sea - Dashboard')
 @section('contents')
     <div class="row">
         <div class="col-md-4 grid-margin stretch-card">
