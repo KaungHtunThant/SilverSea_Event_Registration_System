@@ -34,6 +34,7 @@
                 <div class="card-body">
                     <h2 class="title">Registration Info</h2>
                     <form method="POST" action="/form">
+                        @csrf
                         <div class="input-group">
                             <input class="input--style-1" type="text" placeholder="NAME" name="name" required>
                         </div>

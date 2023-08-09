@@ -159,15 +159,9 @@ class VisitorController extends Controller
         if (!isset($request->page)) {
             $request->page = '1';
         }
-        
-        $fields = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string',
-            'phone' => 'required|string',
-            'dob' => 'required|string',
-            'sex' => 'required|string',
-            'company' => 'required|string'
-        ]);
+        if (!isset($request->searchVal)) {
+            $request->searchVal = '';
+        }
 
         $visitor = Visitor::find($id);
 
@@ -178,18 +172,12 @@ class VisitorController extends Controller
             ]);
         }
 
-        $visitor->update([
-            'name' => $fields['name'],
-            'email' => $fields['email'],
-            'phone' => $fields['phone'],
-            'dob' => date('Y-m-d', strtotime($fields['dob'])),
-            'sex' => $fields['sex'],
-            'company' => $fields['company'],
-        ]);
+        $input = $request->all();
+        $visitor->fill($input)->save();
 
         // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
         // exec($cmd);
-        return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
+        return redirect('/visitors?page='.$request->page.'&paginate='.$request->paginate.'&orderBy='.$request->orderBy.'&searchVal='.$request->searchVal)->with('status', [
             'type' => 'success',
             'text' => 'Visitor record updated successfully!'
         ]);

@@ -29,6 +29,10 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
 
     Route::get('/logout', [AuthController::class, 'logout']);
 
+    Route::patch('/users/{id}', [AuthController::class, 'update']);
+
+    Route::get('/users/{id}', [AuthController::class, 'pwreset']);
+
     //visitors
     Route::resource('/visitors', VisitorController::class);
 

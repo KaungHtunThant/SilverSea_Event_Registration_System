@@ -31,6 +31,7 @@
               </div>
               <h6 class="font-weight-light">Sign in to continue.</h6>
               <form class="pt-3" action="/login" method="post">
+                @csrf
                 <div class="form-group">
                   <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" name="email">
                 </div>

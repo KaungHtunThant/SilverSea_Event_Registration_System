@@ -266,15 +266,169 @@
 							<tbody>
 								@foreach ($visitors as $visitor)
 								<tr>
-									<td>{{ ($loop->index)+($paginate * $page)-($paginate-1) }}</td>
-									<td>{{ $visitor->conf_id }}</td>
-									<td class="text-left">{{ $visitor->name }}</td>
-									<td class="text-left">{{ $visitor->phone }}</td>
-									<td class="text-left">{{ $visitor->email }}</td>
-									<td>{{ $visitor->dob }}</td>
-									<td>{{ $visitor->company }}</td>
-									<td>{{ $visitor->sex }}</td>
-									<td>{{ $visitor->created_at }}</td>
+									<td class="text-center">
+										{{ ($loop->index)+($paginate * $page)-($paginate-1) }}
+									</td>
+									<td class="text-center">
+										{{ $visitor->conf_id }}
+									</td>
+									<td>
+										<div id="btn-{{ $visitor->id }}-name">
+											{{ $visitor->name }}
+											<button class="btn btn-link mx-0 px-0" onclick="update_func({{ $visitor->id }}, 'name')">
+												<i class="ml-3 mdi mdi-pencil"></i>
+											</button>
+										</div>
+										<form action="/visitors/{{ $visitor->id }}" id="inp-{{ $visitor->id }}-name" style="display: none;" method="POST">
+											@csrf
+											@method('PATCH')
+											<input type="hidden" name="orderBy" value="{{ $orderBy }}">
+											<input type="hidden" name="page" value="{{ $page }}">
+											<input type="hidden" name="pagination" value="{{ $paginate }}">
+											<input type="hidden" name="searchVal" value="{{ $searchVal }}">
+											<div class="input-group">
+												<input type="text" class="form-control form-control-sm" value="{{ $visitor->name }}" name="name">
+												<div class="input-group-append">
+													<a class="btn btn-outline-danger btn-sm" onclick="close_func({{ $visitor->id }}, 'name')"><i class="mdi mdi-close"></i></a>
+												</div>
+												<div class="input-group-append">
+													<button type="submit" name="close" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-check"></i></button>
+												</div>
+											</div>
+										</form>
+									</td>
+									<td>
+										<div id="btn-{{ $visitor->id }}-phone">
+											{{ $visitor->phone }}
+											<button class="btn btn-link mx-0 px-0" onclick="update_func({{ $visitor->id }}, 'phone')">
+												<i class="ml-3 mdi mdi-pencil"></i>
+											</button>
+										</div>
+										<form action="/visitors/{{ $visitor->id }}" id="inp-{{ $visitor->id }}-phone" style="display: none;" method="POST">
+											@csrf
+											@method('PATCH')
+											<input type="hidden" name="orderBy" value="{{ $orderBy }}">
+											<input type="hidden" name="page" value="{{ $page }}">
+											<input type="hidden" name="pagination" value="{{ $paginate }}">
+											<input type="hidden" name="searchVal" value="{{ $searchVal }}">
+											<div class="input-group">
+												<input type="text" class="form-control form-control-sm" value="{{ $visitor->phone }}" name="phone">
+												<div class="input-group-append">
+													<a class="btn btn-outline-danger btn-sm" onclick="close_func({{ $visitor->id }}, 'phone')"><i class="mdi mdi-close"></i></a>
+												</div>
+												<div class="input-group-append">
+													<button type="submit" name="close" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-check"></i></button>
+												</div>
+											</div>
+										</form>
+									</td>
+									<td>
+										<div id="btn-{{ $visitor->id }}-email">
+											{{ $visitor->email }}
+											<button class="btn btn-link mx-0 px-0" onclick="update_func({{ $visitor->id }}, 'email')">
+												<i class="ml-3 mdi mdi-pencil"></i>
+											</button>
+										</div>
+										<form action="/visitors/{{ $visitor->id }}" id="inp-{{ $visitor->id }}-email" style="display: none;" method="POST">
+											@csrf
+											@method('PATCH')
+											<input type="hidden" name="orderBy" value="{{ $orderBy }}">
+											<input type="hidden" name="page" value="{{ $page }}">
+											<input type="hidden" name="pagination" value="{{ $paginate }}">
+											<input type="hidden" name="searchVal" value="{{ $searchVal }}">
+											<div class="input-group">
+												<input type="email" class="form-control form-control-sm" value="{{ $visitor->email }}" name="email">
+												<div class="input-group-append">
+													<a class="btn btn-outline-danger btn-sm" onclick="close_func({{ $visitor->id }}, 'email')"><i class="mdi mdi-close"></i></a>
+												</div>
+												<div class="input-group-append">
+													<button type="submit" name="close" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-check"></i></button>
+												</div>
+											</div>
+										</form>
+									</td>
+									<td>
+										<div id="btn-{{ $visitor->id }}-dob">
+											{{ $visitor->dob }}
+											<button class="btn btn-link mx-0 px-0" onclick="update_func({{ $visitor->id }}, 'dob')">
+												<i class="ml-3 mdi mdi-pencil"></i>
+											</button>
+										</div>
+										<form action="/visitors/{{ $visitor->id }}" id="inp-{{ $visitor->id }}-dob" style="display: none;" method="POST">
+											@csrf
+											@method('PATCH')
+											<input type="hidden" name="orderBy" value="{{ $orderBy }}">
+											<input type="hidden" name="page" value="{{ $page }}">
+											<input type="hidden" name="pagination" value="{{ $paginate }}">
+											<input type="hidden" name="searchVal" value="{{ $searchVal }}">
+											<div class="input-group">
+												<input type="date" class="form-control form-control-sm" name="dob">
+												<div class="input-group-append">
+													<a class="btn btn-outline-danger btn-sm" onclick="close_func({{ $visitor->id }}, 'dob')"><i class="mdi mdi-close"></i></a>
+												</div>
+												<div class="input-group-append">
+													<button type="submit" name="close" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-check"></i></button>
+												</div>
+											</div>
+										</form>
+									</td>
+									<td>
+										<div id="btn-{{ $visitor->id }}-comp">
+											{{ $visitor->company }}
+											<button class="btn btn-link mx-0 px-0" onclick="update_func({{ $visitor->id }}, 'comp')">
+												<i class="ml-3 mdi mdi-pencil"></i>
+											</button>
+										</div>
+										<form action="/visitors/{{ $visitor->id }}" id="inp-{{ $visitor->id }}-comp" style="display: none;" method="POST">
+											@csrf
+											@method('PATCH')
+											<input type="hidden" name="orderBy" value="{{ $orderBy }}">
+											<input type="hidden" name="page" value="{{ $page }}">
+											<input type="hidden" name="pagination" value="{{ $paginate }}">
+											<input type="hidden" name="searchVal" value="{{ $searchVal }}">
+											<div class="input-group">
+												<input type="text" class="form-control form-control-sm" value="{{ $visitor->company }}" name="company">
+												<div class="input-group-append">
+													<a class="btn btn-outline-danger btn-sm" onclick="close_func({{ $visitor->id }}, 'comp')"><i class="mdi mdi-close"></i></a>
+												</div>
+												<div class="input-group-append">
+													<button type="submit" name="close" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-check"></i></button>
+												</div>
+											</div>
+										</form>
+									</td>
+									<td>
+										<div id="btn-{{ $visitor->id }}-sex">
+											{{ $visitor->sex }}
+											<button class="btn btn-link mx-0 px-0" onclick="update_func({{ $visitor->id }}, 'sex')">
+												<i class="ml-3 mdi mdi-pencil"></i>
+											</button>
+										</div>
+										<form action="/visitors/{{ $visitor->id }}" id="inp-{{ $visitor->id }}-sex" style="display: none;" method="POST">
+											@csrf
+											@method('PATCH')
+											<input type="hidden" name="orderBy" value="{{ $orderBy }}">
+											<input type="hidden" name="page" value="{{ $page }}">
+											<input type="hidden" name="pagination" value="{{ $paginate }}">
+											<input type="hidden" name="searchVal" value="{{ $searchVal }}">
+											<div class="input-group">
+												<select class="form-control" name="sex">
+													<option value="Male">Male</option>
+													<option value="Female">Female</option>
+													<option value="Othet">Other</option>
+												</select>
+												<div class="input-group-append">
+													<a class="btn btn-outline-danger btn-sm" onclick="close_func({{ $visitor->id }}, 'sex')"><i class="mdi mdi-close"></i></a>
+												</div>
+												<div class="input-group-append">
+													<button type="submit" name="close" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-check"></i></button>
+												</div>
+											</div>
+										</form>
+									</td>
+									<td>
+										{{ $visitor->created_at }}
+									</td>
 									<td>
 										<div class="dropdown">
 											<button class="btn btn-outline-primary btn-sm" type="button" id="{{ $visitor->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -282,7 +436,7 @@
 											</button>
 											<div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
 												<a class="text-primary dropdown-item py-3" href="/visitors/{{ $visitor->id }}" target="_blank">Download ID Card</a>
-												<a class="text-danger dropdown-item py-3" href="#">Delete</a>
+												<button class="text-danger dropdown-item py-3" href="#">Delete</button>
 											</div>
 										</div>
 									</td>
@@ -302,5 +456,19 @@
 	
 @endsection
 @section('customjs')
-<script type="text/javascript" src="{{ url('js/visitor_chart.js') }}"></script>
+<script type="text/javascript">
+	function update_func(id, cat){
+		let btn = document.getElementById('btn-'+id+'-'+cat);
+		btn.style.display = "none";
+		let inp = document.getElementById('inp-'+id+'-'+cat);
+		inp.style.display = "block";
+	}
+
+	function close_func(id, cat){
+		let inp = document.getElementById('inp-'+id+'-'+cat);
+		inp.style.display = "none";
+		let btn = document.getElementById('btn-'+id+'-'+cat);
+		btn.style.display = "block";
+	}
+</script>
 @endsection

@@ -171,16 +171,66 @@
                                 @foreach ($users as $user)
                                 <tr>
                                     <td>{{ ($loop->index)+($paginate * $page)-($paginate-1) }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->created_at }}</td>
+                                    <td>
+                                        <div id="btn-{{ $user->id }}-name">
+                                            {{ $user->name }}
+                                            <button class="btn btn-link mx-0 px-0" onclick="update_func({{ $user->id }}, 'name')">
+                                                <i class="ml-3 mdi mdi-pencil"></i>
+                                            </button>
+                                        </div>
+                                        <form action="/users/{{ $user->id }}" id="inp-{{ $user->id }}-name" style="display: none;" method="POST">
+                                            @csrf
+                                            @method('PATCH')
+                                            <input type="hidden" name="orderBy" value="{{ $orderBy }}">
+                                            <input type="hidden" name="page" value="{{ $page }}">
+                                            <input type="hidden" name="pagination" value="{{ $paginate }}">
+                                            <input type="hidden" name="searchVal" value="{{ $searchVal }}">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control form-control-sm" value="{{ $user->name }}" name="name">
+                                                <div class="input-group-append">
+                                                    <a class="btn btn-outline-danger btn-sm" onclick="close_func({{ $user->id }}, 'name')"><i class="mdi mdi-close"></i></a>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <button type="submit" name="close" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-check"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <div id="btn-{{ $user->id }}-email">
+                                            {{ $user->email }}
+                                            <button class="btn btn-link mx-0 px-0" onclick="update_func({{ $user->id }}, 'email')">
+                                                <i class="ml-3 mdi mdi-pencil"></i>
+                                            </button>
+                                        </div>
+                                        <form action="/users/{{ $user->id }}" id="inp-{{ $user->id }}-email" style="display: none;" method="POST">
+                                            @csrf
+                                            @method('PATCH')
+                                            <input type="hidden" name="orderBy" value="{{ $orderBy }}">
+                                            <input type="hidden" name="page" value="{{ $page }}">
+                                            <input type="hidden" name="pagination" value="{{ $paginate }}">
+                                            <input type="hidden" name="searchVal" value="{{ $searchVal }}">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control form-control-sm" value="{{ $user->email }}" name="email">
+                                                <div class="input-group-append">
+                                                    <a class="btn btn-outline-danger btn-sm" onclick="close_func({{ $user->id }}, 'email')"><i class="mdi mdi-close"></i></a>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <button type="submit" name="close" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-check"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        {{ $user->created_at }}
+                                    </td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="btn btn-outline-primary btn-sm" type="button" id="{{ $user->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="mdi mdi-dots-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="{{ $user->id }}-details">
-                                                <a class="text-dark dropdown-item py-3" href="#">Password reset</a>
+                                                <a class="text-dark dropdown-item py-3" href="/users/{{ $user->id }}">Password reset</a>
                                                 <a class="text-danger dropdown-item py-3" href="#">Delete</a>
                                             </div>
                                         </div>
@@ -201,4 +251,19 @@
 	
 @endsection
 @section('customjs')
+<script type="text/javascript">
+    function update_func(id, cat){
+        let btn = document.getElementById('btn-'+id+'-'+cat);
+        btn.style.display = "none";
+        let inp = document.getElementById('inp-'+id+'-'+cat);
+        inp.style.display = "block";
+    }
+
+    function close_func(id, cat){
+        let inp = document.getElementById('inp-'+id+'-'+cat);
+        inp.style.display = "none";
+        let btn = document.getElementById('btn-'+id+'-'+cat);
+        btn.style.display = "block";
+    }
+</script>
 @endsection

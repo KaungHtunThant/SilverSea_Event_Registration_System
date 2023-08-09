@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function index(Request $request)
     {
         if (!isset($request->orderBy)) {
-            $request->orderBy = 'conf_id';
+            $request->orderBy = 'id';
         }
         if (!isset($request->paginate)) {
             $request->paginate = '10';
@@ -106,6 +106,72 @@ class AuthController extends Controller
         return redirect('/login')->with('status', [
             'type' => 'success',
             'text' => 'User logged out successfully!'
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        if (!isset($request->orderBy)) {
+            $request->orderBy = 'id';
+        }
+        if (!isset($request->paginate)) {
+            $request->paginate = '10';
+        }
+        if (!isset($request->page)) {
+            $request->page = '1';
+        }
+        if (!isset($request->searchVal)) {
+            $request->searchVal = '';
+        }
+
+        $user = User::find($id);
+
+        if ($user == Null) {
+            return redirect('/users?page=1&paginate=10&orderBy=conf_id')->with('status', [
+                'type' => 'fail',
+                'text' => 'user record update failed! user not found.'
+            ]);
+        }
+
+        $input = $request->all();
+        $user->fill($input)->save();
+
+        return redirect('/users?page='.$request->page.'&paginate='.$request->paginate.'&orderBy='.$request->orderBy.'&searchVal='.$request->searchVal)->with('status', [
+            'type' => 'success',
+            'text' => 'user record updated successfully!'
+        ]);
+    }
+
+    public function pwreset(Request $request, $id)
+    {
+        if (!isset($request->orderBy)) {
+            $request->orderBy = 'id';
+        }
+        if (!isset($request->paginate)) {
+            $request->paginate = '10';
+        }
+        if (!isset($request->page)) {
+            $request->page = '1';
+        }
+        if (!isset($request->searchVal)) {
+            $request->searchVal = '';
+        }
+
+        $user = User::find($id);
+
+        if ($user == Null) {
+            return redirect('/users?page=1&paginate=10&orderBy=id')->with('status', [
+                'type' => 'fail',
+                'text' => 'user password change failed! user not found.'
+            ]);
+        }
+
+        $user->password = Hash::make('admin123!');
+        $user->save();
+
+        return redirect('/users?page='.$request->page.'&paginate='.$request->paginate.'&orderBy='.$request->orderBy.'&searchVal='.$request->searchVal)->with('status', [
+            'type' => 'success',
+            'text' => 'user password changed successfully!'
         ]);
     }
 }

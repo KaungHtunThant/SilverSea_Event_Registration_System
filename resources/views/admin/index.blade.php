@@ -94,6 +94,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <form action="/" method="GET">
+                                @csrf
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3 mb-3">
@@ -137,12 +138,25 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-sm-2">
                             <form action="/">
+                                @csrf
                                 <input type="hidden" name="paginate" value="10">
                                 <input type="hidden" name="orderBy" value="attendances.created_at">
                                 <input type="hidden" name="page" value="1">
                                 <input type="submit" name="reset" value="Reset" class="btn btn-primary float-right">
+                            </form>
+                            <form action="/">
+                                @csrf
+                                <input type="hidden" name="paginate" value="{{ $paginate }}">
+                                <input type="hidden" name="orderBy" value="{{ $orderBy }}">
+                                <input type="hidden" name="page" value="{{ $page }}">
+                                @if(isset($searchVal))
+                                <input type="hidden" name="searchVal" value="{{ $searchVal }}">
+                                @endif
+                                <button type="submit" name="reload" class="btn btn-primary float-right mr-2">
+                                    <i class="mdi mdi-reload"></i>
+                                </button>
                             </form>
                         </div>
                     </div>
