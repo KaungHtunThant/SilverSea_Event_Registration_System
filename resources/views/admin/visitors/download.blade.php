@@ -11,7 +11,7 @@
 	<h3>{{ $visitor->company }}</h3>
 	<h3>{{ $visitor->phone }}</h3>
 	@php
-		echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1001) . '-ndn' , 'C128' , 2,50) . '" alt="barcode"/>';
+		echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1001) . '-n' , 'C128' , 2,50) . '" alt="barcode"/>';
 	@endphp
 </body>
 </html>
