@@ -100,7 +100,7 @@ class AttendanceController extends Controller
             '4pm' => Visitor::whereDate('created_at', '>',date('Y-m-d H:i:s', strtotime('today 4pm')))
                         ->whereDate('created_at', '<',date('Y-m-d H:i:s', strtotime('today 5pm')))
                         ->count(),
-        ]
+        ];
         
         $Vtotal = Visitor::get()->count();
         $Vtoday = Visitor::whereDate('created_at', date('Y-m-d'))
