@@ -2,6 +2,7 @@
 @section('title', 'IMS Silver Sea - Dashboard')
 @section('contents')
     <div class="row">
+        {{ var_dump($entry) }}
         <div class="col-6 col-lg-3 col-xl-3 mb-4 transparent">
             <div class="card card-dark-blue">
                 <div class="card-body">
@@ -404,10 +405,10 @@
   };
 
   var entry_data = {
-    labels: ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"],
+    labels: ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM"],
     datasets: [{
       label: '# of Votes',
-      data: [10, 12, 9, 20, 2, 3, 8, 15, 7],
+      data: ["{{ $entry['9am'] }}", "{{ $entry['10am'] }}", "{{ $entry['11am'] }}", "{{ $entry['12pm'] }}", "{{ $entry['1pm'] }}", "{{ $entry['2pm'] }}", "{{ $entry['3pm'] }}", "{{ $entry['4pm'] }}"],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
