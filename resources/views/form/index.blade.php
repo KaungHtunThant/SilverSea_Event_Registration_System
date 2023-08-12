@@ -92,7 +92,7 @@
                             </div>
                         </div>
                         <div class="row row-space">
-                            <div class="col-2">
+                            <div class="col-2 text-grey">
                                 <h5 style="margin-top: 8px;">INTERESTS</h5>
                                 <br>
                                 <div class="form-check" style="margin-bottom: 15px;">

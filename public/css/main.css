@@ -304,6 +304,10 @@ input {
   cursor: pointer;
 }
 
+.text-grey{
+  color: #666;
+}
+
 .input--style-1 {
   padding: 9px 0;
   color: #666;

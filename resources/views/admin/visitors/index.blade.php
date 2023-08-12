@@ -39,15 +39,6 @@
                         </div>
                         <input type="email" name="email" class="form-control" placeholder="Enter email.">
                     </div>
-                    <p>Date of Birth</p>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="mdi mdi-calendar"></i>
-                            </span>
-                        </div>
-                        <input type="date" name="dob" class="form-control">
-                    </div>
                     <p>Gender</p>
                     <div class="mb-3">
 						<div class="form-check">
@@ -218,10 +209,10 @@
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 
-											@if($orderBy=='dob')
+											@if($orderBy=='position')
 											btn-link
 											@endif
-											" name="orderBy" value="dob">Date of Birth</button>
+											" name="orderBy" value="position">Occupation</button>
 										</form>
 									</th>
 									<th>
@@ -350,29 +341,7 @@
 										</form>
 									</td>
 									<td>
-										<div id="btn-{{ $visitor->id }}-dob">
-											{{ $visitor->dob }}
-											<button class="btn btn-link mx-0 px-0" onclick="update_func({{ $visitor->id }}, 'dob')">
-												<i class="ml-3 mdi mdi-pencil"></i>
-											</button>
-										</div>
-										<form action="/visitors/{{ $visitor->id }}" id="inp-{{ $visitor->id }}-dob" style="display: none;" method="POST">
-											@csrf
-											@method('PATCH')
-											<input type="hidden" name="orderBy" value="{{ $orderBy }}">
-											<input type="hidden" name="page" value="{{ $page }}">
-											<input type="hidden" name="pagination" value="{{ $paginate }}">
-											<input type="hidden" name="searchVal" value="{{ $searchVal }}">
-											<div class="input-group">
-												<input type="date" class="form-control form-control-sm" name="dob">
-												<div class="input-group-append">
-													<a class="btn btn-outline-danger btn-sm" onclick="close_func({{ $visitor->id }}, 'dob')"><i class="mdi mdi-close"></i></a>
-												</div>
-												<div class="input-group-append">
-													<button type="submit" name="close" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-check"></i></button>
-												</div>
-											</div>
-										</form>
+										{{ $visitor->position }}
 									</td>
 									<td>
 										<div id="btn-{{ $visitor->id }}-comp">
@@ -437,7 +406,8 @@
 												<i class="mdi mdi-dots-vertical"></i>
 											</button>
 											<div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
-												<a class="text-primary dropdown-item py-3" href="/visitors/{{ $visitor->id }}" target="_blank">Download ID Card</a>
+												<a class="text-primary dropdown-item py-3" href="/visitors/download/{{ $visitor->id }}" target="_blank">Download ID Card</a>
+												<a class="text-primary dropdown-item py-3" href="/visitors/{{ $visitor->id }}" target="_blank">Edit</a>
 												<button class="text-danger dropdown-item py-3" href="#">Delete</button>
 											</div>
 										</div>
