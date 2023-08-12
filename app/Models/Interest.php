@@ -5,18 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Visitor extends Model
+class Interest extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'conf_id',
-        'name',
-        'email',
-        'phone',
-        'company',
-        'sex',
-        'position',
-        'card',
+        'vis_id',
+        'desc'
     ];
 }

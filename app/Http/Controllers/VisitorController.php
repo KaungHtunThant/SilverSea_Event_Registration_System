@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Visitor;
+use App\Models\Interest;
 use Illuminate\Support\Facades\Session;
 
 class VisitorController extends Controller
@@ -62,7 +63,7 @@ class VisitorController extends Controller
             'name' => 'required|string',
             'email' => 'nullable|string',
             'phone' => 'required|string',
-            'dob' => 'required|string',
+            'position' => 'required|string',
             'sex' => 'required|string',
             'company' => 'nullable|string',
         ]);
@@ -70,10 +71,11 @@ class VisitorController extends Controller
         $lastid = Visitor::latest('id')->first();
         if ($lastid == Null) {
             $lastid = 0;
+            $card = 'MME-VIS-'.$lastid+1001;
         }
-        $dob = date('Y-m-d', strtotime($fields['dob']));
-
-        $card = 'MME-VIS-'.$lastid->id+1001;
+        else{
+            $card = 'MME-VIS-'.$lastid->id+1001;
+        }
 
         if($fields['company'] == Null){
             $fields['company'] = '-';
@@ -87,11 +89,20 @@ class VisitorController extends Controller
             'name' => $fields['name'],
             'email' => $fields['email'],
             'phone' => $fields['phone'],
-            'dob' => $dob,
+            'position' => $fields['position'],
             'sex' => $fields['sex'],
             'company' => $fields['company'],
             'card' => $card,
         ]);
+
+        if (isset($request->pos)) {
+            foreach ($request->pos as $pos) {
+                $interest = Interest::create([
+                    'vis_id' => $user->id,
+                    'desc' => $pos
+                ]);
+            }
+        }
 
         // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
         // exec($cmd);
@@ -108,7 +119,7 @@ class VisitorController extends Controller
             'name' => 'required|string',
             'email' => 'nullable|string',
             'phone' => 'required|string',
-            'dob' => 'required|string',
+            'position' => 'required|string',
             'sex' => 'required|string',
             'company' => 'nullable|string',
         ]);
@@ -116,10 +127,11 @@ class VisitorController extends Controller
         $lastid = Visitor::latest('id')->first();
         if ($lastid == Null) {
             $lastid = 0;
+            $card = 'MME-VIS-'.$lastid+1001;
         }
-        $dob = date('Y-m-d', strtotime($fields['dob']));
-
-        $card = 'MME-VIS-'.$lastid->id+1001;
+        else{
+            $card = 'MME-VIS-'.$lastid->id+1001;
+        }
 
         if($fields['company'] == Null){
             $fields['company'] = '-';
@@ -133,11 +145,20 @@ class VisitorController extends Controller
             'name' => $fields['name'],
             'email' => $fields['email'],
             'phone' => $fields['phone'],
-            'dob' => $dob,
+            'position' => $fields['position'],
             'sex' => $fields['sex'],
             'company' => $fields['company'],
             'card' => $card,
         ]);
+
+        if (isset($request->pos)) {
+            foreach ($request->pos as $pos) {
+                $interest = Interest::create([
+                    'vis_id' => $user->id,
+                    'desc' => $pos
+                ]);
+            }
+        }
 
         // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
         // exec($cmd);

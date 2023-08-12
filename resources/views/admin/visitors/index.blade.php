@@ -49,7 +49,6 @@
                         <input type="date" name="dob" class="form-control">
                     </div>
                     <p>Gender</p>
-                    
                     <div class="mb-3">
 						<div class="form-check">
 							<label class="form-check-label">
@@ -63,14 +62,17 @@
 								Female
 							</label>
 						</div>
-						<div class="form-check">
-							<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="sex" id="optionsRadios3" value="Other">
-								Other
-							</label>
-						</div>
                     </div>
-                    <p>Company</p>
+                    <p>Occupation</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-account-multiple"></i>
+                            </span>
+                        </div>
+                        <input type="text" name="position" class="form-control" placeholder="Enter Occupation.">
+                    </div>
+                    <p>Company/ Organization</p>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -462,6 +464,7 @@
 		btn.style.display = "none";
 		let inp = document.getElementById('inp-'+id+'-'+cat);
 		inp.style.display = "block";
+		inp.focus();
 	}
 
 	function close_func(id, cat){

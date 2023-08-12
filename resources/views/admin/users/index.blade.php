@@ -257,6 +257,7 @@
         btn.style.display = "none";
         let inp = document.getElementById('inp-'+id+'-'+cat);
         inp.style.display = "block";
+        inp.focus();
     }
 
     function close_func(id, cat){

@@ -2,88 +2,50 @@
 @section('title', 'IMS Silver Sea - Dashboard')
 @section('contents')
     <div class="row">
-        <div class="col-md-4 grid-margin stretch-card">
-            <div class="row">
-                <div class="col-md-6 mb-4 stretch-card transparent">
-                    <div class="card card-tale">
-                        <div class="card-body">
-                            <p class="mb-4">Total Visitors</p>
-                            <p class="fs-30 mb-2">{{ $Vtotal }}</p>
-                            <p>18-Aug - 20-Aug</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4 stretch-card transparent">
-                    <div class="card card-tale">
-                        <div class="card-body">
-                            <p class="mb-4">Today’s Visitors</p>
-                            <p class="fs-30 mb-2">{{ $Vtoday }}</p>
-                            <p>{{ date('d-M') }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 stretch-card transparent">
-                    <div class="card card-dark-blue">
-                        <div class="card-body">
-                            <p class="mb-4">Total Attendances</p>
-                            <p class="fs-30 mb-2">{{ $Atotal }}</p>
-                            <p>18-Aug - 20-Aug</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 stretch-card transparent">
-                    <div class="card card-dark-blue">
-                        <div class="card-body">
-                            <p class="mb-4">Today’s Attendances</p>
-                            <p class="fs-30 mb-2">{{ $Atoday }}</p>
-                            <p>{{ date('d-M') }}</p>
-                        </div>
-                    </div>
+        <div class="col-6 col-lg-3 col-xl-3 mb-4 transparent">
+            <div class="card card-dark-blue">
+                <div class="card-body">
+                    <p class="mb-4">Total Visitors</p>
+                    <p class="fs-30 mb-2">{{ $Vtotal }}</p>
+                    <p><nobr>18-Aug - 20-Aug</nobr></p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 grid-margin stretch-card">
+        <div class="col-6 col-lg-3 col-xl-3 mb-4 transparent">
+            <div class="card card-light-danger">
+                <div class="card-body">
+                    <p class="mb-4">Today’s Visitors</p>
+                    <p class="fs-30 mb-2">{{ $Vtoday }}</p>
+                    <p>{{ date('d-M') }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Visitors' Genders</h4>
+                    <br>
                     <canvas id="gender-chart"></canvas>
                     <div id="gender-legend"></div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 grid-margin stretch-card">
+        <div class="col-lg-4 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <p class="card-title">Visitors' Age Ranges</p>
-                    <div class="charts-data">
-                        <div class="mt-3">
-                            <p class="mb-0">Under 18 yrs</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="progress progress-md flex-grow-1 mr-4">
-                                    <div class="progress-bar bg-inf0" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mb-0">{{ $u18 }}</p>
-                            </div>
-                        </div>
-                        <div class="mt-3">
-                            <p class="mb-0">19 - 30 yrs</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="progress progress-md flex-grow-1 mr-4">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mb-0">{{ $u30 }}</p>
-                            </div>
-                        </div>
-                        <div class="mt-3">
-                            <p class="mb-0">Above 30 yrs</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="progress progress-md flex-grow-1 mr-4">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 48%" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="mb-0">{{ $a50 }}</p>
-                            </div>
-                        </div>
-                    </div>  
+                    <p class="card-title">Visitors Interests Chart</p>
+                    <br>
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-title">Today's Entry Chart</p>
+                    <canvas id="lineChart"></canvas>
                 </div>
             </div>
         </div>
@@ -324,18 +286,13 @@
 @endsection
 @section('customjs')
 <script>
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    let today = document.getElementById("today");
-    today.innerHTML = new Date().toLocaleDateString("en-US", options);
-</script>
-<script>
     if ($("#gender-chart").length) {
       var areaData = {
         labels: ["Male", "Female", "Other"],
         datasets: [{
-            data: [{{ $Mtotal }}, {{ $Ftotal }}, {{ $Ototal }}],
+            data: [{{ $Mtotal }}, {{ $Ftotal }}],
             backgroundColor: [
-               "rgba(54, 162, 235, 0.5)","rgba(255, 99, 132, 0.5)", "rgba(255, 206, 86, 0.5)",
+               "rgba(54, 162, 235, 0.5)","rgba(255, 99, 132, 0.5)",
             ],
             borderColor: "rgba(0,0,0,0)"
           }
@@ -365,9 +322,6 @@
             text.push('</div>');
             text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[1] + '"></div><p class="mb-0">Female</p></div>');
             text.push('<p class="mb-0">{{ $Ftotal }}</p>');
-            text.push('</div>');
-            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[2] + '"></div><p class="mb-0">Other</p></div>');
-            text.push('<p class="mb-0">{{ $Ototal }}</p>');
             text.push('</div>');
           text.push('</div>');
           return text.join("");
@@ -403,4 +357,100 @@
       document.getElementById('gender-legend').innerHTML = northAmericaChart.generateLegend();
     }
 </script>
+<script type="text/javascript">
+    'use strict';
+  var interest_data = {
+    labels: ["Properties", "Construction", "EV"],
+    datasets: [{
+      label: '# of Votes',
+      data: [{{ $intr['rep'] }}, {{ $intr['cons'] }}, {{ $intr['ev'] }}],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)'
+        // 'rgba(75, 192, 192, 0.2)',
+        // 'rgba(153, 102, 255, 0.2)',
+        // 'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)'
+        // 'rgba(75, 192, 192, 1)',
+        // 'rgba(153, 102, 255, 1)',
+        // 'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1,
+      fill: false
+    }]
+  };
+  var options = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    },
+    legend: {
+      display: false
+    },
+    elements: {
+      point: {
+        radius: 0
+      }
+    }
+
+  };
+
+  var entry_data = {
+    labels: ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"],
+    datasets: [{
+      label: '# of Votes',
+      data: [10, 12, 9, 20, 2, 3, 8, 15, 7],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)'
+      ],
+      borderWidth: 1,
+      fill: false
+    }]
+  };
+  var options = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    },
+    legend: {
+      display: false
+    },
+    elements: {
+      point: {
+        radius: 0
+      }
+    }
+
+  };
+</script>
+<script src="{{ url('js/chart.js') }}"></script>
 @endsection
