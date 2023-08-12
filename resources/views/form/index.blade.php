@@ -49,7 +49,7 @@
         	<img src="{{ url('images/banner.jpg') }}" class="w-100">
             <div class="card card-1">
                 <div class="card-body">
-                    <h2 class="title">Registration Info</h2>
+                    <h2 class="title">Online Registration</h2>
                     <form method="POST" action="/form">
                         @csrf
                         <div class="row row-space">
