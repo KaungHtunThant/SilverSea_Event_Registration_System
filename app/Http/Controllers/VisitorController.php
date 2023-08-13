@@ -156,9 +156,11 @@ class VisitorController extends Controller
         // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
         // exec($cmd);
 
-        return redirect('/form')->with('status', [
+        Session::put('status', 'true');
+
+        return view('form.index')->with('status', [
                 'type' => 'success',
-                'text' => 'Visitor record created successfully!'
+                'text' => 'Registered successfully! Please inquiry at the counter to recieve your ID.'
             ]);
     }
 
