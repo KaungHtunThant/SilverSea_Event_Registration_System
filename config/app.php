@@ -159,6 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Barryvdh\Snappy\ServiceProvider::class,
 
         /*
          * Application Service Providers...

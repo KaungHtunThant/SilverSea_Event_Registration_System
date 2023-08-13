@@ -10,7 +10,7 @@
 			height: 1299px;
 			margin: 0px;
 			padding: 0px;
-			background-image: url('{{ url("images/bg.jpg") }}');
+/*			background-image: url('{{ url("images/bg.jpg") }}');*/
 			background-repeat: no-repeat;
 		}
 

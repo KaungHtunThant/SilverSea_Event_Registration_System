@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Visitor;
 use App\Models\Interest;
 use Illuminate\Support\Facades\Session;
+// use Illuminate\Support\Facades\Http\Client;
+use Knp\Snappy\Image;
+// use GuzzleHttp;
+// use Illuminate\View;
 
 class VisitorController extends Controller
 {
@@ -256,5 +260,38 @@ class VisitorController extends Controller
                 'text' => 'Visitor Details read.'
             ]
         );
+    }
+
+    public function download_img(Request $request, $id)
+    {
+        // return SnappyPdf::loadFile('http://127.0.0.1:8000/visitors/download/'.$id)->inline('id_'.$id.'.pdf');
+        // $snappy = App::make('snappy.pdf');
+        // $snappy->generate('http://www.github.com', '/tmp/github.pdf');
+
+        // This works
+        // $snappy = new Image('/var/www/html/SilverSea_Event_Registration_System' . '/vendor/h4cc/wkhtmltoimage-amd64/bin/wkhtmltoimage-amd64');
+        // $snappy->generateFromHtml('http://127.0.0.1:8000/visitors/download/'.$id, 'test_'.time().'.jpg');
+        // $html = View::make('http://127.0.0.1:8000/visitors/download/'.$id)->render();
+        // dd($html);
+        $url = 'https://silversea.powerglobal.com.mm/visitors/download/'.$id;
+        $resp = [];
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        $data = curl_exec($ch);
+        curl_close($ch);
+        dd($data);
+
+        // $response = $client->get('http://127.0.0.1:8000/visitors/download/'.$id);
+
+        // You need to parse the response body
+        // This will parse it into an array
+        // $json = json_decode($response->getBody(), true);
+
+        // $snappy = new Image('/var/www/html/SilverSea_Event_Registration_System' . '/vendor/h4cc/wkhtmltoimage-amd64/bin/wkhtmltoimage-amd64');
+        // $snappy->generateFromHtml('<html><body><h1>Hello world</h1></body></html>', 'test_'.time().'.jpg');
+        // // return $json;
     }
 }
