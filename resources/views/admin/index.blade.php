@@ -196,18 +196,6 @@
                                 <input type="hidden" name="page" value="1">
                                 <input type="submit" name="reset" value="Reset" class="btn btn-primary float-right">
                             </form>
-                            <form action="/">
-                                @csrf
-                                <input type="hidden" name="paginate" value="{{ $paginate }}">
-                                <input type="hidden" name="orderBy" value="{{ $orderBy }}">
-                                <input type="hidden" name="page" value="{{ $page }}">
-                                @if(isset($searchVal))
-                                <input type="hidden" name="searchVal" value="{{ $searchVal }}">
-                                @endif
-                                <button type="submit" name="reload" class="btn btn-primary float-right mr-2">
-                                    <i class="mdi mdi-reload"></i>
-                                </button>
-                            </form>
                         </div>
                     </div>
                     <div class="d-md-none mb-4"> </div>
@@ -492,10 +480,10 @@
   };
 
   var entry_data = {
-    labels: ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "8PM"],
+    labels: ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "8PM", "12AM"],
     datasets: [{
       label: '# of Votes',
-      data: ["{{ $entry['9am'] }}", "{{ $entry['10am'] }}", "{{ $entry['11am'] }}", "{{ $entry['12pm'] }}", "{{ $entry['1pm'] }}", "{{ $entry['2pm'] }}", "{{ $entry['3pm'] }}", "{{ $entry['4pm'] }}", "0", "{{ $entry['4pm'] }}"],
+      data: ["{{ $entry['9am'] }}", "{{ $entry['10am'] }}", "{{ $entry['11am'] }}", "{{ $entry['12pm'] }}", "{{ $entry['1pm'] }}", "{{ $entry['2pm'] }}", "{{ $entry['3pm'] }}", "{{ $entry['4pm'] }}", "0", "{{ $entry['8pm'] }}", "0"],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -504,6 +492,7 @@
         'rgba(153, 102, 255, 0.2)',
         'rgba(255, 159, 64, 0.2)',
         'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
         'rgba(54, 162, 235, 0.2)'
       ],
       borderColor: [
@@ -515,6 +504,7 @@
         'rgba(255, 159, 64, 1)',
         'rgba(255,99,132,1)',
         'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
         'rgba(255, 206, 86, 1)'
       ],
       borderWidth: 1,
