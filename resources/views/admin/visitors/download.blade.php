@@ -6,36 +6,49 @@
 	<title>IMS Silver Sea - ID Card</title>
 	<style type="text/css">
 		body{
-			width: 718.32px;
-			height: 1039.2px;
-			border: 1px solid #666;
-			border-radius: 5px;
+			width: 898px;
+			height: 1299px;
 			margin: 0px;
 			padding: 0px;
+			background-image: url('{{ url("images/bg.jpg") }}');
+			background-repeat: no-repeat;
 		}
 
 		.card-body{
 			width: 100%;
 			height: 4in;
-			margin-top: 1.5in;
-			margin-bottom: 0in;
-			border: 1px solid #333;
+			margin-top: 450px;
 			text-align: center;
+			font-family: "Calibri", sans-serif;
 		}
 
-		h2{
-			margin-bottom: 0.5in;
+		.box{
+			width: 100%;
+			height: 60px;
+		}
+
+		h1{
+			font-size: 45px;
 		}
 	</style>
 </head>
 <body>
 	<div class="card-body">
-		<h2 style="margin-top: 0.5in;">{{ $visitor->name }}</h2>
-		<h2>{{ $visitor->company }}</h2>
-		<h2>Position</h2>
-		@php
-			echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1000) . '-n' , 'C128' , 2,50) . '" alt="barcode"/>';
-		@endphp
+		<div class="box">
+			<h1>{{ $visitor->name }}</h1>
+		</div>
+		<div class="box">
+			<h1>{{ $visitor->position }}</h1>
+		</div>
+		<div class="box">
+			<h1>{{ $visitor->company }}</h1>
+		</div>
+		<br>
+		<div class="box">
+			@php
+				echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1000) . '-n' , 'C128' , 3,80) . '" alt="barcode"/>';
+			@endphp
+		</div>
 	</div>
 </body>
 </html>

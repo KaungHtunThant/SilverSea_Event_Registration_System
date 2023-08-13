@@ -8674,7 +8674,7 @@
   --gray-lighter: #e8eff4;
   --gray-lightest: #e6e9ed;
   --black: #000000;
-  --primary: #4B49AC;
+  --primary: #428a42;
   --secondary: #a3a4a5;
   --success: #57B657;
   --info: #248AFD;
@@ -13368,7 +13368,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #007bff;
+  background-color: #428a42;
 }
 
 .nav-fill > .nav-link,
@@ -20239,6 +20239,10 @@ code {
   font-size: 40px;
 }
 
+.fs-50 {
+  font-size: 50px;
+}
+
 .chartjs-legend ul {
   margin-bottom: 0;
   list-style: none;
@@ -22114,6 +22118,15 @@ code {
 
 .card.card-light-danger:hover {
   background: #f59095;
+}
+
+.card.card-success {
+  background: rgba(87, 182, 87, 0.2);
+  color: #428a42;
+}
+
+.card.card-success:hover {
+  background: rgba(127, 222, 127, 0.2);
 }
 
 .card-inverse-primary {
@@ -30595,6 +30608,10 @@ div.tagsinput span.tag a {
   #settings-trigger {
     display: none;
   }
+}
+
+#settings-trigger2 {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */

@@ -4,7 +4,7 @@
     <div class="theme-setting-wrapper">
         <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
             <i class="settings-close ti-close"></i>
-            <p class="settings-heading text-primary">Add New Visitor</p>
+            <p class="settings-heading text-success">Add New Visitor</p>
             <form action="/visitors" method="POST" class="mx-2 mt-3" autocomplete="off">
                 @csrf
                 <input type="hidden" name="orderBy" value="conf_id">
@@ -72,7 +72,7 @@
                         <input type="text" name="company" class="form-control" placeholder="Enter Company.">
                     </div>
                     <hr>
-                    <input type="submit" name="Submit" value="Create" class="btn btn-primary my-2">
+                    <input type="submit" name="Submit" value="Create" class="btn btn-success my-2">
                     <br class="mb-5">
                     <br class="mb-3">
                 </div>
@@ -82,11 +82,11 @@
 @endsection
 @section('contents')
     <div class="row">
-        <div class="col-12 col-md-4 col-lg-3 col-xl-2 mb-4 transparent stretch-card">
-            <div class="card card-light-blue">
+        <div class="col-12 col-md-4 col-lg-3 col-xl-2 mb-4 transparent stretch-card" id="settings-trigger2">
+            <div class="card card-success">
                 <div class="card-body text-center">
                     <p class="">New Visitor</p>
-                    <button class="btn btn-light mt-3" id="settings-trigger2">Add Visitor</button>
+                    <i class="mdi mdi-account-plus fs-50"></i>
                 </div>
             </div>
         </div>
@@ -180,7 +180,7 @@
                                             <div class="input-group">
                                                 <input type="text" name="searchVal" class="form-control form-control-sm" value="{{ $searchVal }}">
                                                 <div class="input-group-append">
-                                                    <input type="submit" name="search" class="btn btn-sm btn-primary" value="Search">
+                                                    <input type="submit" name="search" class="btn btn-sm btn-success" value="Search">
                                                 </div>
                                             </div>
                                         </div>
@@ -194,7 +194,7 @@
                                 <input type="hidden" name="paginate" value="10">
                                 <input type="hidden" name="orderBy" value="attendances.created_at">
                                 <input type="hidden" name="page" value="1">
-                                <input type="submit" name="reset" value="Reset" class="btn btn-primary float-right">
+                                <input type="submit" name="reset" value="Reset" class="btn btn-success float-right">
                             </form>
                         </div>
                     </div>
@@ -216,7 +216,7 @@
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
                                             @if($orderBy=='attendances.created_at')
-                                            btn-link
+                                            btn-link text-warning
                                             @endif
                                             " name="orderBy" value="attendances.created_at">Entry Date</button>
                                         </form>
@@ -228,7 +228,7 @@
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
                                             @if($orderBy=='conf_id')
-                                            btn-link
+                                            btn-link text-warning
                                             @endif
                                             " name="orderBy" value="conf_id">Confirmation ID</button>
                                         </form>
@@ -240,7 +240,7 @@
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
                                             @if($orderBy=='name')
-                                            btn-link
+                                            btn-link text-warning
                                             @endif
                                             " name="orderBy" value="name">Name</button>
                                         </form>
@@ -252,7 +252,7 @@
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
                                             @if($orderBy=='phone')
-                                            btn-link
+                                            btn-link text-warning
                                             @endif
                                             " name="orderBy" value="phone">Phone</button>
                                         </form>
@@ -264,7 +264,7 @@
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
                                             @if($orderBy=='email')
-                                            btn-link
+                                            btn-link text-warning
                                             @endif
                                             " name="orderBy" value="email">Email</button>
                                         </form>
@@ -276,7 +276,7 @@
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
                                             @if($orderBy=='position')
-                                            btn-link
+                                            btn-link text-warning
                                             @endif
                                             " name="orderBy" value="position">Occupation</button>
                                         </form>
@@ -288,7 +288,7 @@
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
                                             @if($orderBy=='company')
-                                            btn-link
+                                            btn-link text-warning
                                             @endif
                                             " name="orderBy" value="company">Company</button>
                                         </form>
@@ -300,7 +300,7 @@
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
                                             @if($orderBy=='sex')
-                                            btn-link
+                                            btn-link text-warning
                                             @endif
                                             " name="orderBy" value="sex">Gender</button>
                                         </form>
@@ -312,7 +312,7 @@
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
                                             @if($orderBy=='visitors.created_at')
-                                            btn-link
+                                            btn-link text-warning
                                             @endif
                                             " name="orderBy" value="visitors.created_at">Registered Date</button>
                                         </form>
@@ -328,20 +328,20 @@
                                     <td>{{ ($loop->index)+($paginate * $page)-($paginate-1) }}</td>
                                     <td>{{ $visitor->att_created_at }}</td>
                                     <td>{{ $visitor->conf_id }}</td>
-                                    <td class="text-left">{{ $visitor->name }}</td>
-                                    <td class="text-left">{{ $visitor->phone }}</td>
-                                    <td class="text-left">{{ $visitor->email }}</td>
+                                    <td>{{ $visitor->name }}</td>
+                                    <td>{{ $visitor->phone }}</td>
+                                    <td>{{ $visitor->email }}</td>
                                     <td>{{ $visitor->position }}</td>
                                     <td>{{ $visitor->company }}</td>
                                     <td>{{ $visitor->sex }}</td>
                                     <td>{{ $visitor->vis_created_at }}</td>
                                     <td>
                                         <div class="dropdown">
-                                            <button class="btn btn-outline-primary btn-sm" type="button" id="{{ $visitor->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn btn-outline-success btn-sm" type="button" id="{{ $visitor->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="mdi mdi-dots-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
-                                                <a class="text-primary dropdown-item py-3" href="#">Download ID Card</a>
+                                                <a class="text-success dropdown-item py-3" href="#">Download ID Card</a>
                                                 <a class="text-danger dropdown-item py-3" href="#">Delete</a>
                                             </div>
                                         </div>
