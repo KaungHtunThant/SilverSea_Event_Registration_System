@@ -287,10 +287,10 @@
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
-                                            @if($orderBy=='dob')
+                                            @if($orderBy=='position')
                                             btn-link
                                             @endif
-                                            " name="orderBy" value="dob">Date of Birth</button>
+                                            " name="orderBy" value="position">Occupation</button>
                                         </form>
                                     </th>
                                     <th>
@@ -343,7 +343,7 @@
                                     <td class="text-left">{{ $visitor->name }}</td>
                                     <td class="text-left">{{ $visitor->phone }}</td>
                                     <td class="text-left">{{ $visitor->email }}</td>
-                                    <td>{{ $visitor->dob }}</td>
+                                    <td>{{ $visitor->position }}</td>
                                     <td>{{ $visitor->company }}</td>
                                     <td>{{ $visitor->sex }}</td>
                                     <td>{{ $visitor->vis_created_at }}</td>
