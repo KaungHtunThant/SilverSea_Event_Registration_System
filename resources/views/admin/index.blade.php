@@ -1,8 +1,96 @@
 @extends('admin.template')
 @section('title', 'IMS Silver Sea - Dashboard')
+@section('add_form')
+    <div class="theme-setting-wrapper">
+        <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
+            <i class="settings-close ti-close"></i>
+            <p class="settings-heading text-primary">Add New Visitor</p>
+            <form action="/visitors" method="POST" class="mx-2 mt-3" autocomplete="off">
+                @csrf
+                <input type="hidden" name="orderBy" value="conf_id">
+                <input type="hidden" name="page" value="1">
+                <input type="hidden" name="pagination" value="10">
+                <div class="form-group">
+                    <p>Name</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-account"></i>
+                            </span>
+                        </div>
+                        <input type="text" name="name" class="form-control" placeholder="Enter name.">
+                    </div>
+                    <p>Phone</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-cellphone"></i>
+                            </span>
+                        </div>
+                        <input type="number" name="phone" class="form-control" placeholder="Enter phone No.">
+                    </div>
+                    <p>Email</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-email"></i>
+                            </span>
+                        </div>
+                        <input type="email" name="email" class="form-control" placeholder="Enter email.">
+                    </div>
+                    <p>Gender</p>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="sex" id="optionsRadios1" value="Male" checked>
+                                Male
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="sex" id="optionsRadios2" value="Female">
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                    <p>Occupation</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-account-multiple"></i>
+                            </span>
+                        </div>
+                        <input type="text" name="position" class="form-control" placeholder="Enter Occupation.">
+                    </div>
+                    <p>Company/ Organization</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-account-multiple"></i>
+                            </span>
+                        </div>
+                        <input type="text" name="company" class="form-control" placeholder="Enter Company.">
+                    </div>
+                    <hr>
+                    <input type="submit" name="Submit" value="Create" class="btn btn-primary my-2">
+                    <br class="mb-5">
+                    <br class="mb-3">
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
 @section('contents')
     <div class="row">
-        <div class="col-6 col-lg-3 col-xl-3 mb-4 transparent">
+        <div class="col-12 col-md-4 col-lg-3 col-xl-2 mb-4 transparent stretch-card">
+            <div class="card card-light-blue">
+                <div class="card-body text-center">
+                    <p class="">New Visitor</p>
+                    <button class="btn btn-light mt-3" id="settings-trigger2">Add Visitor</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-4 transparent">
             <div class="card card-dark-blue">
                 <div class="card-body">
                     <p class="mb-4">Total Visitors</p>
@@ -11,7 +99,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 col-lg-3 col-xl-3 mb-4 transparent">
+        <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-4 transparent">
             <div class="card card-light-danger">
                 <div class="card-body">
                     <p class="mb-4">Today’s Visitors</p>
@@ -366,16 +454,16 @@
       data: [{{ $intr['rep'] }}, {{ $intr['cons'] }}, {{ $intr['ev'] }}],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)'
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(54, 162, 235, 0.2)'
         // 'rgba(75, 192, 192, 0.2)',
         // 'rgba(153, 102, 255, 0.2)',
         // 'rgba(255, 159, 64, 0.2)'
       ],
       borderColor: [
         'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)'
+        'rgba(255, 206, 86, 1)',
+        'rgba(54, 162, 235, 1)'
         // 'rgba(75, 192, 192, 1)',
         // 'rgba(153, 102, 255, 1)',
         // 'rgba(255, 159, 64, 1)'
@@ -453,4 +541,12 @@
   };
 </script>
 <script src="{{ url('js/chart.js') }}"></script>
+<script type="text/javascript">
+    // Turn off the value scrolling behaviour on all fields
+    document.addEventListener("wheel", function(event){
+        if(document.activeElement.type === "number"){
+            document.activeElement.blur();
+        }
+    });
+</script>
 @endsection

@@ -35,6 +35,7 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
 
     //visitors
     Route::resource('/visitors', VisitorController::class);
+    Route::get('/visitors/download/{id}', [VisitorController::class, 'download']);
 
     //winners
     Route::get('/winners', [WinnerController::class, 'index']);

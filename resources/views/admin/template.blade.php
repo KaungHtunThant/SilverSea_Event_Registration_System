@@ -20,15 +20,32 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ url('css/vertical-layout-light/style.css') }}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="{{ url('images/favicon.png') }}" />
+  <link rel="shortcut icon" href="{{ url('images/favico.jpg') }}" />
+  <style type="text/css">
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+
+        .w-auto{
+            width: auto;
+        }
+    </style>
 </head>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="{{ url('/?orderBy=conf_id&paginate=10&page=1') }}"><img src="{{ url('images/logo.svg') }}" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="{{ url('/?orderBy=conf_id&paginate=10&page=1') }}"><img src="{{ url('images/logo-mini.svg') }}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="{{ url('/?orderBy=conf_id&paginate=10&page=1') }}"><img src="{{ url('images/logo.png') }}" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="{{ url('/?orderBy=conf_id&paginate=10&page=1') }}"><img src="{{ url('images/logo.png') }}" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -55,7 +72,7 @@
            </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="{{ url('#') }}" data-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face28.jpg" alt="profile"/>
+              <img src="{{ url('images/user.png') }}" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item" href="/logout">
@@ -76,7 +93,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="/?paginate=10&page=1&orderBy=attendances.created_at">
+            <a class="nav-link" href="/?paginate=10&page=1&orderBy=attendances.created_at" aria-expanded="false" aria-controls="dashboard">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
