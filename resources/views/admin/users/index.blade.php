@@ -5,7 +5,7 @@
         <div id="settings-trigger"><i class="mdi mdi-account-plus"></i></div>
         <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
             <i class="settings-close ti-close"></i>
-            <p class="settings-heading text-primary">Add New User</p>
+            <p class="settings-heading text-success">Add New User</p>
             <form action="/users" method="POST" class="mx-2 mt-3" autocomplete="off">
                 @csrf
                 <input type="hidden" name="orderBy" value="{{ $orderBy }}">
@@ -46,7 +46,7 @@
                         <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password.">
                     </div>
                     <hr>
-                    <input type="submit" name="Submit" value="Create" class="btn btn-primary my-2">
+                    <input type="submit" name="Submit" value="Create" class="btn btn-success my-2">
                 </div>
             </form>
         </div>
@@ -97,7 +97,7 @@
                                             <div class="input-group">
                                                 <input type="text" name="searchVal" class="form-control form-control-sm" value="{{ $searchVal }}">
                                                 <div class="input-group-append">
-                                                    <input type="submit" name="search" class="btn btn-sm btn-primary" value="Search">
+                                                    <input type="submit" name="search" class="btn btn-sm btn-success" value="Search">
                                                 </div>
                                             </div>
                                         </div>
@@ -111,7 +111,7 @@
                                 <input type="hidden" name="paginate" value="10">
                                 <input type="hidden" name="orderBy" value="id">
                                 <input type="hidden" name="page" value="1">
-                                <input type="submit" name="reset" value="Reset" class="btn btn-primary float-right">
+                                <input type="submit" name="reset" value="Reset" class="btn btn-success float-right">
                             </form>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                                                     <a class="btn btn-outline-danger btn-sm" onclick="close_func({{ $user->id }}, 'name')"><i class="mdi mdi-close"></i></a>
                                                 </div>
                                                 <div class="input-group-append">
-                                                    <button type="submit" name="close" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-check"></i></button>
+                                                    <button type="submit" name="close" class="btn btn-outline-success btn-sm"><i class="mdi mdi-check"></i></button>
                                                 </div>
                                             </div>
                                         </form>
@@ -216,7 +216,7 @@
                                                     <a class="btn btn-outline-danger btn-sm" onclick="close_func({{ $user->id }}, 'email')"><i class="mdi mdi-close"></i></a>
                                                 </div>
                                                 <div class="input-group-append">
-                                                    <button type="submit" name="close" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-check"></i></button>
+                                                    <button type="submit" name="close" class="btn btn-outline-success btn-sm"><i class="mdi mdi-check"></i></button>
                                                 </div>
                                             </div>
                                         </form>
@@ -226,7 +226,7 @@
                                     </td>
                                     <td>
                                         <div class="dropdown">
-                                            <button class="btn btn-outline-primary btn-sm" type="button" id="{{ $user->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn btn-outline-success btn-sm" type="button" id="{{ $user->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="mdi mdi-dots-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="{{ $user->id }}-details">
