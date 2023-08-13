@@ -34,7 +34,7 @@
 		<h2>{{ $visitor->company }}</h2>
 		<h2>Position</h2>
 		@php
-			echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1001) . '-n' , 'C128' , 2,50) . '" alt="barcode"/>';
+			echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1000) . '-n' , 'C128' , 2,50) . '" alt="barcode"/>';
 		@endphp
 	</div>
 </body>
