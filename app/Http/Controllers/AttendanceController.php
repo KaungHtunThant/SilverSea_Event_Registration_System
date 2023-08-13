@@ -78,27 +78,39 @@ class AttendanceController extends Controller
         $entry = [
             '9am' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('today 9am')))
                         ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('today 10am')))
+                        ->whereDate('created_at', date('Y-m-d'))
                         ->count(),
             '10am' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('today 10am')))
                         ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('today 11am')))
+                        ->whereDate('created_at', date('Y-m-d'))
                         ->count(),
             '11am' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('today 11am')))
                         ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('today 12pm')))
+                        ->whereDate('created_at', date('Y-m-d'))
                         ->count(),
             '12pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('today 12pm')))
                         ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('today 1pm')))
+                        ->whereDate('created_at', date('Y-m-d'))
                         ->count(),
             '1pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('today 1pm')))
                         ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('today 2pm')))
+                        ->whereDate('created_at', date('Y-m-d'))
                         ->count(),
             '2pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('today 2pm')))
                         ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('today 3pm')))
+                        ->whereDate('created_at', date('Y-m-d'))
                         ->count(),
             '3pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('today 3pm')))
                         ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('today 4pm')))
+                        ->whereDate('created_at', date('Y-m-d'))
                         ->count(),
             '4pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('today 4pm')))
                         ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('today 5pm')))
+                        ->whereDate('created_at', date('Y-m-d'))
+                        ->count(),
+            '8pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('today 8pm')))
+                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('today 9pm')))
+                        ->whereDate('created_at', date('Y-m-d'))
                         ->count(),
         ];
         

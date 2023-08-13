@@ -26,11 +26,11 @@ class VisitorController extends Controller
             ->orwhere('name', 'LIKE', '%'.$request->searchVal.'%')
             ->orwhere('phone', 'LIKE', '%'.$request->searchVal.'%')
             ->orwhere('email', 'LIKE', '%'.$request->searchVal.'%')
-            ->orderBy($request->orderBy)
+            ->orderBy($request->orderBy, 'DESC')
             ->paginate($request->paginate);
         }
         else{
-            $visitors = Visitor::orderBy($request->orderBy)->paginate($request->paginate);
+            $visitors = Visitor::orderBy($request->orderBy, 'DESC')->paginate($request->paginate);
         }
         $visitors->appends([
             'orderBy' => $request->orderBy,
