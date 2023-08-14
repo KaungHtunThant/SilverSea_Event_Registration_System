@@ -71,13 +71,24 @@
                         </div>
                         <input type="text" name="company" class="form-control" placeholder="Enter Company.">
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="mdi mdi-account-multiple"></i>
-                            </span>
-                        </div>
-                        <input type="text" name="company" class="form-control" placeholder="Enter Company.">
+                    <p>Interests</p>
+                    <div class="input-group mb-1">
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Real Estate and Properties ">
+                        <label class="form-check-label ml-5" for="defaultCheck1">
+                            Real Estate and Properties
+                        </label>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Constructions">
+                        <label class="form-check-label ml-5" for="defaultCheck1">
+                            Constructions
+                        </label>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input class="w-auto form-check-input ml-3" type="checkbox" name="pos[]" value="Renewable Energy and EV">
+                        <label class="form-check-label ml-5" for="defaultCheck1">
+                            Renewable Energy and EV
+                        </label>
                     </div>
                     <hr>
                     <input type="submit" name="Submit" value="Create" class="btn btn-success my-2">
@@ -418,7 +429,7 @@
               ctx = chart.chart.ctx;
       
           ctx.restore();
-          var fontSize = 3.125;
+          var fontSize = 2.125;
           ctx.font = "500 " + fontSize + "em sans-serif";
           ctx.textBaseline = "middle";
           ctx.fillStyle = "#13381B";
@@ -516,7 +527,7 @@
         'rgba(255, 206, 86, 1)'
       ],
       borderWidth: 1,
-      fill: false
+      fill: true
     }]
   };
   var options = {

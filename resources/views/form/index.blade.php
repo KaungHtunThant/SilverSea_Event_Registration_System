@@ -55,8 +55,8 @@
         	<img src="{{ url('images/banner.jpg') }}" class="w-100">
             <div class="card card-1">
                 <div class="card-body">
-                    <h2 class="title">Online Registration</h2>
-                    <form method="POST" action="/form">
+                    <h2 class="title">Online Event Registration</h2>
+                    <form method="POST" action="/form" name="form">
                         @csrf
                         <div class="row row-space">
                             <div class="col-2">
@@ -99,7 +99,7 @@
                         </div>
                         <div class="row row-space">
                             <div class="col-2 text-grey">
-                                <h5 style="margin-top: 8px;">INTERESTS</h5>
+                                <h5 style="margin-top: 8px;">INTERESTS <span style="color: #CE2029;">*</span></h5>
                                 <br>
                                 <div class="form-check" style="margin-bottom: 15px;">
                                     <input class="w-auto form-check-input" type="checkbox" name="pos[]" value="Real Estate and Properties ">
@@ -119,11 +119,13 @@
                                         Renewable Energy and EV
                                     </label>
                                 </div>
-
                             </div>
                         </div>
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit">Submit</button>
+                            <button class="btn btn--radius btn--green" id="checkBtn">Submit</button>
+                            <!-- <div class="btn btn--radius btn--green" id="checkBtn"> -->
+                                <!-- Submit -->
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -150,16 +152,16 @@
         });
     </script>
     <script type="text/javascript">
-        function checkEmail() {
-            var email = document.getElementById('txtEmail');
-            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        $(document).ready(function () {
+            $('#checkBtn').click(function() {
+                checked = $("input[type=checkbox]:checked").length;
 
-            if (!filter.test(email.value)) {
-            alert('Please provide a valid email address');
-            email.focus;
-            return false;
-         }
-        }
+                if(!checked) {
+                    alert("You must select at least one interest.");
+                    return false;
+                }
+            });
+        });
     </script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
