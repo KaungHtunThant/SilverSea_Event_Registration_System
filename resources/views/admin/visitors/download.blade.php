@@ -30,15 +30,22 @@
 
 		.box{
 			width: 100%;
-			height: 22px;
+			height: 20px;
 		}
 
 		h1{
-			font-size: 15px;
+			@php
+				$len = strlen($visitor->name);
+			@endphp
+			@if($len > 28)
+				font-size: 16px;
+			@else
+				font-size: 20px;
+			@endif
 		}
 
 		h2{
-			font-size: 10px;
+			font-size: 16px;
 		}
 	</style>
 </head>
