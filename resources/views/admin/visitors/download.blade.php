@@ -15,7 +15,7 @@
 			width: 8.3in;
 			margin: 0px;
 			padding: 0px;
-			
+/*			text-align: center;*/
 		}
 
 		.card-bg{
@@ -30,7 +30,7 @@
 			width: 2.99in;
 			height: 4in;
 			margin-top: 130px;
-			margin-left: 2.5in;
+			margin-left: 2.8in;
 			text-align: center;
 			
 			font-family: "Calibri", sans-serif;
