@@ -21,7 +21,7 @@
 		.card-bg{
 			width: 2.99in;
 			margin-left: 2.655in;
-			padding-top: 120px;
+			padding-top: 130px;
 			background-image: url('{{ url("images/bg.jpg") }}');
 			background-repeat: no-repeat;
 			background-size: contain;
