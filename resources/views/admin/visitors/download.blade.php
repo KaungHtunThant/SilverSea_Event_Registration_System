@@ -20,17 +20,17 @@
 
 		.card-bg{
 			width: 2.99in;
-			height: 4in;
-/*			background-image: url('{{ url("images/bg.jpg") }}');*/
+			margin-left: 2.655in;
+			padding-top: 110px;
+			background-image: url('{{ url("images/bg.jpg") }}');
 			background-repeat: no-repeat;
-			background-size: cover;
+			background-size: contain;
 		}
 
 		.card-body{
 			width: 2.99in;
 			height: 4in;
-			margin-top: 130px;
-			margin-left: 2.655in;
+/*			margin-left: 2.655in;*/
 			text-align: center;
 			
 			font-family: "Calibri", sans-serif;
