@@ -6,25 +6,33 @@
 	<title>IMS Silver Sea - ID Card</title>
 	<style type="text/css">
 		html{
-			width: 2.993in;
-			height: 4.33in;
+			width: 8.3in;
+			height: 11.7in;
 			margin: 0px;
 			padding: 0px;
 		}
 		body{
-			width: 2.993in;
+			width: 8.3in;
 			margin: 0px;
 			padding: 0px;
-			background-image: url('{{ url("images/bg.jpg") }}');
+			
+		}
+
+		.card-bg{
+			width: 2.99in;
+			height: 4in;
+/*			background-image: url('{{ url("images/bg.jpg") }}');*/
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
 
 		.card-body{
-			width: 100%;
+			width: 2.99in;
 			height: 4in;
 			margin-top: 130px;
+			margin-left: 2.5in;
 			text-align: center;
+			
 			font-family: "Calibri", sans-serif;
 		}
 
@@ -50,21 +58,23 @@
 	</style>
 </head>
 <body id="printarea">
-	<div class="card-body">
-		<div class="box">
-			<h1>{{ $visitor->name }}</h1>
-		</div>
-		<div class="box">
-			<h2>{{ $visitor->position }}</h2>
-		</div>
-		<div class="box">
-			<h2>{{ $visitor->company }}</h2>
-		</div>
-		<br>
-		<div class="box">
-			@php
-				echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1000) . '-n' , 'C128' , 2,40) . '" alt="barcode"/>';
-			@endphp
+	<div class="card-bg">
+		<div class="card-body">
+			<div class="box">
+				<h1>{{ $visitor->name }}</h1>
+			</div>
+			<div class="box">
+				<h2>{{ $visitor->position }}</h2>
+			</div>
+			<div class="box">
+				<h2>{{ $visitor->company }}</h2>
+			</div>
+			<br>
+			<div class="box">
+				@php
+					echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1000) . '-n' , 'C128' , 2,40) . '" alt="barcode"/>';
+				@endphp
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript">

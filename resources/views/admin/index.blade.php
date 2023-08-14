@@ -71,6 +71,14 @@
                         </div>
                         <input type="text" name="company" class="form-control" placeholder="Enter Company.">
                     </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-account-multiple"></i>
+                            </span>
+                        </div>
+                        <input type="text" name="company" class="form-control" placeholder="Enter Company.">
+                    </div>
                     <hr>
                     <input type="submit" name="Submit" value="Create" class="btn btn-success my-2">
                     <br class="mb-5">
