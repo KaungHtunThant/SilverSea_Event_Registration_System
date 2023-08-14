@@ -30,7 +30,7 @@
 			width: 2.99in;
 			height: 4in;
 			margin-top: 130px;
-			margin-left: 2.8in;
+			margin-left: 2.655in;
 			text-align: center;
 			
 			font-family: "Calibri", sans-serif;
