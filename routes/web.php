@@ -41,10 +41,7 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
     Route::get('/winners', [WinnerController::class, 'index']);
 
     //lottery
-    Route::get('/lottery', function () {
-        // return view('admin.lottery.index'); 
-        return redirect('/?page=1&paginate=10&orderBy=attendances.created_at');
-    });
+    Route::get('/lottery', [WinnerController::class, 'rng']);
 });
 
 //Public routes

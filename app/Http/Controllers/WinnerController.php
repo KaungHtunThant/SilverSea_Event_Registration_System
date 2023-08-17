@@ -88,9 +88,28 @@ class WinnerController extends Controller
             'desc' => 'toBeFilled',
         ]);
 
-        return redirect('/test')->with('status', [
-            'type' => 'success',
-            'winner' => $visitor
+        $winner_full =  DB::table('winners')
+                ->where('vis_id', $winner->vis_id)
+                ->join('visitors', 'winners.vis_id', '=', 'visitors.id')
+                ->select(
+                    'winners.id as id',
+                    'visitors.conf_id as conf_id',
+                    'visitors.name as name',
+                    'visitors.email as email',
+                    'visitors.phone as phone',
+                    'visitors.company as company',
+                    'visitors.sex as sex',
+                    'visitors.position as position',
+                    'visitors.card as card',
+                    'winners.created_at as win_created_at',
+                    'visitors.created_at as vis_created_at',
+                )->first();
+
+        return view('admin.lottery.index')
+            ->with('winner', $winner_full)
+            ->with('status', [
+                'type' => 'success',
+                'text' => 'winner created.'
         ]);
     }
 }

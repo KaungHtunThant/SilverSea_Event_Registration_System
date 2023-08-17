@@ -101,7 +101,7 @@
 @endsection
 @section('contents')
 	<div class="row">
-		<div class="col-md-12 col-lg-11 col-xl-9 grid-margin stretch-card">
+		<div class="col-md-12 col-lg-12 col-xl-10 grid-margin stretch-card">
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title mb-4">Visitors list</h4>
