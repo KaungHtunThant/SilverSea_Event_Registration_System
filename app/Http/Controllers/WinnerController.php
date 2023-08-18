@@ -79,9 +79,9 @@ class WinnerController extends Controller
 
     public function rng(Request $request)
     {
-        $visitor = Attendance::whereDate('created_at', date('Y-m-d'))
-                    ->groupBy('vis_id')
-                    ->random();    //This is suppose to be visitors who has attendance with today's date
+        // $visitors = Visitor::factory()->count(10)->create(); //delete me after testing
+
+        $visitor = Visitor::all()->random();    //This is suppose to be visitors who has attendance with today's date
 
         $winner = Winner::create([
             'vis_id' => $visitor->id,
