@@ -81,7 +81,14 @@ class WinnerController extends Controller
     {
         // $visitors = Visitor::factory()->count(10)->create(); //delete me after testing
 
-        $visitor = Visitor::all()->random();    //This is suppose to be visitors who has attendance with today's date
+        $visitor = Visitor::all()->random();
+        $wtmp = Winner::where('vis_id', $visitor->id)
+                ->whereDate('created_at', date('Y-m-d'))
+                ->get();
+        while (isset($wtmp->id)) {
+            $visitor = Visitor::all()->random();
+        }
+            //This is suppose to be visitors who has attendance with today's date
 
         $winner = Winner::create([
             'vis_id' => $visitor->id,
