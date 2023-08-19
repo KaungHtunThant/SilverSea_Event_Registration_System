@@ -92,10 +92,10 @@
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
-                                            @if($orderBy=='conf_id')
+                                            @if($orderBy=='visitors.conf_id')
                                             btn-link
                                             @endif
-                                            " name="orderBy" value="conf_id">Confirmation ID</button>
+                                            " name="orderBy" value="visitors.conf_id">Confirmation ID</button>
                                         </form>
                                     </th>
                                     <th>

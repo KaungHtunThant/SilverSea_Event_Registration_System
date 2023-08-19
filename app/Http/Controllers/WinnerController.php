@@ -12,9 +12,9 @@ class WinnerController extends Controller
 {
     public function index(Request $request)
     {
-        if (!isset($request->orderBy)) {
-            $request->orderBy = 'winners.created_at';
-        }
+        // if (!isset($request->orderBy)) {
+        //     $request->orderBy = 'winners.created_at';
+        // }
         if (!isset($request->paginate)) {
             $request->paginate = '10';
         }
@@ -92,9 +92,6 @@ class WinnerController extends Controller
                 ->where('vis_id', $visitor->vis_id)
                 ->get();
 
-        echo("<script>console.log('visitor: ".var_dump($visitor)."')</script>");
-        echo("<script>console.log('winner: ".var_dump($wtmp)."')</script>");
-
         while (isset($wtmp->id)) {
             $visitor = Attendance::whereDate('created_at', date('Y-m-d'))
                     ->groupBy('vis_id')
@@ -104,9 +101,6 @@ class WinnerController extends Controller
             $wtmp = Winner::where('vis_id', $visitor->vis_id)
                 ->whereDate('created_at', date('Y-m-d'))
                 ->get();
-
-            echo("<script>console.log('visitor: ".var_dump($visitor)."')</script>");
-            echo("<script>console.log('winner: ".var_dump($wtmp)."')</script>");
         }
             //This is suppose to be visitors who has attendance with today's date
 
