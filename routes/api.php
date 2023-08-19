@@ -23,9 +23,12 @@ Route::middleware('auth:sanctum')->get('/users', function (Request $request) {
 
 Route::post('/initA', [TestPreparer::class, 'createAdmin']);
 Route::post('/initV', [TestPreparer::class, 'createVisitors']);
+Route::post('/initAtt', [TestPreparer::class, 'createAttendances']);
 
 // Route::get('/test', [TestPreparer::class, 'test']);
 
 Route::post('/scan/{id}', [AttendanceController::class, 'store']);
 
-Route::get('/test/visitor', [VisitorController::class, 'view_visitors']);
+// Route::get('/test/visitor', [VisitorController::class, 'view_visitors']);
+
+// Route::get('/test/att', [VisitorController::class, 'view_visitors']);

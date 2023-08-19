@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Visitor;
 use App\Models\Winner;
+use App\Models\Attendance;
 use Illuminate\Support\Facades\DB;
 
 class WinnerController extends Controller
@@ -81,17 +82,36 @@ class WinnerController extends Controller
     {
         // $visitors = Visitor::factory()->count(10)->create(); //delete me after testing
 
-        $visitor = Visitor::all()->random();
-        $wtmp = Winner::where('vis_id', $visitor->id)
+        $visitor = Attendance::whereDate('created_at', date('Y-m-d'))
+                    ->inRandomOrder()
+                    ->first();
+                    // ->get();
+
+        // echo('<script>console.log("'. var_dump($visitor) .'")</script>');
+        $wtmp = Winner::whereDate('created_at', date('Y-m-d'))
+                ->where('vis_id', $visitor->vis_id)
+                ->get();
+
+        echo("<script>console.log('visitor: ".var_dump($visitor)."')</script>");
+        echo("<script>console.log('winner: ".var_dump($wtmp)."')</script>");
+
+        while (isset($wtmp->id)) {
+            $visitor = Attendance::whereDate('created_at', date('Y-m-d'))
+                    ->groupBy('vis_id')
+                    ->inRandomOrder()
+                    ->first();
+
+            $wtmp = Winner::where('vis_id', $visitor->vis_id)
                 ->whereDate('created_at', date('Y-m-d'))
                 ->get();
-        while (isset($wtmp->id)) {
-            $visitor = Visitor::all()->random();
+
+            echo("<script>console.log('visitor: ".var_dump($visitor)."')</script>");
+            echo("<script>console.log('winner: ".var_dump($wtmp)."')</script>");
         }
             //This is suppose to be visitors who has attendance with today's date
 
         $winner = Winner::create([
-            'vis_id' => $visitor->id,
+            'vis_id' => $visitor->vis_id,
             'desc' => 'toBeFilled',
         ]);
 
