@@ -72,7 +72,7 @@
 			<br>
 			<div class="box">
 				@php
-					echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1000) . '-n' , 'C128' , 2,40) . '" alt="barcode"/>';
+					echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1000) . '-b' , 'C128' , 2,40) . '" alt="barcode"/>';
 				@endphp
 			</div>
 		</div>
