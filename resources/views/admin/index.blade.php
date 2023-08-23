@@ -1,5 +1,5 @@
 @extends('admin.template')
-@section('title', 'IMS Silver Sea - Dashboard')
+@section('title', 'EMP - Dashboard')
 @section('add_form')
     <div class="theme-setting-wrapper">
         <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
