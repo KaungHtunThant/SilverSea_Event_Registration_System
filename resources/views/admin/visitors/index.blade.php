@@ -1,5 +1,5 @@
 @extends('admin.template')
-@section('title', 'IMS Silver Sea - Visitors')
+@section('title', 'EMP - Visitors')
 @section('add_form')
     <div class="theme-setting-wrapper">
         <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
@@ -254,8 +254,8 @@
 											</button>
 											<div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
 												<a class="text-success dropdown-item py-3" href="{{
-													'data:image/png;base64,' . DNS2D::getBarcodePNG('https://emp.powerglobal.com.mm/id/'.$visitor->conf_id, 'QRCODE',2.2,2.2)
-												}}" download="{{ $visitor->name }}_{{ $visitor->id }}">Download ID Card</a>
+													'data:image/png;base64,' . DNS2D::getBarcodePNG('https://emp.powerglobal.com.mm/id/'.$visitor->id, 'QRCODE',2.2,2.2)
+												}}" download="{{ $visitor->name }}_{{ $visitor->conf_id }}">Download ID Card</a>
 												<a class="text-success dropdown-item py-3" href="/visitors/{{ $visitor->id }}">Edit</a>
 												<button class="text-danger dropdown-item py-3" href="#">Delete</button>
 											</div>
