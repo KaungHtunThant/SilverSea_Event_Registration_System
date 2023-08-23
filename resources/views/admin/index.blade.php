@@ -4,7 +4,7 @@
     <div class="theme-setting-wrapper">
         <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
             <i class="settings-close ti-close"></i>
-            <p class="settings-heading text-success">Add New Visitor</p>
+            <p class="settings-heading text-light">Add New Visitor</p>
             <form action="/visitors" method="POST" class="mx-2 mt-3" autocomplete="off">
                 @csrf
                 <input type="hidden" name="orderBy" value="conf_id">
@@ -91,7 +91,7 @@
                         </label>
                     </div>
                     <hr>
-                    <input type="submit" name="Submit" value="Create" class="btn btn-success my-2">
+                    <input type="submit" name="Submit" value="Create" class="btn btn-danger my-2">
                     <br class="mb-5">
                     <br class="mb-3">
                 </div>
@@ -102,7 +102,7 @@
 @section('contents')
     <div class="row">
         <div class="col-12 col-md-4 col-lg-3 col-xl-2 mb-4 transparent stretch-card" id="settings-trigger2">
-            <div class="card card-success">
+            <div class="card card-light-danger">
                 <div class="card-body text-center">
                     <p class="">New Visitor</p>
                     <i class="mdi mdi-account-plus fs-50"></i>
@@ -119,7 +119,7 @@
             </div>
         </div>
         <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-4 transparent">
-            <div class="card card-light-danger">
+            <div class="card card-light-blue">
                 <div class="card-body">
                     <p class="mb-4">Today’s Visitors</p>
                     <p class="fs-30 mb-2">{{ $Vtoday }}</p>
@@ -199,7 +199,7 @@
                                             <div class="input-group">
                                                 <input type="text" name="searchVal" class="form-control form-control-sm" value="{{ $searchVal }}">
                                                 <div class="input-group-append">
-                                                    <input type="submit" name="search" class="btn btn-sm btn-success" value="Search">
+                                                    <input type="submit" name="search" class="btn btn-sm btn-danger" value="Search">
                                                 </div>
                                             </div>
                                         </div>
@@ -213,7 +213,7 @@
                                 <input type="hidden" name="paginate" value="10">
                                 <input type="hidden" name="orderBy" value="attendances.created_at">
                                 <input type="hidden" name="page" value="1">
-                                <input type="submit" name="reset" value="Reset" class="btn btn-success float-right">
+                                <input type="submit" name="reset" value="Reset" class="btn btn-danger float-right">
                             </form>
                         </div>
                     </div>
@@ -356,11 +356,11 @@
                                     <td>{{ $visitor->vis_created_at }}</td>
                                     <td>
                                         <div class="dropdown">
-                                            <button class="btn btn-outline-success btn-sm" type="button" id="{{ $visitor->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn btn-outline-danger btn-sm" type="button" id="{{ $visitor->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="mdi mdi-dots-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
-                                                <a class="text-success dropdown-item py-3" href="/visitors/download/{{ $visitor->id }}">Download ID Card</a>
+                                                <a class="text-danger dropdown-item py-3" href="/visitors/download/{{ $visitor->id }}">Download ID Card</a>
                                                 <a class="text-danger dropdown-item py-3" href="#">Delete</a>
                                             </div>
                                         </div>
