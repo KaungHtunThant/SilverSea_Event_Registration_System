@@ -253,7 +253,9 @@
 												<i class="mdi mdi-dots-vertical"></i>
 											</button>
 											<div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
-												<a class="text-success dropdown-item py-3" href="/visitors/download/{{ $visitor->id }}" target="_blank">Download ID Card</a>
+												<a class="text-success dropdown-item py-3" href="{{
+													'data:image/png;base64,' . DNS2D::getBarcodePNG('https://emp.powerglobal.com.mm/id/'.$visitor->conf_id, 'QRCODE',2.2,2.2)
+												}}" download="{{ $visitor->name }}_{{ $visitor->id }}">Download ID Card</a>
 												<a class="text-success dropdown-item py-3" href="/visitors/{{ $visitor->id }}">Edit</a>
 												<button class="text-danger dropdown-item py-3" href="#">Delete</button>
 											</div>
