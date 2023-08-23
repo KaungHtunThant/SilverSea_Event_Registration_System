@@ -1,5 +1,5 @@
 @extends('admin.template')
-@section('title', 'Users')
+@section('title', 'EMP - Users')
 @section('add_form')
     <div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="mdi mdi-account-plus"></i></div>
