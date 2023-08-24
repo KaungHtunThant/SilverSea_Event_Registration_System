@@ -52,6 +52,13 @@ class VisitorController extends Controller
 
     public function store(Request $request)
     {
+        if (Visitor::get()->count() > 160) {
+            Session::put('status', 'true');
+            return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
+                'type' => 'failed',
+                'text' => 'Customer limit full! Please contact customer service to extend your limit.'
+            ]);
+        }
         $fields = $request->validate([
             'conf_id' => 'required|string',
             'phone' => 'required|string',

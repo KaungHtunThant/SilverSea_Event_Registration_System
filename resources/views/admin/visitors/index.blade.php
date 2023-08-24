@@ -39,6 +39,12 @@
     </div>
 @endsection
 @section('contents')
+@if(Session::has('status'))
+<script type="text/javascript">
+    alert('{{ $status['text'] }}');
+</script>
+{{ Session::forget('status'); }}
+@endif
 	<div class="row">
 		<div class="col-md-12 col-lg-12 col-xl-10 grid-margin stretch-card">
 			<div class="card">
