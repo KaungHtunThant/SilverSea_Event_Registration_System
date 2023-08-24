@@ -21,7 +21,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<label>Customer's ID</label>
-								<input type="text" name="conf_id" value="{{ $visitor->conf_id }}" class="form-control mb-3" disabled>
+								<input type="text" name="conf_id" value="{{ $visitor->conf_id }}" class="form-control mb-3">
 							</div>
 							<div class="col-md-6">
 								<label>Customer's Phone No.</label>
