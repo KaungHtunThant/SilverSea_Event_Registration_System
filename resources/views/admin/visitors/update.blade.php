@@ -1,5 +1,5 @@
 @extends('admin.template')
-@section('title', 'EMP - Visitor Details')
+@section('title', 'EMP - Customer Details')
 
 @section('contents')
 @if(Session::has('status'))
@@ -13,18 +13,18 @@
 	<div class="col-md-8 grid-margin stretch-card">
 		<div class="card">
 			<div class="card-body">
-				<a href="/visitors" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-arrow-left"></i> Visitors List</a>
+				<a href="/visitors" class="btn btn-outline-primary btn-sm"><i class="mdi mdi-arrow-left"></i> Customer List</a>
 				<h3 class="card-title my-4 text-center">{{ $visitor->conf_id }}'s Details</h3>
 				<form action="/visitors/{{ $visitor->id }}" method="POST">
 					@method('PATCH')
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-md-6">
-								<label>Visitor's ID</label>
+								<label>Customer's ID</label>
 								<input type="text" name="conf_id" value="{{ $visitor->conf_id }}" class="form-control mb-3" disabled>
 							</div>
 							<div class="col-md-6">
-								<label>Visitor's Phone No.</label>
+								<label>Customer's Phone No.</label>
 								<input type="number" name="phone" value="{{ $visitor->phone }}" class="form-control mb-3">
 							</div>
 							<div class="col-md-12 mt-5">

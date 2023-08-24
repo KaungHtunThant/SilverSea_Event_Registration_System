@@ -4,7 +4,7 @@
     <div class="theme-setting-wrapper">
         <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
             <i class="settings-close ti-close"></i>
-            <p class="settings-heading text-success">Add New Visitor</p>
+            <p class="settings-heading text-success">Add New Customer</p>
             <form action="/visitors" method="POST" class="mx-2 mt-3" autocomplete="off">
                 @csrf
                 <input type="hidden" name="orderBy" value="conf_id">
@@ -18,7 +18,7 @@
                                 <i class="mdi mdi-cellphone"></i>
                             </span>
                         </div>
-                        <input type="text" name="conf_id" class="form-control" placeholder="Enter Visitor ID" required>
+                        <input type="text" name="conf_id" class="form-control" placeholder="Enter Customer ID" required>
                     </div>
                     <p>Phone (*)</p>
                     <div class="input-group mb-3">
@@ -45,7 +45,7 @@
                 <div class="col-12 mb-4 transparent stretch-card" id="settings-trigger2">
                     <div class="card card-success">
                         <div class="card-body text-center">
-                            <p class="">New Visitor</p>
+                            <p class="">New Customer</p>
                             <i class="mdi mdi-account-plus fs-50"></i>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                 <div class="col-6 col-md-12 mb-4 transparent">
                     <div class="card card-dark-blue">
                         <div class="card-body">
-                            <p class="mb-4">Total Visitors</p>
+                            <p class="mb-4">Total Customers</p>
                             <p class="fs-30 mb-2">{{ $Vtotal }}</p>
                             <p><nobr>18-Aug - 20-Aug</nobr></p>
                         </div>
@@ -62,7 +62,7 @@
                 <div class="col-6 col-md-12 mb-4 transparent">
                     <div class="card card-light-blue">
                         <div class="card-body">
-                            <p class="mb-4">Today’s Visitors</p>
+                            <p class="mb-4">Today’s Customers</p>
                             <p class="fs-30 mb-2">{{ $Vtoday }}</p>
                             <p>{{ date('d-M') }}</p>
                         </div>
@@ -83,7 +83,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Visitors' Attendance List</h4>
+                    <h4 class="card-title mb-4">Customers' Attendance List</h4>
                     <div class="row">
                         <div class="col-md-10">
                             <form action="/" method="GET">
