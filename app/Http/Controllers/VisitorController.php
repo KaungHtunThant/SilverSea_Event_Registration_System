@@ -6,10 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Visitor;
 use App\Models\Interest;
 use Illuminate\Support\Facades\Session;
-// use Illuminate\Support\Facades\Http\Client;
 use Knp\Snappy\Image;
-// use GuzzleHttp;
-// use Illuminate\View;
+use App\Models\Attendance;
 
 class VisitorController extends Controller
 {
@@ -251,8 +249,12 @@ class VisitorController extends Controller
             return view('public.visitor_notfound');
         }
 
+        $att = Attendance::create([
+            'vis_id' => $id
+        ]);
+
         Session::put('status', 'true');
-        
+
         return view('admin.visitors.update')
             ->with('visitor', $visitor)
             ->with('status', [
