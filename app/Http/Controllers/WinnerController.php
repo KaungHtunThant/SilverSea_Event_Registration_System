@@ -7,6 +7,7 @@ use App\Models\Visitor;
 use App\Models\Winner;
 use App\Models\Attendance;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class WinnerController extends Controller
 {
@@ -71,6 +72,14 @@ class WinnerController extends Controller
                     ->first();
                     // ->get();
 
+        if ($visitor == Null) {
+            Session::put('status', 'true');
+            return redirect('visitors')
+                ->with('status', [
+                    'type' => 'failed',
+                    'text' => 'No Attendances created.'
+                ]);
+        }
         // echo('<script>console.log("'. var_dump($visitor) .'")</script>');
         $wtmp = Winner::whereDate('created_at', date('Y-m-d'))
                 ->where('vis_id', $visitor->vis_id)

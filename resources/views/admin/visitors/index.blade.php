@@ -49,10 +49,10 @@
 		<div class="col-md-12 col-lg-12 col-xl-10 grid-margin stretch-card">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title mb-4">Visitors list</h4>
+					<h4 class="card-title mb-4">Customers list</h4>
 					<div class="row">
 						<div class="col-md-12">
-							<button class="btn btn-outline-success mb-4" id="settings-trigger2"><i class="mdi mdi-account-plus mr-2"></i>Add Visitor</button>
+							<button class="btn btn-outline-success mb-4" id="settings-trigger2"><i class="mdi mdi-account-plus mr-2"></i>Add Customer</button>
 							<a href="/visitors/export" class="btn btn-success ml-4 mb-4">Export</a>
 						</div>
 						<div class="col-md-8">

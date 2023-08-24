@@ -16,7 +16,7 @@ class VisitorController extends Controller
     public function index(Request $request)
     {
         if (!isset($request->orderBy)) {
-            $request->orderBy = 'conf_id';
+            $request->orderBy = 'created_at';
         }
         if (!isset($request->paginate)) {
             $request->paginate = '10';
