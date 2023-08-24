@@ -123,8 +123,8 @@
                 <br>
                 <br>
                 <h2 class="con">Congratulations!</h2>
-                <h1><nobr>{{ $winner->name }}</nobr></h1>
-                <h2> {{ $winner->conf_id }} </h2>
+                <h1><nobr>{{ $winner->conf_id }}</nobr></h1>
+                <h2> {{ $winner->phone }} </h2>
                 <a href="/lottery"><button>Restart</button></a>
             </div>
         </div>
