@@ -8,17 +8,17 @@
             <form action="/visitors" method="POST" class="mx-2 mt-3" autocomplete="off">
                 @csrf
                 <input type="hidden" name="orderBy" value="conf_id">
-				<input type="hidden" name="page" value="1">
-				<input type="hidden" name="pagination" value="10">
+                <input type="hidden" name="page" value="1">
+                <input type="hidden" name="pagination" value="10">
                 <div class="form-group">
-                	<p>Customer ID (*)</p>
+                    <p>Customer ID (*)</p>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
-                                <i class="mdi mdi-account"></i>
+                                <i class="mdi mdi-cellphone"></i>
                             </span>
                         </div>
-                        <input type="text" name="name" class="form-control" placeholder="Enter name." required>
+                        <input type="text" name="conf_id" class="form-control" placeholder="Enter Customer ID" required>
                     </div>
                     <p>Phone (*)</p>
                     <div class="input-group mb-3">
