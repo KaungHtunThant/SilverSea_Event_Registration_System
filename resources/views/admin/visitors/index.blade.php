@@ -11,7 +11,7 @@
 				<input type="hidden" name="page" value="1">
 				<input type="hidden" name="pagination" value="10">
                 <div class="form-group">
-                	<p>Name (*)</p>
+                	<p>Customer ID (*)</p>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -20,7 +20,7 @@
                         </div>
                         <input type="text" name="name" class="form-control" placeholder="Enter name." required>
                     </div>
-                    <p>Phone</p>
+                    <p>Phone (*)</p>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -124,7 +124,7 @@
 											@if($orderBy=='conf_id')
 											btn-link text-warning
 											@endif
-											" name="orderBy" value="conf_id">Confirmation ID</button>
+											" name="orderBy" value="conf_id">Customer ID</button>
 										</form>
 									</th>
 									<th>

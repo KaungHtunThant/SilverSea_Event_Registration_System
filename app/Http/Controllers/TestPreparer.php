@@ -13,8 +13,8 @@ class TestPreparer extends Controller
     {
         $user = User::factory()->create([
             'name' => 'Super Admin',
-            'email' => 'admin@email.com',
-            'password' => 'admin123!', // password
+            'email' => 'admin@emp.powerglobal.com.mm',
+            'password' => 'emp321!', // password
         ]);
 
         return $user;
