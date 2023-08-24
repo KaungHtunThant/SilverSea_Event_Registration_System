@@ -68,10 +68,10 @@ class VisitorController extends Controller
         $lastid = Visitor::latest('id')->first();
         if ($lastid == Null) {
             $lastid = 0;
-            $card = 'MME-VIS-'.$lastid+1001;
+            $card = 'EMP-VIS-'.$lastid+1001;
         }
         else{
-            $card = 'MME-VIS-'.$lastid->id+1001;
+            $card = 'EMP-VIS-'.$lastid->id+1001;
         }
 
         if($fields['company'] == Null){
