@@ -20,7 +20,7 @@ class VisitorFactory extends Factory
     {
         $lastid = Visitor::latest('id')->first();
         if ($lastid == Null) {
-            $id = 'EMP-VIS-'.1001;
+            $id = 'EMP-VIS-1001';
         }
         else{
             $id = 'EMP-VIS-'.$lastid->id+1001;
