@@ -56,7 +56,7 @@ class VisitorController extends Controller
     {
         if (Visitor::get()->count() > 160) {
             Session::put('status', 'true');
-            return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
+            return redirect('/visitors?page=1&paginate=10')->with('status', [
                 'type' => 'failed',
                 'text' => 'Customer limit full! Please contact customer service to extend your limit.'
             ]);
@@ -71,7 +71,7 @@ class VisitorController extends Controller
             'phone' => $fields['phone'],
         ]);
 
-        return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
+        return redirect('/visitors')->with('status', [
                 'type' => 'success',
                 'text' => 'Visitor record created successfully!'
             ]);
