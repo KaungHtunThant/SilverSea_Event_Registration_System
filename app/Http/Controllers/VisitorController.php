@@ -250,11 +250,14 @@ class VisitorController extends Controller
         if ($visitor == Null) {
             return view('public.visitor_notfound');
         }
+
+        Session::put('status', 'true');
+        
         return view('admin.visitors.update')
             ->with('visitor', $visitor)
             ->with('status', [
                 'type' => 'success',
-                'text' => 'Visitor Details read.'
+                'text' => 'Attendance recorded successfully.'
             ]
         );
     }

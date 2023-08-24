@@ -2,6 +2,11 @@
 @section('title', 'EMP - Visitor Details')
 
 @section('contents')
+@if(Session::has('status'))
+<script type="text/javascript">
+    alert('{{ $status['text'] }}');
+</script>
+{{ Session::forget('status'); }}
 <div class="row">
 	<div class="col-md-2"></div>
 	<div class="col-md-8 grid-margin stretch-card">
