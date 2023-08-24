@@ -29,17 +29,10 @@ class AttendanceController extends Controller
                 ->select(
                     'attendances.id as id',
                     'visitors.conf_id as conf_id',
-                    'visitors.name as name',
-                    'visitors.email as email',
                     'visitors.phone as phone',
-                    'visitors.company as company',
-                    'visitors.sex as sex',
-                    'visitors.position as position',
-                    'visitors.card as card',
                     'attendances.created_at as att_created_at',
                     'visitors.created_at as vis_created_at',
                 )->where('conf_id', 'LIKE', '%'.$request->searchVal.'%')
-                ->orwhere('name', 'LIKE', '%'.$request->searchVal.'%')
                 ->orwhere('phone', 'LIKE', '%'.$request->searchVal.'%')
                 ->orderBy($request->orderBy, 'DESC')
                 ->paginate($request->paginate);
@@ -50,13 +43,7 @@ class AttendanceController extends Controller
                 ->select(
                     'attendances.id as id',
                     'visitors.conf_id as conf_id',
-                    'visitors.name as name',
-                    'visitors.email as email',
                     'visitors.phone as phone',
-                    'visitors.company as company',
-                    'visitors.sex as sex',
-                    'visitors.position as position',
-                    'visitors.card as card',
                     'attendances.created_at as att_created_at',
                     'visitors.created_at as vis_created_at',
                 )
@@ -68,12 +55,6 @@ class AttendanceController extends Controller
             'searchVal' => $request->searchVal,
             'paginate' => $request->paginate
         ]);
-
-        $intr = [
-            'rep' => Interest::where('desc','Real Estate and Properties')->count(),
-            'cons' => Interest::where('desc','Constructions')->count(),
-            'ev' => Interest::where('desc','Renewable Energy and EV')->count()
-        ];
 
         $entry = [
             '9am' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('today 9am')))
@@ -118,9 +99,6 @@ class AttendanceController extends Controller
         $Vtoday = Visitor::whereDate('created_at', date('Y-m-d'))
                     ->count();
 
-        $Mtotal = Visitor::where('sex','Male')->count();
-        $Ftotal = Visitor::where('sex','Female')->count();
-
         return view('admin.index')
             ->with('visitors', $visitors)
             ->with('page', $request->page)
@@ -129,38 +107,10 @@ class AttendanceController extends Controller
             ->with('paginate', $request->paginate)
             ->with('Vtotal', $Vtotal)
             ->with('Vtoday', $Vtoday)
-            ->with('Mtotal', $Mtotal)
-            ->with('Ftotal', $Ftotal)
-            ->with('intr', $intr)
             ->with('entry', $entry)
             ->with('status', [
                 'type' => 'success',
                 'text' => 'Attendances view read.'
             ]);
-    }
-
-    public function store(Request $request, $id)
-    {
-        $visitor = Visitor::where('conf_id', 'LIKE', $id)->first();
-
-        if ($visitor == Null) {
-            $response = [
-                'type' => 'fail',
-                'text' => 'Attendance not recorded. Visitor id not found.'
-            ];
-            return response($response, 404);
-        }
-
-        // var_dump($visitor->conf_id);
-
-        $att = Attendance::create([
-            'vis_id' => $visitor->id
-        ]);
-
-        $response = [
-            'type' => 'success',
-            'text' => 'Attendance of '.$id.' recorded successfully.'
-        ];
-        return response($response, 200);
     }
 }

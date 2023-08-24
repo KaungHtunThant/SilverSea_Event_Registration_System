@@ -11,12 +11,6 @@ class Visitor extends Model
 
     protected $fillable = [
         'conf_id',
-        'name',
-        'email',
         'phone',
-        'company',
-        'sex',
-        'position',
-        'card',
     ];
 }

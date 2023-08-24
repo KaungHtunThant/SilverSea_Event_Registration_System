@@ -30,13 +30,7 @@ class VisitorFactory extends Factory
 
         return [
             'conf_id' => $id,
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
             'phone' => '09'.rand(10000000, 99999999),
-            'company' => fake()->name(),
-            'sex' => $sex[array_rand($sex)],
-            'position' => fake()->name(),
-            'card' => $id.'_'.time()
         ];
     }
 }

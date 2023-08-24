@@ -25,9 +25,7 @@ class VisitorController extends Controller
 
         if ($request->searchVal != '') {
             $visitors =  Visitor::where('conf_id', 'LIKE', '%'.$request->searchVal.'%')
-            ->orwhere('name', 'LIKE', '%'.$request->searchVal.'%')
             ->orwhere('phone', 'LIKE', '%'.$request->searchVal.'%')
-            ->orwhere('email', 'LIKE', '%'.$request->searchVal.'%')
             ->orderBy($request->orderBy, 'DESC')
             ->paginate($request->paginate);
         }
@@ -55,114 +53,18 @@ class VisitorController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            'name' => 'required|string',
-            'email' => 'nullable|string',
+            'conf_id' => 'required|string',
             'phone' => 'required|string',
-            'position' => 'required|string',
-            'sex' => 'required|string',
-            'company' => 'nullable|string',
         ]);
-
-        $lastid = Visitor::latest('id')->first();
-        if ($lastid == Null) {
-            $lastid = 0;
-            $card = 'EMP-VIS-'.$lastid+1001;
-        }
-        else{
-            $card = 'EMP-VIS-'.$lastid->id+1001;
-        }
-
-        if($fields['company'] == Null){
-            $fields['company'] = '-';
-        }
-        if($fields['email'] == Null){
-            $fields['email'] = '-';
-        }
 
         $user = Visitor::create([
-            'conf_id' => $card,
-            'name' => $fields['name'],
-            'email' => $fields['email'],
+            'conf_id' => $fields['conf_id'],
             'phone' => $fields['phone'],
-            'position' => $fields['position'],
-            'sex' => $fields['sex'],
-            'company' => $fields['company'],
-            'card' => $card,
         ]);
-
-        if (isset($request->pos)) {
-            foreach ($request->pos as $pos) {
-                $interest = Interest::create([
-                    'vis_id' => $user->id,
-                    'desc' => $pos
-                ]);
-            }
-        }
-
-        // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
-        // exec($cmd);
 
         return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
                 'type' => 'success',
                 'text' => 'Visitor record created successfully!'
-            ]);
-    }
-
-    public function form_add(Request $request)
-    {
-        $fields = $request->validate([
-            'name' => 'required|string',
-            'email' => 'nullable|string',
-            'phone' => 'required|string',
-            'position' => 'required|string',
-            'sex' => 'required|string',
-            'company' => 'nullable|string',
-        ]);
-
-        $lastid = Visitor::latest('id')->first();
-        if ($lastid == Null) {
-            $lastid = 0;
-            $card = 'MME-VIS-'.$lastid+1001;
-        }
-        else{
-            $card = 'MME-VIS-'.$lastid->id+1001;
-        }
-
-        if($fields['company'] == Null){
-            $fields['company'] = '-';
-        }
-        if($fields['email'] == Null){
-            $fields['email'] = '-';
-        }
-
-        $user = Visitor::create([
-            'conf_id' => $card,
-            'name' => $fields['name'],
-            'email' => $fields['email'],
-            'phone' => $fields['phone'],
-            'position' => $fields['position'],
-            'sex' => $fields['sex'],
-            'company' => $fields['company'],
-            'card' => $card,
-        ]);
-
-        if (isset($request->pos)) {
-            foreach ($request->pos as $pos) {
-                $interest = Interest::create([
-                    'vis_id' => $user->id,
-                    'desc' => $pos
-                ]);
-            }
-        }
-
-        // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
-        // exec($cmd);
-
-        Session::put('status', 'true');
-
-        return view('form.index')->with('status', [
-                'type' => 'success',
-                'text' => 'Registered successfully! Please inquiry at the counter to recieve your ID.'
             ]);
     }
 
@@ -190,18 +92,9 @@ class VisitorController extends Controller
             ]);
         }
 
-        if($request->company == Null){
-            $request->company = '-';
-        }
-        if($request->email == Null){
-            $request->email = '-';
-        }
-
         $input = $request->all();
         $visitor->fill($input)->save();
 
-        // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
-        // exec($cmd);
         return redirect('/visitors/'.$id)->with('status', [
             'type' => 'success',
             'text' => 'Visitor record updated successfully!'
@@ -217,6 +110,7 @@ class VisitorController extends Controller
                 'text' => 'Visitor record deletion failed! Visitor not found.'
             ]);
         }
+        
         $visitor->delete();
         return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
             'type' => 'success',
@@ -260,24 +154,6 @@ class VisitorController extends Controller
             ->with('status', [
                 'type' => 'success',
                 'text' => 'Attendance recorded successfully.'
-            ]
-        );
-    }
-
-    public function download(Request $request, $id)
-    {
-        $visitor = Visitor::find($id);
-        if ($visitor == Null) {
-            return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
-                'type' => 'fail',
-                'text' => 'Visitor record deletion failed! Visitor not found.'
-            ]);
-        }
-        return view('admin.visitors.download')
-            ->with('visitor', $visitor)
-            ->with('status', [
-                'type' => 'success',
-                'text' => 'Visitor Details read.'
             ]
         );
     }

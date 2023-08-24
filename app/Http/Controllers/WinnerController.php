@@ -12,9 +12,6 @@ class WinnerController extends Controller
 {
     public function index(Request $request)
     {
-        // if (!isset($request->orderBy)) {
-        //     $request->orderBy = 'winners.created_at';
-        // }
         if (!isset($request->paginate)) {
             $request->paginate = '10';
         }
@@ -28,17 +25,10 @@ class WinnerController extends Controller
                 ->select(
                     'winners.id as id',
                     'visitors.conf_id as conf_id',
-                    'visitors.name as name',
-                    'visitors.email as email',
                     'visitors.phone as phone',
-                    'visitors.company as company',
-                    'visitors.sex as sex',
-                    'visitors.position as position',
-                    'visitors.card as card',
                     'winners.created_at as win_created_at',
                     'visitors.created_at as vis_created_at',
                 )->where('conf_id', 'LIKE', '%'.$request->searchVal.'%')
-                ->orwhere('name', 'LIKE', '%'.$request->searchVal.'%')
                 ->orwhere('phone', 'LIKE', '%'.$request->searchVal.'%')
                 ->orderBy($request->orderBy)
                 ->paginate($request->paginate);
@@ -49,13 +39,7 @@ class WinnerController extends Controller
                 ->select(
                     'winners.id as id',
                     'visitors.conf_id as conf_id',
-                    'visitors.name as name',
-                    'visitors.email as email',
                     'visitors.phone as phone',
-                    'visitors.company as company',
-                    'visitors.sex as sex',
-                    'visitors.position as position',
-                    'visitors.card as card',
                     'winners.created_at as win_created_at',
                     'visitors.created_at as vis_created_at',
                 )->paginate($request->paginate);
@@ -115,13 +99,7 @@ class WinnerController extends Controller
                 ->select(
                     'winners.id as id',
                     'visitors.conf_id as conf_id',
-                    'visitors.name as name',
-                    'visitors.email as email',
                     'visitors.phone as phone',
-                    'visitors.company as company',
-                    'visitors.sex as sex',
-                    'visitors.position as position',
-                    'visitors.card as card',
                     'winners.created_at as win_created_at',
                     'visitors.created_at as vis_created_at',
                 )->first();

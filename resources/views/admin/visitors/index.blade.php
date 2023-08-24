@@ -29,67 +29,6 @@
                         </div>
                         <input type="number" name="phone" class="form-control" placeholder="Enter phone No." required>
                     </div>
-                    <p>Email</p>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="mdi mdi-email"></i>
-                            </span>
-                        </div>
-                        <input type="email" name="email" class="form-control" placeholder="Enter email.">
-                    </div>
-                    <p>Gender (*)</p>
-                    <div class="mb-3">
-						<div class="form-check">
-							<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="sex" id="optionsRadios1" value="Male" checked>
-								Male
-							</label>
-						</div>
-						<div class="form-check">
-							<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="sex" id="optionsRadios2" value="Female">
-								Female
-							</label>
-						</div>
-                    </div>
-                    <p>Occupation</p>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="mdi mdi-account-multiple"></i>
-                            </span>
-                        </div>
-                        <input type="text" name="position" class="form-control" placeholder="Enter Occupation." required>
-                    </div>
-                    <p>Company/ Organization</p>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="mdi mdi-account-multiple"></i>
-                            </span>
-                        </div>
-                        <input type="text" name="company" class="form-control" placeholder="Enter Company.">
-                    </div>
-                    <p>Interests</p>
-                    <div class="input-group mb-1">
-                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Real Estate and Properties ">
-                        <label class="form-check-label ml-5" for="defaultCheck1">
-                            Real Estate and Properties
-                        </label>
-                    </div>
-                    <div class="input-group mb-1">
-                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Constructions">
-                        <label class="form-check-label ml-5" for="defaultCheck1">
-                            Constructions
-                        </label>
-                    </div>
-                    <div class="input-group mb-1">
-                        <input class="w-auto form-check-input ml-3" type="checkbox" name="pos[]" value="Renewable Energy and EV">
-                        <label class="form-check-label ml-5" for="defaultCheck1">
-                            Renewable Energy and EV
-                        </label>
-                    </div>
                     <hr>
                     <input type="submit" name="Submit" value="Create" class="btn btn-success my-2">
                     <br class="mb-5">
@@ -194,34 +133,10 @@
 											<input type="hidden" name="paginate" value="{{ $paginate }}">
 											<input type="hidden" name="page" value="{{ $page }}">
 											<button type="submit" class="btn 
-											@if($orderBy=='name')
-											btn-link text-warning
-											@endif
-											" name="orderBy" value="name">Name</button>
-										</form>
-									</th>
-									<th>
-										<form action="/visitors" method="GET">
-											@csrf
-											<input type="hidden" name="paginate" value="{{ $paginate }}">
-											<input type="hidden" name="page" value="{{ $page }}">
-											<button type="submit" class="btn 
 											@if($orderBy=='phone')
 											btn-link text-warning
 											@endif
 											" name="orderBy" value="phone">Phone</button>
-										</form>
-									</th>
-									<th>
-										<form action="/visitors" method="GET">
-											@csrf
-											<input type="hidden" name="paginate" value="{{ $paginate }}">
-											<input type="hidden" name="page" value="{{ $page }}">
-											<button type="submit" class="btn 
-											@if($orderBy=='email')
-											btn-link text-warning
-											@endif
-											" name="orderBy" value="email">Email</button>
 										</form>
 									</th>
 									<th>
@@ -239,13 +154,7 @@
 										{{ $visitor->conf_id }}
 									</td>
 									<td>
-										{{ $visitor->name }}
-									</td>
-									<td>
 										{{ $visitor->phone }}
-									</td>
-									<td>
-										{{ $visitor->email }}
 									</td>
 									<td>
 										<div class="dropdown">
@@ -255,7 +164,7 @@
 											<div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
 												<a class="text-success dropdown-item py-3" href="{{
 													'data:image/png;base64,' . DNS2D::getBarcodePNG('https://emp.powerglobal.com.mm/id/'.$visitor->id, 'QRCODE',2.2,2.2)
-												}}" download="{{ htmlspecialchars($visitor->name) }}_{{ $visitor->conf_id }}">Download ID Card</a>
+												}}" download="{{ htmlspecialchars($visitor->conf_id) }}">Download ID Card</a>
 												<a class="text-success dropdown-item py-3" href="/visitors/{{ $visitor->id }}">Edit</a>
 												<button class="text-success dropdown-item py-3" href="#">Delete</button>
 											</div>
