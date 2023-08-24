@@ -7,6 +7,7 @@
     alert('{{ $status['text'] }}');
 </script>
 {{ Session::forget('status'); }}
+@endif
 <div class="row">
 	<div class="col-md-2"></div>
 	<div class="col-md-8 grid-margin stretch-card">
