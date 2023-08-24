@@ -53,8 +53,9 @@
 					<div class="row">
 						<div class="col-md-12">
 							<button class="btn btn-outline-success mb-4" id="settings-trigger2"><i class="mdi mdi-account-plus mr-2"></i>Add Visitor</button>
+							<a href="/visitors/export" class="btn btn-success ml-4 mb-4">Export</a>
 						</div>
-						<div class="col-md-10">
+						<div class="col-md-8">
 							<form action="/visitors" method="GET">
 								@csrf
 								<div class="form-group">
@@ -101,13 +102,15 @@
 							</form>
 						</div>
 						<div class="col-md-2">
-							<form action="/visitors">
-								@csrf
-								<input type="hidden" name="paginate" value="10">
-								<input type="hidden" name="orderBy" value="conf_id">
-								<input type="hidden" name="page" value="1">
-								<input type="submit" name="reset" value="Reset" class="btn btn-success float-right">
-							</form>
+							<nobr>
+								<form action="/visitors">
+									@csrf
+									<input type="hidden" name="paginate" value="10">
+									<input type="hidden" name="orderBy" value="conf_id">
+									<input type="hidden" name="page" value="1">
+									<input type="submit" name="reset" value="Reset" class="btn btn-success float-right">
+								</form>
+							</nobr>
 						</div>
 					</div>
 					<div class="d-md-none mb-4"> </div>
