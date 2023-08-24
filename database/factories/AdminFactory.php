@@ -19,9 +19,9 @@ class AdminFactory extends Factory
     {
         return [
             'name' => 'Super Admin',
-            'email' => 'admin@email.com',
+            'email' => 'admin@emp.powerglobal.com.mm',
             'email_verified_at' => now(),
-            'password' => 'admin123!', // password
+            'password' => 'emp321!', // password
             'remember_token' => Str::random(10),
         ];
     }
