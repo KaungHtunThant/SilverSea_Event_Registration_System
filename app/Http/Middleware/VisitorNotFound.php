@@ -19,6 +19,6 @@ class VisitorNotFound
         if(Session::has('token')) {
             return $next($request);
         }
-        return view('public.visitor_notfound');
+        return redirect('/welcome');
     }
 }

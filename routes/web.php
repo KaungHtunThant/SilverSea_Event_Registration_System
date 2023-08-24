@@ -67,3 +67,7 @@ Route::get('/form', function () {
 });
 
 Route::post('/form', [VisitorController::class, 'form_add']);
+
+Route::get('/welcome', function () {
+    return view('public.visitor_notfound');
+});
