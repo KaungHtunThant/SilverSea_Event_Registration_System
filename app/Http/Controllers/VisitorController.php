@@ -244,6 +244,21 @@ class VisitorController extends Controller
         );
     }
 
+    public function id(Request $request, $id)
+    {
+        $visitor = Visitor::find($id);
+        if ($visitor == Null) {
+            return view('public.visitor_notfound');
+        }
+        return view('admin.visitors.update')
+            ->with('visitor', $visitor)
+            ->with('status', [
+                'type' => 'success',
+                'text' => 'Visitor Details read.'
+            ]
+        );
+    }
+
     public function download(Request $request, $id)
     {
         $visitor = Visitor::find($id);

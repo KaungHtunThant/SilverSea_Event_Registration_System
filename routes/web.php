@@ -7,6 +7,7 @@ use App\Http\Controllers\WinnerController;
 use App\Http\Controllers\VisitorController;
 use App\Http\Middleware\EnsurekeyExist;
 use App\Http\Middleware\ReturntoDashboard;
+use App\Http\Middleware\VisitorNotFound;
 use App\Http\Controllers\TestPreparer;
 
 /*
@@ -43,6 +44,9 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
     //lottery
     Route::get('/lottery', [WinnerController::class, 'rng']);
 });
+
+Route::get('/id/{id}', [VisitorController::class, 'id'])
+    ->middleware(VisitorNotFound::class);
 
 //Public routes
 

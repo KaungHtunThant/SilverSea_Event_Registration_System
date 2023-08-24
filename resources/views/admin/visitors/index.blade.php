@@ -257,7 +257,7 @@
 													'data:image/png;base64,' . DNS2D::getBarcodePNG('https://emp.powerglobal.com.mm/id/'.$visitor->id, 'QRCODE',2.2,2.2)
 												}}" download="{{ htmlspecialchars($visitor->name) }}_{{ $visitor->conf_id }}">Download ID Card</a>
 												<a class="text-success dropdown-item py-3" href="/visitors/{{ $visitor->id }}">Edit</a>
-												<button class="text-danger dropdown-item py-3" href="#">Delete</button>
+												<button class="text-success dropdown-item py-3" href="#">Delete</button>
 											</div>
 										</div>
 									</td>
