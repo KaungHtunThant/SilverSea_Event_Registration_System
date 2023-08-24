@@ -55,7 +55,7 @@
                         <div class="card-body">
                             <p class="mb-4">Total Customers</p>
                             <p class="fs-30 mb-2">{{ $Vtotal }} / 150</p>
-                            <p><nobr>8-Sep - 9-Sep</nobr></p>
+                            <p><nobr>25-Aug - 9-Sep</nobr></p>
                         </div>
                     </div>
                 </div>
