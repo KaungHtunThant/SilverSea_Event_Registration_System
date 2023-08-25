@@ -21,8 +21,8 @@
 <body>
 	<div class="centered">
 		<img src="{{ url('images/emp.png') }}">
-		<h1>Welcome to our KEC Reunion Dinner!</h1>
-		<h3>See you & Stay tune!</h3>
+		<h3>Welcome to our KEC Reunion Dinner!</h3>
+		<h4>See you & Stay tune!</h4>
 	</div>
 </body>
 </html>
