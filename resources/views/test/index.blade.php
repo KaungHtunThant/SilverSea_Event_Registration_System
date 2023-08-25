@@ -7,7 +7,10 @@
 </head>
 <body>
 	@php
-		echo '<img src="data:image/png;base64,' . DNS2D::getBarcodePNG('https://emp.powerglobal.com.mm/id/1234', 'QRCODE',2.2,2.2) . '" alt="barcode"   />';
+		echo '<img src="data:image/png;base64,' . DNS2D::getBarcodePNG('https://emp.powerglobal.com.mm/id/1234', 'QRCODE',10.4,10.4) . '" alt="barcode"   />';
 	@endphp
+	<!-- <a href="@php
+	
+	@endphp" download="qr.svg"> -->
 </body>
 </html>
