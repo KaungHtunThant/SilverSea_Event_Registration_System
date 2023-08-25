@@ -40,16 +40,23 @@ class VisitorController extends Controller
             'paginate' => $request->paginate
         ]);
 
+        if (isset($request->status)) {
+            $status = $request->status;
+        }
+        else{
+            $status = [
+                'type' => 'success',
+                'text' => 'Visitor view read.'
+            ];
+        }
+
         return view('admin.visitors.index')
             ->with('visitors', $visitors)
             ->with('page', $request->page)
             ->with('searchVal', $request->searchVal)
             ->with('orderBy', $request->orderBy)
             ->with('paginate', $request->paginate)
-            ->with('status', [
-                'type' => 'success',
-                'text' => 'Visitor view read.'
-            ]);
+            ->with('status', $status);
     }
 
     public function store(Request $request)

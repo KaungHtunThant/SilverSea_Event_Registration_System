@@ -4,8 +4,25 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>EMP - Welcome</title>
+	<style>
+		body{
+			text-align: center;
+		}
+
+		.centered {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          /* bring your own prefixes */
+          transform: translate(-50%, -50%);
+        }
+	</style>
 </head>
 <body>
-	Welcome
+	<div class="centered">
+		<img src="{{ url('images/emp.png') }}">
+		<h1>Welcome to our KEC Reunion Dinner!</h1>
+		<h3>See you & Stay tune!</h3>
+	</div>
 </body>
 </html>

@@ -40,41 +40,29 @@
 @endsection
 @section('contents')
     <div class="row">
-        <div class="col-md-4 stretch-card">
-            <div class="row">
-                <div class="col-12 mb-4 transparent stretch-card" id="settings-trigger2">
-                    <div class="card card-success">
-                        <div class="card-body text-center">
-                            <p class="">New Customer</p>
-                            <i class="mdi mdi-account-plus fs-50"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-12 mb-4 transparent">
-                    <div class="card card-dark-blue">
-                        <div class="card-body">
-                            <p class="mb-4">Total Customers</p>
-                            <p class="fs-30 mb-2">{{ $Vtotal }} / 150</p>
-                            <p><nobr>25-Aug - 9-Sep</nobr></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-12 mb-4 transparent">
-                    <div class="card card-light-blue">
-                        <div class="card-body">
-                            <p class="mb-4">Today’s Customers</p>
-                            <p class="fs-30 mb-2">{{ $Vtoday }}</p>
-                            <p>{{ date('d-M') }}</p>
-                        </div>
-                    </div>
+        <div class="col-12 col-md-4 mb-4 transparent stretch-card" id="settings-trigger2">
+            <div class="card card-success">
+                <div class="card-body text-center">
+                    <p class="">New Customer</p>
+                    <i class="mdi mdi-account-plus fs-50"></i>
                 </div>
             </div>
         </div>
-        <div class="col-md-8 stretch-card mb-4">
-            <div class="card">
+        <div class="col-6 col-md-4 mb-4 transparent">
+            <div class="card card-dark-blue">
                 <div class="card-body">
-                    <p class="card-title">Today's Entry Chart</p>
-                    <canvas id="lineChart"></canvas>
+                    <p class="mb-4">Total Customers</p>
+                    <p class="fs-30 mb-2">{{ $Vtotal }} / 150</p>
+                    <p><nobr>25-Aug - 9-Sep</nobr></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 mb-4 transparent">
+            <div class="card card-light-blue">
+                <div class="card-body">
+                    <p class="mb-4">Today’s Attendance</p>
+                    <p class="fs-30 mb-2">{{ $Vtoday }}</p>
+                    <p>{{ date('d-M') }}</p>
                 </div>
             </div>
         </div>
@@ -241,60 +229,6 @@
     </div>
 @endsection
 @section('customjs')
-<script type="text/javascript">
-    'use strict';
-  var entry_data = {
-    labels: ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "8PM", "12AM"],
-    datasets: [{
-      label: '# of Votes',
-      data: ["{{ $entry['9am'] }}", "{{ $entry['10am'] }}", "{{ $entry['11am'] }}", "{{ $entry['12pm'] }}", "{{ $entry['1pm'] }}", "{{ $entry['2pm'] }}", "{{ $entry['3pm'] }}", "{{ $entry['4pm'] }}", "0", "{{ $entry['8pm'] }}", "0"],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(54, 162, 235, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)',
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(255, 206, 86, 1)'
-      ],
-      borderWidth: 1,
-      fill: true
-    }]
-  };
-  var options = {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
-    },
-    legend: {
-      display: false
-    },
-    elements: {
-      point: {
-        radius: 0
-      }
-    }
-
-  };
-</script>
-<script src="{{ url('js/chart.js') }}"></script>
 <script type="text/javascript">
     // Turn off the value scrolling behaviour on all fields
     document.addEventListener("wheel", function(event){
