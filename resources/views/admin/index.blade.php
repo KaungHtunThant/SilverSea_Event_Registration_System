@@ -4,7 +4,7 @@
     <div class="theme-setting-wrapper">
         <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
             <i class="settings-close ti-close"></i>
-            <p class="settings-heading text-success">Add New Visitor</p>
+            <p class="settings-heading text-light">Add New Visitor</p>
             <form action="/visitors" method="POST" class="mx-2 mt-3" autocomplete="off">
                 @csrf
                 <input type="hidden" name="orderBy" value="conf_id">
@@ -71,8 +71,27 @@
                         </div>
                         <input type="text" name="company" class="form-control" placeholder="Enter Company.">
                     </div>
+                    <p>Interests</p>
+                    <div class="input-group mb-1">
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Real Estate and Properties ">
+                        <label class="form-check-label ml-5" for="defaultCheck1">
+                            Real Estate and Properties
+                        </label>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Constructions">
+                        <label class="form-check-label ml-5" for="defaultCheck1">
+                            Constructions
+                        </label>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input class="w-auto form-check-input ml-3" type="checkbox" name="pos[]" value="Renewable Energy and EV">
+                        <label class="form-check-label ml-5" for="defaultCheck1">
+                            Renewable Energy and EV
+                        </label>
+                    </div>
                     <hr>
-                    <input type="submit" name="Submit" value="Create" class="btn btn-success my-2">
+                    <input type="submit" name="Submit" value="Create" class="btn btn-danger my-2">
                     <br class="mb-5">
                     <br class="mb-3">
                 </div>
@@ -83,7 +102,7 @@
 @section('contents')
     <div class="row">
         <div class="col-12 col-md-4 col-lg-3 col-xl-2 mb-4 transparent stretch-card" id="settings-trigger2">
-            <div class="card card-success">
+            <div class="card card-light-danger">
                 <div class="card-body text-center">
                     <p class="">New Visitor</p>
                     <i class="mdi mdi-account-plus fs-50"></i>
@@ -100,7 +119,7 @@
             </div>
         </div>
         <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-4 transparent">
-            <div class="card card-light-danger">
+            <div class="card card-light-blue">
                 <div class="card-body">
                     <p class="mb-4">Today’s Visitors</p>
                     <p class="fs-30 mb-2">{{ $Vtoday }}</p>
@@ -180,7 +199,7 @@
                                             <div class="input-group">
                                                 <input type="text" name="searchVal" class="form-control form-control-sm" value="{{ $searchVal }}">
                                                 <div class="input-group-append">
-                                                    <input type="submit" name="search" class="btn btn-sm btn-success" value="Search">
+                                                    <input type="submit" name="search" class="btn btn-sm btn-danger" value="Search">
                                                 </div>
                                             </div>
                                         </div>
@@ -194,7 +213,7 @@
                                 <input type="hidden" name="paginate" value="10">
                                 <input type="hidden" name="orderBy" value="attendances.created_at">
                                 <input type="hidden" name="page" value="1">
-                                <input type="submit" name="reset" value="Reset" class="btn btn-success float-right">
+                                <input type="submit" name="reset" value="Reset" class="btn btn-danger float-right">
                             </form>
                         </div>
                     </div>
@@ -337,11 +356,11 @@
                                     <td>{{ $visitor->vis_created_at }}</td>
                                     <td>
                                         <div class="dropdown">
-                                            <button class="btn btn-outline-success btn-sm" type="button" id="{{ $visitor->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn btn-outline-danger btn-sm" type="button" id="{{ $visitor->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="mdi mdi-dots-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
-                                                <a class="text-success dropdown-item py-3" href="#">Download ID Card</a>
+                                                <a class="text-danger dropdown-item py-3" href="/visitors/download/{{ $visitor->id }}">Download ID Card</a>
                                                 <a class="text-danger dropdown-item py-3" href="#">Delete</a>
                                             </div>
                                         </div>
@@ -410,7 +429,7 @@
               ctx = chart.chart.ctx;
       
           ctx.restore();
-          var fontSize = 3.125;
+          var fontSize = 2.125;
           ctx.font = "500 " + fontSize + "em sans-serif";
           ctx.textBaseline = "middle";
           ctx.fillStyle = "#13381B";
@@ -508,7 +527,7 @@
         'rgba(255, 206, 86, 1)'
       ],
       borderWidth: 1,
-      fill: false
+      fill: true
     }]
   };
   var options = {

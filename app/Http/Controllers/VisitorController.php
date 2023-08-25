@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Visitor;
 use App\Models\Interest;
 use Illuminate\Support\Facades\Session;
+use Knp\Snappy\Image;
+use App\Exports\VisitorsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class VisitorController extends Controller
 {
@@ -256,5 +259,10 @@ class VisitorController extends Controller
                 'text' => 'Visitor Details read.'
             ]
         );
+    }
+
+    public function export()
+    {
+        return Excel::download(new VisitorsExport, 'visitors.xlsx');
     }
 }

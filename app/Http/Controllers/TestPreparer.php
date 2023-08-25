@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Visitor;
+use App\Models\Attendance;
 
 class TestPreparer extends Controller
 {
@@ -29,6 +30,13 @@ class TestPreparer extends Controller
         $visitors = Visitor::factory()->count(10)->create();
 
         return $visitors;
+    }
+
+    public function createAttendances()
+    {
+        $att = Attendance::factory()->count(10)->create();
+
+        return $att;
     }
 
     // public function barcode(Request $request)

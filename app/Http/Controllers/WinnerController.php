@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Visitor;
 use App\Models\Winner;
+use App\Models\Attendance;
 use Illuminate\Support\Facades\DB;
 
 class WinnerController extends Controller
 {
     public function index(Request $request)
     {
-        if (!isset($request->orderBy)) {
-            $request->orderBy = 'winners.created_at';
-        }
+        // if (!isset($request->orderBy)) {
+        //     $request->orderBy = 'winners.created_at';
+        // }
         if (!isset($request->paginate)) {
             $request->paginate = '10';
         }
@@ -81,16 +82,55 @@ class WinnerController extends Controller
     {
         // $visitors = Visitor::factory()->count(10)->create(); //delete me after testing
 
-        $visitor = Visitor::all()->random();    //This is suppose to be visitors who has attendance with today's date
+        $visitor = Attendance::whereDate('created_at', date('Y-m-d'))
+                    ->inRandomOrder()
+                    ->first();
+                    // ->get();
+
+        // echo('<script>console.log("'. var_dump($visitor) .'")</script>');
+        $wtmp = Winner::whereDate('created_at', date('Y-m-d'))
+                ->where('vis_id', $visitor->vis_id)
+                ->get();
+
+        while (isset($wtmp->id)) {
+            $visitor = Attendance::whereDate('created_at', date('Y-m-d'))
+                    ->groupBy('vis_id')
+                    ->inRandomOrder()
+                    ->first();
+
+            $wtmp = Winner::where('vis_id', $visitor->vis_id)
+                ->whereDate('created_at', date('Y-m-d'))
+                ->get();
+        }
+            //This is suppose to be visitors who has attendance with today's date
 
         $winner = Winner::create([
-            'vis_id' => $visitor->id,
+            'vis_id' => $visitor->vis_id,
             'desc' => 'toBeFilled',
         ]);
 
-        return redirect('/test')->with('status', [
-            'type' => 'success',
-            'winner' => $visitor
+        $winner_full =  DB::table('winners')
+                ->where('vis_id', $winner->vis_id)
+                ->join('visitors', 'winners.vis_id', '=', 'visitors.id')
+                ->select(
+                    'winners.id as id',
+                    'visitors.conf_id as conf_id',
+                    'visitors.name as name',
+                    'visitors.email as email',
+                    'visitors.phone as phone',
+                    'visitors.company as company',
+                    'visitors.sex as sex',
+                    'visitors.position as position',
+                    'visitors.card as card',
+                    'winners.created_at as win_created_at',
+                    'visitors.created_at as vis_created_at',
+                )->first();
+
+        return view('admin.lottery.index')
+            ->with('winner', $winner_full)
+            ->with('status', [
+                'type' => 'success',
+                'text' => 'winner created.'
         ]);
     }
 }

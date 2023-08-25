@@ -34,6 +34,7 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
     Route::get('/users/{id}', [AuthController::class, 'pwreset']);
 
     //visitors
+    Route::get('/visitors/export', [VisitorController::class, 'export']);
     Route::resource('/visitors', VisitorController::class);
     Route::get('/visitors/download/{id}', [VisitorController::class, 'download']);
 
@@ -41,10 +42,9 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
     Route::get('/winners', [WinnerController::class, 'index']);
 
     //lottery
-    Route::get('/lottery', function () {
-        // return view('admin.lottery.index'); 
-        return redirect('/?page=1&paginate=10&orderBy=attendances.created_at');
-    });
+    Route::get('/lottery', [WinnerController::class, 'rng']);
+
+
 });
 
 //Public routes

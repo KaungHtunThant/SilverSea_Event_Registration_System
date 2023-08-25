@@ -11,7 +11,7 @@
 				<input type="hidden" name="page" value="1">
 				<input type="hidden" name="pagination" value="10">
                 <div class="form-group">
-                	<p>Name</p>
+                	<p>Name (*)</p>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -38,7 +38,7 @@
                         </div>
                         <input type="email" name="email" class="form-control" placeholder="Enter email.">
                     </div>
-                    <p>Gender</p>
+                    <p>Gender (*)</p>
                     <div class="mb-3">
 						<div class="form-check">
 							<label class="form-check-label">
@@ -71,6 +71,25 @@
                         </div>
                         <input type="text" name="company" class="form-control" placeholder="Enter Company.">
                     </div>
+                    <p>Interests</p>
+                    <div class="input-group mb-1">
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Real Estate and Properties ">
+                        <label class="form-check-label ml-5" for="defaultCheck1">
+                            Real Estate and Properties
+                        </label>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Constructions">
+                        <label class="form-check-label ml-5" for="defaultCheck1">
+                            Constructions
+                        </label>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input class="w-auto form-check-input ml-3" type="checkbox" name="pos[]" value="Renewable Energy and EV">
+                        <label class="form-check-label ml-5" for="defaultCheck1">
+                            Renewable Energy and EV
+                        </label>
+                    </div>
                     <hr>
                     <input type="submit" name="Submit" value="Create" class="btn btn-success my-2">
                     <br class="mb-5">
@@ -82,7 +101,7 @@
 @endsection
 @section('contents')
 	<div class="row">
-		<div class="col-md-12 col-lg-10 col-xl-8 grid-margin stretch-card">
+		<div class="col-md-12 col-lg-12 col-xl-10 grid-margin stretch-card">
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title mb-4">Visitors list</h4>

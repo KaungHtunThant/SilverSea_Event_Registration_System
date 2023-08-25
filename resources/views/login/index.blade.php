@@ -16,7 +16,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ url('css/vertical-layout-light/style.css') }}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="{{ url('images/favico.jpg') }}" />
+  <link rel="shortcut icon" href="{{ url('images/logov2_light.png') }}" />
 </head>
 
 <body>
@@ -26,8 +26,8 @@
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-              <div class="brand-logo">
-                <img src="{{ url('images/logo.png') }}" alt="logo">
+              <div class="brand-logo text-center">
+                <img src="{{ url('images/logov2_light.png') }}" alt="logo">
               </div>
               <h6 class="font-weight-light">Sign in to continue.</h6>
               <form class="pt-3" action="/login" method="post">
@@ -39,7 +39,7 @@
                   <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" name="password">
                 </div>
                 <div class="mt-3">
-                  <button class="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
+                  <button class="btn btn-block btn-danger btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                 </div>
               </form>
             </div>

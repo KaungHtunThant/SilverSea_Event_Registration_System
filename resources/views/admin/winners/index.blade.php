@@ -92,10 +92,10 @@
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
-                                            @if($orderBy=='conf_id')
+                                            @if($orderBy=='visitors.conf_id')
                                             btn-link
                                             @endif
-                                            " name="orderBy" value="conf_id">Confirmation ID</button>
+                                            " name="orderBy" value="visitors.conf_id">Confirmation ID</button>
                                         </form>
                                     </th>
                                     <th>
@@ -132,18 +132,6 @@
                                             btn-link
                                             @endif
                                             " name="orderBy" value="email">Email</button>
-                                        </form>
-                                    </th>
-                                    <th>
-                                        <form action="/winners" method="GET">
-                                        	@csrf
-                                            <input type="hidden" name="paginate" value="{{ $paginate }}">
-                                            <input type="hidden" name="page" value="{{ $page }}">
-                                            <button type="submit" class="btn 
-                                            @if($orderBy=='dob')
-                                            btn-link
-                                            @endif
-                                            " name="orderBy" value="dob">Date of Birth</button>
                                         </form>
                                     </th>
                                     <th>
@@ -191,12 +179,11 @@
                                 @foreach ($winners as $winner)
                                 <tr>
                                     <td>{{ ($loop->index)+($paginate * $page)-($paginate-1) }}</td>
-                                    <td>{{ $winner->att_created_at }}</td>
+                                    <td>{{ $winner->win_created_at }}</td>
                                     <td>{{ $winner->conf_id }}</td>
                                     <td class="text-left">{{ $winner->name }}</td>
                                     <td class="text-left">{{ $winner->phone }}</td>
                                     <td class="text-left">{{ $winner->email }}</td>
-                                    <td>{{ $winner->dob }}</td>
                                     <td>{{ $winner->company }}</td>
                                     <td>{{ $winner->sex }}</td>
                                     <td>{{ $winner->vis_created_at }}</td>
