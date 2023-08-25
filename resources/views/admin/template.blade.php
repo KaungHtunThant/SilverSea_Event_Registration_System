@@ -20,7 +20,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ url('css/vertical-layout-light/style.css') }}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="{{ url('images/logov2_light.png') }}" />
+  <link rel="shortcut icon" href="{{ url('images/log.jpg') }}" />
   <style type="text/css">
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
@@ -44,8 +44,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="{{ url('/?orderBy=conf_id&paginate=10&page=1') }}"><img src="{{ url('images/logov2_light.png') }}" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="{{ url('/?orderBy=conf_id&paginate=10&page=1') }}"><img src="{{ url('images/logov2_light.png') }}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="{{ url('/?orderBy=conf_id&paginate=10&page=1') }}"><img src="{{ url('images/logo.png') }}" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="{{ url('/?orderBy=conf_id&paginate=10&page=1') }}"><img src="{{ url('images/logo.png') }}" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -137,7 +137,7 @@
         </div>
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="/?orderBy=conf_id&paginate=10&page=1" target="_blank" class="">IMS Silver Sea Event Registration System</a> by <a href="https://www.powerglobal.com.mm"><span class="text-danger">Power</span> <span class="text-secondary">GLobal</span></a>. All rights reserved.</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="/?orderBy=conf_id&paginate=10&page=1" target="_blank" class="">IMS Silver Sea Event Registration System</a> by <a href="https://www.powerglobal.com.mm"><span class="text-success">Power</span> <span class="text-secondary">GLobal</span></a>. All rights reserved.</span>
           </div>
         </footer>
         <!-- partial -->

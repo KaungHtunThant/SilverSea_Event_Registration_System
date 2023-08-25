@@ -45,7 +45,7 @@
                                             <div class="input-group">
                                                 <input type="text" name="searchVal" class="form-control form-control-sm" value="{{ $searchVal }}">
                                                 <div class="input-group-append">
-                                                    <input type="submit" name="search" class="btn btn-sm btn-primary" value="Search">
+                                                    <input type="submit" name="search" class="btn btn-sm btn-success" value="Search">
                                                 </div>
                                             </div>
                                         </div>
@@ -59,7 +59,7 @@
                                 <input type="hidden" name="paginate" value="10">
                                 <input type="hidden" name="orderBy" value="winners.created_at">
                                 <input type="hidden" name="page" value="1">
-                                <input type="submit" name="reset" value="Reset" class="btn btn-primary float-right">
+                                <input type="submit" name="reset" value="Reset" class="btn btn-success float-right">
                             </form>
                         </div>
                     </div>
@@ -189,11 +189,11 @@
                                     <td>{{ $winner->vis_created_at }}</td>
                                     <td>
                                         <div class="dropdown">
-                                            <button class="btn btn-outline-primary btn-sm" type="button" id="{{ $winner->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn btn-outline-success btn-sm" type="button" id="{{ $winner->id }}-details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="mdi mdi-dots-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="{{ $winner->id }}-details">
-                                                <a class="text-primary dropdown-item py-3" href="#">Download ID Card</a>
+                                                <a class="text-success dropdown-item py-3" href="#">Download ID Card</a>
                                                 <a class="text-danger dropdown-item py-3" href="#">Delete</a>
                                             </div>
                                         </div>
