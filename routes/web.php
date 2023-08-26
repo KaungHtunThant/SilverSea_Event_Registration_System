@@ -61,8 +61,8 @@ Route::get('/barcode', function () {
     return view('test.index');
 });
 
-Route::get('/form', function () {
-    return view('form.index');
-});
+// Route::get('/form', function () {
+    // return view('form.index');
+// });
 
-Route::post('/form', [VisitorController::class, 'form_add']);
+// Route::post('/form', [VisitorController::class, 'form_add']);
