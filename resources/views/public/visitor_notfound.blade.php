@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div class="centered">
-		<img src="{{ url('images/emp.jpg') }}">
+		<img src="{{ url('images/emp.jpg') }}" style="width: 100%;">
 		<h3>Welcome to our KEC Reunion Dinner!</h3>
 		<h4>See you & Stay tune!</h4>
 	</div>
