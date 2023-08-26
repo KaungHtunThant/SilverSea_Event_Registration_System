@@ -128,7 +128,7 @@ class AttendanceController extends Controller
             ->with('orderBy', $request->orderBy)
             ->with('paginate', $request->paginate)
             ->with('Vtotal', $Vtotal)
-            ->with('V18 August 2023', $V18 August 2023)
+            ->with('Vtoday', $Vtoday)
             ->with('Mtotal', $Mtotal)
             ->with('Ftotal', $Ftotal)
             ->with('intr', $intr)
