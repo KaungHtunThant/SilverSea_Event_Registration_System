@@ -105,9 +105,6 @@
 							<nobr>
 								<form action="/visitors">
 									@csrf
-									<input type="hidden" name="paginate" value="10">
-									<input type="hidden" name="orderBy" value="conf_id">
-									<input type="hidden" name="page" value="1">
 									<input type="submit" name="reset" value="Reset" class="btn btn-success float-right">
 								</form>
 							</nobr>
