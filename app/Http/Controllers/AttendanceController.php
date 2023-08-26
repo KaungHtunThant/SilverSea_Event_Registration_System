@@ -115,7 +115,7 @@ class AttendanceController extends Controller
         ];
         
         $Vtotal = Visitor::get()->count();
-        $V18 August 2023 = Visitor::whereDate('created_at', date('Y-m-d', strtotime('18 August 2023')))
+        $Vtoday = Visitor::whereDate('created_at', date('Y-m-d', strtotime('18 August 2023')))
                     ->count();
 
         $Mtotal = Visitor::where('sex','Male')->count();
