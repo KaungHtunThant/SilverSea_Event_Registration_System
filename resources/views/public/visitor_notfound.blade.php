@@ -18,7 +18,7 @@
         }
 	</style>
 </head>
-<body>
+<body bgcolor="#fff">
 	<div class="centered">
 		<img src="{{ url('images/emp.jpg') }}" style="width: 100%;">
 		<h3>Welcome to our KEC Reunion Dinner!</h3>
