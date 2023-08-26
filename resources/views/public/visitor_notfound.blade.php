@@ -7,6 +7,7 @@
 	<style>
 		body{
 			text-align: center;
+			color: #000;
 		}
 
 		.centered {
