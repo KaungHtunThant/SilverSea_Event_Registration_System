@@ -123,7 +123,7 @@
                 <div class="card-body">
                     <p class="mb-4">Today’s Visitors</p>
                     <p class="fs-30 mb-2">{{ $Vtoday }}</p>
-                    <p>18-Aug</p>
+                    <p>19-Aug</p>
                 </div>
             </div>
         </div>
