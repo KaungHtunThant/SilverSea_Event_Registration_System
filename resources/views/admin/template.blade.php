@@ -21,6 +21,10 @@
   <link rel="stylesheet" href="{{ url('css/vertical-layout-light/style.css') }}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ url('images/emp.png') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
+
   <style type="text/css">
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
@@ -36,6 +40,10 @@
 
         .w-auto{
             width: auto;
+        }
+
+        .text-gugi{
+          font-family: 'Gugi', cursive;
         }
     </style>
 </head>
@@ -137,7 +145,7 @@
         </div>
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="/?orderBy=conf_id&paginate=10&page=1" target="_blank" class="">Event Pass System</a> by <a href="https://www.powerglobal.com.mm"><span class="text-danger">Power</span> <span class="text-secondary">GLobal</span></a>. All rights reserved.</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="/?orderBy=conf_id&paginate=10&page=1" target="_blank" class="">Event Pass System</a> by <a href="https://www.powerglobal.com.mm"><span class="text-danger text-gugi">Power</span> <span class="text-dark text-gugi">GLobal</span></a>. All rights reserved.</span>
           </div>
         </footer>
         <!-- partial -->
