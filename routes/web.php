@@ -22,6 +22,7 @@ use App\Http\Controllers\TestPreparer;
 */
 //Private routes
 Route::middleware(EnsurekeyExist::class)->group(function () {
+    Route::get('/attendance/export', [AttendanceController::class, 'export']);
     Route::get('/', [AttendanceController::class, 'index']);
 
     Route::get('/users', [AuthController::class, 'index']);

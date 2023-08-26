@@ -8,6 +8,8 @@ use App\Models\Visitor;
 use App\Models\Interest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use App\Exports\AttendanceExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AttendanceController extends Controller
 {
@@ -112,5 +114,10 @@ class AttendanceController extends Controller
                 'type' => 'success',
                 'text' => 'Attendances view read.'
             ]);
+    }
+
+    public function export()
+    {
+        return Excel::download(new AttendanceExport, 'customers_attendance_'.time().'.xlsx');
     }
 }
