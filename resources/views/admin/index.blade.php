@@ -209,8 +209,8 @@
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
                                                 <a class="text-success dropdown-item py-3" href="{{
-                                                    'data:image/png;base64,' . DNS2D::getBarcodePNG('https://emp.powerglobal.com.mm/id/'.$visitor->id, 'QRCODE',10.4,10.4)
-                                                }}" download="{{ htmlspecialchars($visitor->vis_id) }}">Download QR</a>
+                                                    'data:image/png;base64,' . DNS2D::getBarcodePNG('https://emp.powerglobal.com.mm/id/'.$visitor->vis_id, 'QRCODE',10.4,10.4)
+                                                }}" download="{{ htmlspecialchars($visitor->conf_id) }}">Download QR</a>
                                                 <a class="text-success dropdown-item py-3" href="#">Delete</a>
                                             </div>
                                         </div>
