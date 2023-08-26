@@ -29,6 +29,7 @@ class AttendanceController extends Controller
             $visitors =  DB::table('attendances')
                 ->join('visitors', 'attendances.vis_id', '=', 'visitors.id')
                 ->select(
+                    'attendances.vis_id as vis_id',
                     'attendances.id as id',
                     'visitors.conf_id as conf_id',
                     'visitors.phone as phone',
@@ -43,6 +44,7 @@ class AttendanceController extends Controller
             $visitors =  DB::table('attendances')
                 ->join('visitors', 'attendances.vis_id', '=', 'visitors.id')
                 ->select(
+                    'attendances.vis_id as vis_id',
                     'attendances.id as id',
                     'visitors.conf_id as conf_id',
                     'visitors.phone as phone',
