@@ -75,6 +75,6 @@ Route::get('/welcome', function () {
     return view('public.visitor_notfound');
 });
 
-Route::get('/', function () {
-    return redirect('/welcome');
-});
+// Route::get('/', function () {
+//     return redirect('/welcome');
+// });
