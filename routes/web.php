@@ -21,53 +21,53 @@ use App\Http\Controllers\TestPreparer;
 |
 */
 // Private routes
-Route::middleware(EnsurekeyExist::class)->group(function () {
-    Route::get('/attendance/export', [AttendanceController::class, 'export']);
-    Route::get('/', [AttendanceController::class, 'index']);
+// Route::middleware(EnsurekeyExist::class)->group(function () {
+//     Route::get('/attendance/export', [AttendanceController::class, 'export']);
+//     Route::get('/', [AttendanceController::class, 'index']);
 
-    Route::get('/users', [AuthController::class, 'index']);
+//     Route::get('/users', [AuthController::class, 'index']);
 
-    Route::post('/users', [AuthController::class, 'register']);
+//     Route::post('/users', [AuthController::class, 'register']);
 
-    Route::get('/logout', [AuthController::class, 'logout']);
+//     Route::get('/logout', [AuthController::class, 'logout']);
 
-    Route::patch('/users/{id}', [AuthController::class, 'update']);
+//     Route::patch('/users/{id}', [AuthController::class, 'update']);
 
-    Route::get('/users/{id}', [AuthController::class, 'pwreset']);
+//     Route::get('/users/{id}', [AuthController::class, 'pwreset']);
 
-    //visitors
-    Route::get('/visitors/export', [VisitorController::class, 'export']);
-    Route::resource('/visitors', VisitorController::class);
+//     //visitors
+//     Route::get('/visitors/export', [VisitorController::class, 'export']);
+//     Route::resource('/visitors', VisitorController::class);
 
-    //winners
-    Route::get('/winners', [WinnerController::class, 'index']);
+//     //winners
+//     Route::get('/winners', [WinnerController::class, 'index']);
 
-    //lottery
-    Route::get('/lottery', [WinnerController::class, 'rng']);
+//     //lottery
+//     Route::get('/lottery', [WinnerController::class, 'rng']);
 
 
-});
+// });
 
 Route::get('/id/{id}', [VisitorController::class, 'id'])
     ->middleware(VisitorNotFound::class);
 
-// Public routes
+// // Public routes
 
-Route::get('/login', function () {
-    return view('login.index');
-})->middleware(ReturntoDashboard::class);
+// Route::get('/login', function () {
+//     return view('login.index');
+// })->middleware(ReturntoDashboard::class);
 
-Route::post('/login', [AuthController::class, 'login']);
+// Route::post('/login', [AuthController::class, 'login']);
 
-Route::post('/winners', [WinnerController::class, 'rng']);
+// Route::post('/winners', [WinnerController::class, 'rng']);
 
-Route::get('/barcode', function () {
-    return view('test.index');
-});
+// Route::get('/barcode', function () {
+//     return view('test.index');
+// });
 
-Route::get('/form', function () {
-    return view('form.index');
-});
+// Route::get('/form', function () {
+//     return view('form.index');
+// });
 
 // Route::post('/form', [VisitorController::class, 'form_add']);
 
@@ -75,6 +75,6 @@ Route::get('/welcome', function () {
     return view('public.visitor_notfound');
 });
 
-// Route::get('/', function () {
-//     return redirect('/welcome');
-// });
+Route::get('/', function () {
+    return redirect('/welcome');
+});
