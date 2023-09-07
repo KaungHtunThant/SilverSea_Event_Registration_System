@@ -19,6 +19,7 @@ class VisitorFactory extends Factory
     public function definition(): array
     {
         $lastid = Visitor::latest('id')->first();
+        $id = 0;
         if ($lastid == Null) {
             $id = 'EMP-VIS-1001';
         }

@@ -27,7 +27,7 @@ class TestPreparer extends Controller
 
     public function createVisitors()
     {
-        $visitors = Visitor::factory()->count(10)->create();
+        $visitors = Visitor::factory()->count(150)->create();
 
         return $visitors;
     }

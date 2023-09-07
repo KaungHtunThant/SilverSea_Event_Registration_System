@@ -40,8 +40,12 @@ class VisitorController extends Controller
             'paginate' => $request->paginate
         ]);
 
-        if (isset($request->status)) {
-            $status = $request->status;
+        if (Session::has('status')) {
+            $status = [
+                'type' => 'success',
+                'text' => Session::get('text')
+            ];
+            Session::forget('text');
         }
         else{
             $status = [
@@ -61,12 +65,11 @@ class VisitorController extends Controller
 
     public function store(Request $request)
     {
-        if (Visitor::get()->count() > 160) {
+        if (Visitor::get()->count() >= 160) {
             Session::put('status', 'true');
-            return redirect('/visitors?page=1&paginate=10')->with('status', [
-                'type' => 'failed',
-                'text' => 'Customer limit full! Please contact customer service to extend your limit.'
-            ]);
+            Session::put('type', 'failed');
+            Session::put('text', 'Customer limit full! Please contact customer service to extend your limit.');
+            return redirect('/visitors?page=1&paginate=10');
         }
         $fields = $request->validate([
             'conf_id' => 'required|string',
