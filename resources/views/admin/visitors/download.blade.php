@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>IMS Silver Sea - ID Card</title>
+	<title>Power GLobal - ID Card</title>
 	<style type="text/css">
 		html{
 			width: 8.3in;

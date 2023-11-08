@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>IMS Silver Sea - Event Registrar</title>
+  <title>Power GLobal - Event Registrar</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ url('vendors/feather/feather.css') }}">
   <link rel="stylesheet" href="{{ url('vendors/ti-icons/css/themify-icons.css') }}">

@@ -1,5 +1,5 @@
 @extends('admin.template')
-@section('title', 'IMS Silver Sea - Visitor Details')
+@section('title', 'Power GLobal - Visitor Details')
 
 @section('contents')
 <div class="row">
