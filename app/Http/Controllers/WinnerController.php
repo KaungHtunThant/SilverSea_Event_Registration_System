@@ -85,7 +85,14 @@ class WinnerController extends Controller
         $visitor = Attendance::whereDate('created_at', date('Y-m-d'))
                     ->inRandomOrder()
                     ->first();
-                    // ->get();
+        
+        if ($visitor == Null) {
+            return redirect('/winners')->with('status', [
+                'type' => 'failed',
+                'text' => "No visitor attendance records with today's date."
+            ]);
+        }
+
 
         // echo('<script>console.log("'. var_dump($visitor) .'")</script>');
         $wtmp = Winner::whereDate('created_at', date('Y-m-d'))
