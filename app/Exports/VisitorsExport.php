@@ -12,6 +12,11 @@ class VisitorsExport implements FromCollection
     */
     public function collection()
     {
-        return Visitor::all();
+        return Visitor::select('conf_id', 'name', 'phone', 'email', 'sex', 'position', 'company','created_at')->orderBy('conf_id')->get();
+    }
+
+    public function headings(): array
+    {
+        return ['ID', 'Name', 'Phone', 'Email', 'Gender', 'Position', 'Company', 'Registered Date'];
     }
 }
