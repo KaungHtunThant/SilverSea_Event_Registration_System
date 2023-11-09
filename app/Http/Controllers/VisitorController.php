@@ -261,6 +261,28 @@ class VisitorController extends Controller
         );
     }
 
+    public function id(Request $request, $id)
+    {
+        $visitor = Visitor::find($id);
+        if ($visitor == Null) {
+            return view('public.visitor_notfound');
+        }
+
+        $att = Attendance::create([
+            'vis_id' => $id
+        ]);
+
+        Session::put('status', 'true');
+
+        return view('admin.visitors.update')
+            ->with('visitor', $visitor)
+            ->with('status', [
+                'type' => 'success',
+                'text' => 'Attendance recorded successfully.'
+            ]
+        );
+    }
+
     public function export()
     {
         return Excel::download(new VisitorsExport, 'visitors_'.time().'.xlsx');
