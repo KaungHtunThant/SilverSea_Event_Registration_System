@@ -162,10 +162,12 @@ class VisitorController extends Controller
 
         Session::put('status', 'true');
 
-        return view('form.index')->with('status', [
+        return view('admin.visitors.download')
+            ->with('status', [
                 'type' => 'success',
                 'text' => 'Registered successfully! Please inquiry at the counter to recieve your ID.'
-            ]);
+            ])
+            ->with('visitor', $user);
     }
 
     public function update(Request $request, $id)

@@ -16,7 +16,7 @@
 /*			height: 100vh;*/
 			margin: 0px;
 			padding: 0px;
-/*			text-align: center;*/
+			text-align: center;
 		}
 
 		.card-bg{
@@ -47,6 +47,17 @@
 			padding: 5px;
 			background-color: white;
 			border-radius: 4px;
+		}
+
+		#capture-screenshot{
+			border-radius: 25px;
+			background-color: red;
+			padding: 5px;
+			color: white;
+			width: 100px;
+			height: 50px;
+			font-size: 20px;
+			text-align: center;
 		}
 
 		h1{

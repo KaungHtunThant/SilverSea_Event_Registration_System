@@ -44,12 +44,6 @@
 </head>
 
 <body>
-    @if(Session::has('status'))
-    <script type="text/javascript">
-        alert('{{ $status['text'] }}');
-    </script>
-    {{ Session::forget('status'); }}
-    @endif
     <div class="page-wrapper bg-white p-b-100 font-robo">
         <div class="wrapper wrapper--w680">
         	<img src="{{ url('images/mg_banner.jpg') }}" class="w-100">
@@ -97,7 +91,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="row row-space">
+                        <div class="row row-space">
                             <div class="col-2 text-grey">
                                 <h5 style="margin-top: 8px;">INTERESTS <span style="color: #CE2029;">*</span></h5>
                                 <br>
@@ -120,7 +114,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                         <div class="p-t-20">
                             <button class="btn btn--radius btn--green" id="checkBtn">Submit</button>
                             <!-- <div class="btn btn--radius btn--green" id="checkBtn"> -->
