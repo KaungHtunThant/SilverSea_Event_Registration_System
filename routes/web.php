@@ -44,7 +44,9 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
     //lottery
     Route::get('/lottery', [WinnerController::class, 'rng']);
 
-
+    //attendance
+    Route::get('/id/{id}', [VisitorController::class, 'id'])
+    ->middleware(VisitorNotFound::class);
 });
 
 //Public routes
