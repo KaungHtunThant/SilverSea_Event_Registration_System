@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Knp\Snappy\Image;
 use App\Exports\VisitorsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Attendance;
 
 class VisitorController extends Controller
 {

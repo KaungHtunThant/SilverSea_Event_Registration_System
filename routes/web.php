@@ -6,6 +6,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\WinnerController;
 use App\Http\Controllers\VisitorController;
 use App\Http\Middleware\EnsurekeyExist;
+use App\Http\Middleware\VisitorNotFound;
 use App\Http\Middleware\ReturntoDashboard;
 use App\Http\Controllers\TestPreparer;
 
@@ -37,6 +38,7 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
     Route::get('/visitors/export', [VisitorController::class, 'export']);
     Route::resource('/visitors', VisitorController::class);
     Route::get('/visitors/download/{id}', [VisitorController::class, 'download']);
+    Route::post('/visitors/download/{id}', [VisitorController::class, 'download']);
 
     //winners
     Route::get('/winners', [WinnerController::class, 'index']);
