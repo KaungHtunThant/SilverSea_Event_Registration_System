@@ -4,8 +4,10 @@ namespace App\Exports;
 
 use App\Models\Visitor;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class VisitorsExport implements FromCollection
+class VisitorsExport implements FromCollection, WithHeadings, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection

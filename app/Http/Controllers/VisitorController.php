@@ -263,6 +263,6 @@ class VisitorController extends Controller
 
     public function export()
     {
-        return Excel::download(new VisitorsExport, 'visitors.xlsx');
+        return Excel::download(new VisitorsExport, 'visitors_'.time().'.xlsx');
     }
 }
