@@ -108,6 +108,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<button class="btn btn-outline-success mb-4" id="settings-trigger2"><i class="mdi mdi-account-plus mr-2"></i>Add Visitor</button>
+							<a href="/visitors/export" class="btn btn-success ml-4 mb-4">Export</a>
 						</div>
 						<div class="col-md-10">
 							<form action="/visitors" method="GET">
