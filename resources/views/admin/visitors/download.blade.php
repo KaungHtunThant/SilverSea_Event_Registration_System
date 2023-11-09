@@ -79,7 +79,7 @@
 			<br>
 			<div>
 				@php
-					echo '<img src="data:image/png;base64,' . DNS2D::getBarcodePNG('https://emp.powerglobal.com.mm/id/'.$visitor->id, 'QRCODE',3.3,3.3) . '" alt="barcode"/>';
+					echo '<img src="data:image/png;base64,' . DNS2D::getBarcodePNG('http://192.168.30.18:8080/id/'.$visitor->id, 'QRCODE',3.3,3.3) . '" alt="barcode"/>';
 				@endphp
 			</div>
 			<br>
