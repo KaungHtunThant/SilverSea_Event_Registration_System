@@ -34,6 +34,7 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
     Route::get('/users/{id}', [AuthController::class, 'pwreset']);
 
     //visitors
+    Route::get('/visitors/export', [VisitorController::class, 'export']);
     Route::resource('/visitors', VisitorController::class);
     Route::get('/visitors/download/{id}', [VisitorController::class, 'download']);
 
@@ -42,6 +43,8 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
 
     //lottery
     Route::get('/lottery', [WinnerController::class, 'rng']);
+
+
 });
 
 //Public routes
