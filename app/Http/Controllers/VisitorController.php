@@ -162,7 +162,7 @@ class VisitorController extends Controller
 
         Session::put('status', 'true');
 
-        return view('admin.visitors.qr')
+        return view('admin.visitors.download')
             ->with('status', [
                 'type' => 'success',
                 'text' => 'Registered successfully! Please inquiry at the counter to recieve your ID.'
@@ -255,7 +255,7 @@ class VisitorController extends Controller
                 'text' => 'Visitor record deletion failed! Visitor not found.'
             ]);
         }
-        return view('admin.visitors.qr')
+        return view('admin.visitors.download')
             ->with('visitor', $visitor)
             ->with('status', [
                 'type' => 'success',

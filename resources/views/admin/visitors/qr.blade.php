@@ -4,8 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Registration</title>
-	<link rel="stylesheet" href="{{ url('vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
 	<style type="text/css">
+		body{
+			margin: 0px;
+			padding: 0px;
+		}
+
 		.bg-img{
 			background-image: url('{{ url("images/mg_bg_final.jpg") }}');
 			background-size: cover;
@@ -16,8 +20,8 @@
 	</style>
 </head>
 <body>
-	<div class="container m-0" id="printarea">
-		<div class="box bg-img w-100 m-0 p-0">
+	<div class="container p-0" id="printarea">
+		<div class="box bg-img w-100 p-0">
 			Hi
 		</div>
 	</div>
