@@ -4,7 +4,7 @@
     <div class="theme-setting-wrapper">
         <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
             <i class="settings-close ti-close"></i>
-            <p class="settings-heading text-light">Add New Visitor</p>
+            <p class="settings-heading text-danger">Add New Visitor</p>
             <form action="/visitors" method="POST" class="mx-2 mt-3" autocomplete="off">
                 @csrf
                 <input type="hidden" name="orderBy" value="conf_id">
@@ -38,30 +38,6 @@
                         </div>
                         <input type="email" name="email" class="form-control" placeholder="Enter email.">
                     </div>
-                    <p>Gender</p>
-                    <div class="mb-3">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="sex" id="optionsRadios1" value="Male" checked>
-                                Male
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="sex" id="optionsRadios2" value="Female">
-                                Female
-                            </label>
-                        </div>
-                    </div>
-                    <p>Occupation</p>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="mdi mdi-account-multiple"></i>
-                            </span>
-                        </div>
-                        <input type="text" name="position" class="form-control" placeholder="Enter Occupation." required>
-                    </div>
                     <p>Company/ Organization</p>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -73,21 +49,39 @@
                     </div>
                     <p>Interests</p>
                     <div class="input-group mb-1">
-                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Real Estate and Properties ">
-                        <label class="form-check-label ml-5" for="defaultCheck1">
-                            Real Estate and Properties
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Clothings" id="pos1">
+                        <label class="form-check-label ml-5" for="pos1">
+                            Clothings
                         </label>
                     </div>
                     <div class="input-group mb-1">
-                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Constructions">
-                        <label class="form-check-label ml-5" for="defaultCheck1">
-                            Constructions
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Fabrics and Accessories" id="pos2">
+                        <label class="form-check-label ml-5" for="pos2">
+                            Fabrics and Accessories
                         </label>
                     </div>
                     <div class="input-group mb-1">
-                        <input class="w-auto form-check-input ml-3" type="checkbox" name="pos[]" value="Renewable Energy and EV">
-                        <label class="form-check-label ml-5" for="defaultCheck1">
-                            Renewable Energy and EV
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Machinery" id="pos3">
+                        <label class="form-check-label ml-5" for="pos3">
+                            Machinery
+                        </label>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Bags" id="pos4">
+                        <label class="form-check-label ml-5" for="pos4">
+                            Bags
+                        </label>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Shoes" id="pos5">
+                        <label class="form-check-label ml-5" for="pos5">
+                            Shoes
+                        </label>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Others" id="pos6">
+                        <label class="form-check-label ml-5" for="pos6">
+                            Others
                         </label>
                     </div>
                     <hr>
@@ -114,7 +108,7 @@
                 <div class="card-body">
                     <p class="mb-4">Total Visitors</p>
                     <p class="fs-30 mb-2">{{ $Vtotal }}</p>
-                    <p><nobr>18-Aug - 20-Aug</nobr></p>
+                    <p><nobr>11-Nov - 10-Dec</nobr></p>
                 </div>
             </div>
         </div>
@@ -129,17 +123,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-3 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-4">Visitors' Genders</h4>
-                    <br>
-                    <canvas id="gender-chart"></canvas>
-                    <div id="gender-legend"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 grid-margin stretch-card">
+        <div class="col-lg-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <p class="card-title">Visitors Interests Chart</p>
@@ -148,7 +132,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-5 grid-margin stretch-card">
+        <div class="col-lg-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <p class="card-title">Today's Entry Chart</p>
@@ -294,34 +278,10 @@
                                             <input type="hidden" name="paginate" value="{{ $paginate }}">
                                             <input type="hidden" name="page" value="{{ $page }}">
                                             <button type="submit" class="btn 
-                                            @if($orderBy=='position')
-                                            btn-link text-warning
-                                            @endif
-                                            " name="orderBy" value="position">Occupation</button>
-                                        </form>
-                                    </th>
-                                    <th>
-                                        <form action="/" method="GET">
-                                            @csrf
-                                            <input type="hidden" name="paginate" value="{{ $paginate }}">
-                                            <input type="hidden" name="page" value="{{ $page }}">
-                                            <button type="submit" class="btn 
                                             @if($orderBy=='company')
                                             btn-link text-warning
                                             @endif
                                             " name="orderBy" value="company">Company</button>
-                                        </form>
-                                    </th>
-                                    <th>
-                                        <form action="/" method="GET">
-                                            @csrf
-                                            <input type="hidden" name="paginate" value="{{ $paginate }}">
-                                            <input type="hidden" name="page" value="{{ $page }}">
-                                            <button type="submit" class="btn 
-                                            @if($orderBy=='sex')
-                                            btn-link text-warning
-                                            @endif
-                                            " name="orderBy" value="sex">Gender</button>
                                         </form>
                                     </th>
                                     <th>
@@ -350,9 +310,7 @@
                                     <td>{{ $visitor->name }}</td>
                                     <td>{{ $visitor->phone }}</td>
                                     <td>{{ $visitor->email }}</td>
-                                    <td>{{ $visitor->position }}</td>
                                     <td>{{ $visitor->company }}</td>
-                                    <td>{{ $visitor->sex }}</td>
                                     <td>{{ $visitor->vis_created_at }}</td>
                                     <td>
                                         <div class="dropdown">
@@ -380,105 +338,35 @@
     </div>
 @endsection
 @section('customjs')
-<script>
-    if ($("#gender-chart").length) {
-      var areaData = {
-        labels: ["Male", "Female", "Other"],
-        datasets: [{
-            data: [{{ $Mtotal }}, {{ $Ftotal }}],
-            backgroundColor: [
-               "rgba(54, 162, 235, 0.5)","rgba(255, 99, 132, 0.5)",
-            ],
-            borderColor: "rgba(0,0,0,0)"
-          }
-        ]
-      };
-      var areaOptions = {
-        responsive: true,
-        maintainAspectRatio: true,
-        segmentShowStroke: false,
-        cutoutPercentage: 78,
-        elements: {
-          arc: {
-              borderWidth: 4
-          }
-        },      
-        legend: {
-          display: false
-        },
-        tooltips: {
-          enabled: true
-        },
-        legendCallback: function(chart) { 
-          var text = [];
-          text.push('<div class="report-chart">');
-            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[0] + '"></div><p class="mb-0">Male</p></div>');
-            text.push('<p class="mb-0">{{ $Mtotal }}</p>');
-            text.push('</div>');
-            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[1] + '"></div><p class="mb-0">Female</p></div>');
-            text.push('<p class="mb-0">{{ $Ftotal }}</p>');
-            text.push('</div>');
-          text.push('</div>');
-          return text.join("");
-        },
-      }
-      var northAmericaChartPlugins = {
-        beforeDraw: function(chart) {
-          var width = chart.chart.width,
-              height = chart.chart.height,
-              ctx = chart.chart.ctx;
-      
-          ctx.restore();
-          var fontSize = 2.125;
-          ctx.font = "500 " + fontSize + "em sans-serif";
-          ctx.textBaseline = "middle";
-          ctx.fillStyle = "#13381B";
-      
-          var text = "{{ $Vtotal }}",
-              textX = Math.round((width - ctx.measureText(text).width) / 2),
-              textY = height / 2;
-      
-          ctx.fillText(text, textX, textY);
-          ctx.save();
-        }
-      }
-      var northAmericaChartCanvas = $("#gender-chart").get(0).getContext("2d");
-      var northAmericaChart = new Chart(northAmericaChartCanvas, {
-        type: 'doughnut',
-        data: areaData,
-        options: areaOptions,
-        plugins: northAmericaChartPlugins
-      });
-      document.getElementById('gender-legend').innerHTML = northAmericaChart.generateLegend();
-    }
-</script>
 <script type="text/javascript">
     'use strict';
   var interest_data = {
-    labels: ["Properties", "Construction", "EV"],
+    labels: ["Clothings", "Fabrics", "Machinery", "Bags", "Shoes", "Others"],
     datasets: [{
       label: '# of Votes',
-      data: [{{ $intr['rep'] }}, {{ $intr['cons'] }}, {{ $intr['ev'] }}],
+      data: [{{ $intr['pos1'] }}, {{ $intr['pos2'] }}, {{ $intr['pos3'] }}, {{ $intr['pos4'] }}, {{ $intr['pos5'] }}, {{ $intr['pos6'] }}],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(255, 206, 86, 0.2)',
-        'rgba(54, 162, 235, 0.2)'
-        // 'rgba(75, 192, 192, 0.2)',
-        // 'rgba(153, 102, 255, 0.2)',
-        // 'rgba(255, 159, 64, 0.2)'
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
       ],
       borderColor: [
         'rgba(255,99,132,1)',
         'rgba(255, 206, 86, 1)',
-        'rgba(54, 162, 235, 1)'
-        // 'rgba(75, 192, 192, 1)',
-        // 'rgba(153, 102, 255, 1)',
-        // 'rgba(255, 159, 64, 1)'
+        'rgba(54, 162, 235, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
       ],
       borderWidth: 1,
       fill: false
     }]
   };
+
+
   var options = {
     scales: {
       yAxes: [{

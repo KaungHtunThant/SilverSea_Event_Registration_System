@@ -44,7 +44,7 @@
 </head>
 
 <body>
-    <div class="page-wrapper bg-white p-b-100 font-robo">
+    <div class="page-wrapper bg-white font-robo">
         <div class="wrapper wrapper--w680">
         	<img src="{{ url('images/mg_banner_final.jpg') }}" class="w-100">
             <div class="card card-1">
@@ -70,23 +70,6 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="sex" required>
-                                            <option disabled="disabled" selected="selected">GENDER</option>
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                        </select>
-                                        <div class="select-dropdown"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <input class="input--style-1" type="text" placeholder="OCCUPATION" name="position" required>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
                                     <input class="input--style-1" type="text" placeholder="COMPANY (OPTIONAL)" name="company">
                                 </div>
                             </div>
@@ -96,21 +79,39 @@
                                 <h5 style="margin-top: 8px;">INTERESTS <span style="color: #CE2029;">*</span></h5>
                                 <br>
                                 <div class="form-check" style="margin-bottom: 15px;">
-                                    <input class="w-auto form-check-input" type="checkbox" name="pos[]" value="Real Estate and Properties ">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Real Estate and Properties
+                                    <input class="w-auto form-check-input" type="checkbox" name="pos[]" value="Clothings" id="pos1">
+                                    <label class="form-check-label" for="pos1">
+                                        Clothings
                                     </label>
                                 </div>
                                 <div class="form-check" style="margin-bottom: 15px;">
-                                    <input class="w-auto form-check-input" type="checkbox" name="pos[]" value="Constructions">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Constructions
+                                    <input class="w-auto form-check-input" type="checkbox" name="pos[]" value="Fabrics and Accessories" id="pos2">
+                                    <label class="form-check-label" for="pos2">
+                                        Fabrics and Accessories
                                     </label>
                                 </div>
                                 <div class="form-check" style="margin-bottom: 15px;">
-                                    <input class="w-auto form-check-input" type="checkbox" name="pos[]" value="Renewable Energy and EV">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Renewable Energy and EV
+                                    <input class="w-auto form-check-input" type="checkbox" name="pos[]" value="Machinery" id="pos3">
+                                    <label class="form-check-label" for="pos3">
+                                        Machinery
+                                    </label>
+                                </div>
+                                <div class="form-check" style="margin-bottom: 15px;">
+                                    <input class="w-auto form-check-input" type="checkbox" name="pos[]" value="Bags" id="pos4">
+                                    <label class="form-check-label" for="pos4">
+                                        Bags
+                                    </label>
+                                </div>
+                                <div class="form-check" style="margin-bottom: 15px;">
+                                    <input class="w-auto form-check-input" type="checkbox" name="pos[]" value="Shoes" id="pos5">
+                                    <label class="form-check-label" for="pos5">
+                                        Shoes
+                                    </label>
+                                </div>
+                                <div class="form-check" style="margin-bottom: 15px;">
+                                    <input class="w-auto form-check-input" type="checkbox" name="pos[]" value="Others" id="pos6">
+                                    <label class="form-check-label" for="pos6">
+                                        Others
                                     </label>
                                 </div>
                             </div>

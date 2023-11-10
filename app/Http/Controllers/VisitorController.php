@@ -60,8 +60,6 @@ class VisitorController extends Controller
             'name' => 'required|string',
             'email' => 'nullable|string',
             'phone' => 'required|string',
-            'position' => 'required|string',
-            'sex' => 'required|string',
             'company' => 'nullable|string',
         ]);
 
@@ -86,8 +84,6 @@ class VisitorController extends Controller
             'name' => $fields['name'],
             'email' => $fields['email'],
             'phone' => $fields['phone'],
-            'position' => $fields['position'],
-            'sex' => $fields['sex'],
             'company' => $fields['company'],
             'card' => $card,
         ]);
@@ -116,8 +112,6 @@ class VisitorController extends Controller
             'name' => 'required|string',
             'email' => 'nullable|string',
             'phone' => 'required|string',
-            'position' => 'required|string',
-            'sex' => 'required|string',
             'company' => 'nullable|string',
         ]);
 
@@ -142,8 +136,6 @@ class VisitorController extends Controller
             'name' => $fields['name'],
             'email' => $fields['email'],
             'phone' => $fields['phone'],
-            'position' => $fields['position'],
-            'sex' => $fields['sex'],
             'company' => $fields['company'],
             'card' => $card,
         ]);

@@ -14,11 +14,11 @@ class VisitorsExport implements FromCollection, WithHeadings, ShouldAutoSize
     */
     public function collection()
     {
-        return Visitor::select('conf_id', 'name', 'phone', 'email', 'sex', 'position', 'company','created_at')->orderBy('conf_id')->get();
+        return Visitor::select('conf_id', 'name', 'phone', 'email', 'company','created_at')->orderBy('conf_id')->get();
     }
 
     public function headings(): array
     {
-        return ['ID', 'Name', 'Phone', 'Email', 'Gender', 'Position', 'Company', 'Registered Date'];
+        return ['ID', 'Name', 'Phone', 'Email', 'Company', 'Registered Date'];
     }
 }

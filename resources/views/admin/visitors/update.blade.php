@@ -26,19 +26,6 @@
 								<input type="text" name="email" value="{{ $visitor->email }}" class="form-control mb-3">
 							</div>
 							<div class="col-md-6">
-								<label>Visitor's Gender</label>
-								<select class="form-control mb-3" name="sex">
-									<option value="Male" @if ($visitor->sex == 'Male')selected
-									@endif>Male</option>
-									<option value="Female" @if ($visitor->sex == 'Female')selected
-									@endif>Female</option>
-								</select>
-							</div>
-							<div class="col-md-6">
-								<label>Visitor's Occupation</label>
-								<input type="text" name="position" value="{{ $visitor->position }}" class="form-control mb-3">
-							</div>
-							<div class="col-md-6">
 								<label>Visitor's Company</label>
 								<input type="text" name="company" value="{{ $visitor->company }}" class="form-control mb-3">
 							</div>

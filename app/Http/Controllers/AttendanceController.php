@@ -70,9 +70,12 @@ class AttendanceController extends Controller
         ]);
 
         $intr = [
-            'rep' => Interest::where('desc','Real Estate and Properties')->count(),
-            'cons' => Interest::where('desc','Constructions')->count(),
-            'ev' => Interest::where('desc','Renewable Energy and EV')->count()
+            'pos1' => Interest::where('desc','Clothings')->count(),
+            'pos2' => Interest::where('desc','Fabrics and Accessories')->count(),
+            'pos3' => Interest::where('desc','Machinery')->count(),
+            'pos4' => Interest::where('desc','Bags')->count(),
+            'pos5' => Interest::where('desc','Shoes')->count(),
+            'pos6' => Interest::where('desc','Others')->count(),
         ];
 
         $entry = [
@@ -118,9 +121,6 @@ class AttendanceController extends Controller
         $Vtoday = Visitor::whereDate('created_at', date('Y-m-d'))
                     ->count();
 
-        $Mtotal = Visitor::where('sex','Male')->count();
-        $Ftotal = Visitor::where('sex','Female')->count();
-
         return view('admin.index')
             ->with('visitors', $visitors)
             ->with('page', $request->page)
@@ -129,8 +129,6 @@ class AttendanceController extends Controller
             ->with('paginate', $request->paginate)
             ->with('Vtotal', $Vtotal)
             ->with('Vtoday', $Vtoday)
-            ->with('Mtotal', $Mtotal)
-            ->with('Ftotal', $Ftotal)
             ->with('intr', $intr)
             ->with('entry', $entry)
             ->with('status', [

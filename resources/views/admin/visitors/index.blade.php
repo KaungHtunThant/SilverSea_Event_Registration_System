@@ -4,14 +4,14 @@
     <div class="theme-setting-wrapper">
         <div id="theme-settings" class="settings-panel" style="overflow:scroll;">
             <i class="settings-close ti-close"></i>
-            <p class="settings-heading text-success">Add New Visitor</p>
+            <p class="settings-heading text-danger">Add New Visitor</p>
             <form action="/visitors" method="POST" class="mx-2 mt-3" autocomplete="off">
                 @csrf
                 <input type="hidden" name="orderBy" value="conf_id">
-				<input type="hidden" name="page" value="1">
-				<input type="hidden" name="pagination" value="10">
+                <input type="hidden" name="page" value="1">
+                <input type="hidden" name="pagination" value="10">
                 <div class="form-group">
-                	<p>Name (*)</p>
+                    <p>Name</p>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -38,30 +38,6 @@
                         </div>
                         <input type="email" name="email" class="form-control" placeholder="Enter email.">
                     </div>
-                    <p>Gender (*)</p>
-                    <div class="mb-3">
-						<div class="form-check">
-							<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="sex" id="optionsRadios1" value="Male" checked>
-								Male
-							</label>
-						</div>
-						<div class="form-check">
-							<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="sex" id="optionsRadios2" value="Female">
-								Female
-							</label>
-						</div>
-                    </div>
-                    <p>Occupation</p>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="mdi mdi-account-multiple"></i>
-                            </span>
-                        </div>
-                        <input type="text" name="position" class="form-control" placeholder="Enter Occupation." required>
-                    </div>
                     <p>Company/ Organization</p>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -73,21 +49,39 @@
                     </div>
                     <p>Interests</p>
                     <div class="input-group mb-1">
-                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Real Estate and Properties ">
-                        <label class="form-check-label ml-5" for="defaultCheck1">
-                            Real Estate and Properties
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Clothings" id="pos1">
+                        <label class="form-check-label ml-5" for="pos1">
+                            Clothings
                         </label>
                     </div>
                     <div class="input-group mb-1">
-                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Constructions">
-                        <label class="form-check-label ml-5" for="defaultCheck1">
-                            Constructions
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Fabrics and Accessories" id="pos2">
+                        <label class="form-check-label ml-5" for="pos2">
+                            Fabrics and Accessories
                         </label>
                     </div>
                     <div class="input-group mb-1">
-                        <input class="w-auto form-check-input ml-3" type="checkbox" name="pos[]" value="Renewable Energy and EV">
-                        <label class="form-check-label ml-5" for="defaultCheck1">
-                            Renewable Energy and EV
+                        <input class="w-auto form-check-input ml-3" type="checkbox" name="pos[]" value="Machinery" id="pos3">
+                        <label class="form-check-label ml-5" for="pos3">
+                            Machinery
+                        </label>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Bags" id="pos4">
+                        <label class="form-check-label ml-5" for="pos4">
+                            Bags
+                        </label>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Shoes" id="pos5">
+                        <label class="form-check-label ml-5" for="pos5">
+                            Shoes
+                        </label>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input class="form-check-input ml-3" type="checkbox" name="pos[]" value="Others" id="pos6">
+                        <label class="form-check-label ml-5" for="pos6">
+                            Others
                         </label>
                     </div>
                     <hr>
