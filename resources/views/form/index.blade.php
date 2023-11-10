@@ -46,7 +46,7 @@
 <body>
     <div class="page-wrapper bg-white p-b-100 font-robo">
         <div class="wrapper wrapper--w680">
-        	<img src="{{ url('images/mg_banner.jpg') }}" class="w-100">
+        	<img src="{{ url('images/mg_banner_final.jpg') }}" class="w-100">
             <div class="card card-1">
                 <div class="card-body">
                     <h2 class="title">Online Event Registration</h2>
