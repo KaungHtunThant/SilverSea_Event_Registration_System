@@ -39,6 +39,25 @@
 		</div>
 	</div>
 </div>
+<div class="modal" id="screenshot-modal" tabindex="-1" role="dialog" aria-labelledby="Screenshot Modal" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Attendance recorded successfully!</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Please take a screenshot of the QR code.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success take-screenshot" data-dismiss="modal">Take Screenshot</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('customjs')

@@ -45,7 +45,7 @@
                                 <i class="mdi mdi-account-multiple"></i>
                             </span>
                         </div>
-                        <input type="text" name="company" class="form-control" placeholder="Enter Company.">
+                        <input type="text" name="company" class="form-control" placeholder="Enter Company." required>
                     </div>
                     <p>Interests</p>
                     <div class="input-group mb-1">

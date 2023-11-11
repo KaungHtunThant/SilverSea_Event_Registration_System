@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="text" placeholder="COMPANY (OPTIONAL)" name="company">
+                                    <input class="input--style-1" type="text" placeholder="COMPANY" name="company" required>
                                 </div>
                             </div>
                         </div>
