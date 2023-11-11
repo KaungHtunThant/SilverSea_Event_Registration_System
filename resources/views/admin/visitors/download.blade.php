@@ -101,7 +101,7 @@
 					<br>
 					<div class="mb-3">
 						@php
-							echo '<img class="qr" src="data:image/png;base64,' . DNS2D::getBarcodePNG('http://192.168.30.18:8080/id/'.$visitor->id, 'QRCODE',5.5,5.5) . '" alt="barcode"/>';
+							echo '<img class="qr" src="data:image/png;base64,' . DNS2D::getBarcodePNG('https://zhejiangexpo.powerglobal.com.mm/id/'.$visitor->id, 'QRCODE',5.5,5.5) . '" alt="barcode"/>';
 						@endphp
 					</div>
 					<img src="{{ url('images/mg_real_final/mg_footer_real_final.png') }}" class="w-max">
