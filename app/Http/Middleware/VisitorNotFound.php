@@ -19,6 +19,6 @@ class VisitorNotFound
         if(Session::has('token')) {
             return $next($request);
         }
-        return redirect('/welcome');
+        return redirect('https://www.myanmargarments.org');
     }
 }
