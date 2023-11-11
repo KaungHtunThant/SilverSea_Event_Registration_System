@@ -100,6 +100,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        Session::forget('token');
         Session::flush();
         Auth::logout();
 
