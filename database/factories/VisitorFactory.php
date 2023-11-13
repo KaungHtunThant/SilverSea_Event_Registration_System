@@ -18,8 +18,6 @@ class VisitorFactory extends Factory
      */
     public function definition(): array
     {
-        $sex = array('Male', 'Female', 'Other');
-        
         $id = 'MME-VIS-'.rand(1001, 2000);
         return [
             'conf_id' => $id,
@@ -27,8 +25,6 @@ class VisitorFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'phone' => '09'.rand(10000000, 99999999),
             'company' => fake()->name(),
-            'sex' => $sex[array_rand($sex)],
-            'position' => fake()->name(),
             'card' => $id.'_'.time()
         ];
     }

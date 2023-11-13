@@ -92,7 +92,7 @@ class VisitorController extends Controller
             foreach ($request->pos as $pos) {
                 $interest = Interest::create([
                     'vis_id' => $user->id,
-                    'desc' => $pos
+                    'description' => $pos
                 ]);
             }
         }
@@ -144,7 +144,7 @@ class VisitorController extends Controller
             foreach ($request->pos as $pos) {
                 $interest = Interest::create([
                     'vis_id' => $user->id,
-                    'desc' => $pos
+                    'description' => $pos
                 ]);
             }
         }

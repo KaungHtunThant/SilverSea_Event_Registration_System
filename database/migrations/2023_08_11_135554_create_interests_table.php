@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('interests', function (Blueprint $table) {
             $table->id();
             $table->string('vis_id');
-            $table->string('desc');
+            $table->string('description');
             $table->timestamps();
         });
     }

@@ -3,9 +3,11 @@
 namespace App\Exports;
 
 use App\Models\Visitor;
+use App\Models\Interest;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Illuminate\Support\Facades\DB;
 
 class VisitorsExport implements FromCollection, WithHeadings, ShouldAutoSize
 {
@@ -14,11 +16,25 @@ class VisitorsExport implements FromCollection, WithHeadings, ShouldAutoSize
     */
     public function collection()
     {
-        return Visitor::select('conf_id', 'name', 'phone', 'email', 'company','created_at')->orderBy('conf_id')->get();
+        $results = DB::table('visitors')
+                    ->select(
+                        'conf_id',
+                        'name', 
+                        'email', 
+                        'phone', 
+                        'company', 
+                        'visitors.created_at',
+                        DB::raw('group_concat(interests.description separator ", ")')
+                    )
+                    ->join('interests', 'interests.vis_id', '=', 'visitors.id')
+                    ->groupBy('visitors.id')
+                    ->orderBy('visitors.id')
+                    ->get();
+        return $results;
     }
 
     public function headings(): array
     {
-        return ['ID', 'Name', 'Phone', 'Email', 'Company', 'Registered Date'];
+        return ['ID', 'Name', 'Phone', 'Email', 'Company', 'Registered Date', 'interests'];
     }
 }

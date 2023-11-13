@@ -66,12 +66,12 @@ class AttendanceController extends Controller
         ]);
 
         $intr = [
-            'pos1' => Interest::where('desc','Clothings')->count(),
-            'pos2' => Interest::where('desc','Fabrics and Accessories')->count(),
-            'pos3' => Interest::where('desc','Machinery')->count(),
-            'pos4' => Interest::where('desc','Bags')->count(),
-            'pos5' => Interest::where('desc','Shoes')->count(),
-            'pos6' => Interest::where('desc','Others')->count(),
+            'pos1' => Interest::where('description','Clothings')->count(),
+            'pos2' => Interest::where('description','Fabrics and Accessories')->count(),
+            'pos3' => Interest::where('description','Machinery')->count(),
+            'pos4' => Interest::where('description','Bags')->count(),
+            'pos5' => Interest::where('description','Shoes')->count(),
+            'pos6' => Interest::where('description','Others')->count(),
         ];
 
         $entry = [

@@ -11,6 +11,10 @@ class Interest extends Model
 
     protected $fillable = [
         'vis_id',
-        'desc'
+        'description'
     ];
+
+    public function visitors(){
+        return $this->belongsTo(Visitor::class, 'vis_id');
+    }
 }
