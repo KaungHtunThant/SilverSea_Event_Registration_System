@@ -157,4 +157,9 @@ class AttendanceController extends Controller
         ];
         return response($response, 200);
     }
+
+    public function export()
+    {
+        return Excel::download(new AttendanceExport, 'Attendance_'.time().'.xlsx');
+    }
 }
