@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Illuminate\Support\Facades\DB;
 
-class VisitorsExport implements FromCollection, WithHeadings, ShouldAutoSize
+class AttendancesExport implements FromCollection, WithHeadings, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection

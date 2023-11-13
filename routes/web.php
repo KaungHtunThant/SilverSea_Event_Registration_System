@@ -45,6 +45,9 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
 
     //lottery
     Route::get('/lottery', [WinnerController::class, 'rng']);
+
+    //attendance
+    Route::get('/attendance/export', [AttendanceController::class, 'export']);
 });
 
 //Public routes

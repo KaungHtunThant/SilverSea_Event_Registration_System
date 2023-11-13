@@ -198,6 +198,7 @@
                                 <input type="hidden" name="orderBy" value="attendances.created_at">
                                 <input type="hidden" name="page" value="1">
                                 <input type="submit" name="reset" value="Reset" class="btn btn-danger float-right">
+                                <a href="/attendance/export" class="btn btn-danger mr-4 mb-4 float-right">Export</a> 
                             </form>
                         </div>
                     </div>

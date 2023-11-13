@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Attendance;
 use App\Models\Visitor;
 use App\Models\Interest;
+use App\Exports\AttendancesExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+
 
 class AttendanceController extends Controller
 {
@@ -160,6 +163,6 @@ class AttendanceController extends Controller
 
     public function export()
     {
-        return Excel::download(new AttendanceExport, 'Attendance_'.time().'.xlsx');
+        return Excel::download(new AttendancesExport, 'Attendances'.time().'.xlsx');
     }
 }
