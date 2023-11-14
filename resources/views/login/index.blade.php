@@ -21,7 +21,7 @@
 
 <body>
   @if(Session::has('status'))
-  <div class="alert alert-danger">
+  <div class="alert alert-{{ $status['type'] }}">
       {{ $status['text'] }}
   </div>
       @php

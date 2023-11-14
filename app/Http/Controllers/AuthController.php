@@ -94,7 +94,7 @@ class AuthController extends Controller
 
             return view('login.index')
             ->with('status', [
-                'type' => 'fail',
+                'type' => 'danger',
                 'text' => 'Bad Credentials. Please try again.',
             ]);
         }
@@ -146,8 +146,8 @@ class AuthController extends Controller
 
         if ($user == Null) {
             return redirect('/users?page=1&paginate=10&orderBy=conf_id')->with('status', [
-                'type' => 'fail',
-                'text' => 'user record update failed! user not found.'
+                'type' => 'danger',
+                'text' => 'user record update dangered! user not found.'
             ]);
         }
 
@@ -179,8 +179,8 @@ class AuthController extends Controller
 
         if ($user == Null) {
             return redirect('/users?page=1&paginate=10&orderBy=id')->with('status', [
-                'type' => 'fail',
-                'text' => 'user password change failed! user not found.'
+                'type' => 'danger',
+                'text' => 'user password change dangered! user not found.'
             ]);
         }
 
