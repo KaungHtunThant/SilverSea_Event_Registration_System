@@ -47,6 +47,7 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
 
     //attendance
     Route::get('/attendance/export', [AttendanceController::class, 'export']);
+    Route::delete('/attendance/{id}', [AttendanceController::class, 'destroy']);
 });
 
 //Public routes

@@ -228,9 +228,13 @@ class VisitorController extends Controller
             ]);
         }
         $visitor->delete();
+
+        Session::put('status', 'true');
+        Session::put('text', 'Visitor record deleted successfully.');
+
         return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
             'type' => 'success',
-            'text' => 'Visitor record deleted successfully!'
+            'text' => 'Visitor record deleted successfully.'
         ]);
     }
 

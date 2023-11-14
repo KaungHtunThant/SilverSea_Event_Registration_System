@@ -257,8 +257,12 @@
 											</button>
 											<div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
 												<a class="text-success dropdown-item py-3" href="/visitors/download/{{ $visitor->id }}" target="_blank">Download ID Card</a>
-												<a class="text-success dropdown-item py-3" href="/visitors/{{ $visitor->id }}">Edit</a>
-												<button class="text-secondary dropdown-item py-3" href="#" disabled>Delete</button>
+												<a class="text-warning dropdown-item py-3" href="/visitors/{{ $visitor->id }}">Edit</a>
+												<form action="visitors/{{$visitor->id}}" method="post"> 
+                                                    @csrf 
+                                                    @method("DELETE")         
+                                                    <input type="submit" value="Delete" class="text-danger dropdown-item py-3" />
+                                                </form>
 											</div>
 										</div>
 									</td>

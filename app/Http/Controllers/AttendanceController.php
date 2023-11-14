@@ -172,4 +172,24 @@ class AttendanceController extends Controller
     {
         return Excel::download(new AttendancesExport, 'Attendances'.time().'.xlsx');
     }
+
+    public function destroy(Request $request, $id)
+    {
+        $visitor = Attendance::find($id);
+        if ($visitor == Null) {
+            return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
+                'type' => 'danger',
+                'text' => 'Attendance record deletion failed! Visitor not found.'
+            ]);
+        }
+        $visitor->delete();
+
+        Session::put('status', 'true');
+        Session::put('text', 'Attendance record deleted successfully.');
+
+        return redirect('/')->with('status', [
+            'type' => 'success',
+            'text' => 'Attendance record deleted successfully.'
+        ]);
+    }
 }
