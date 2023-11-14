@@ -120,6 +120,13 @@ class AttendanceController extends Controller
         $Vtoday = Visitor::whereDate('created_at', date('Y-m-d'))
                     ->count();
 
+        $text = '';
+
+        if (Session::has('status')) {
+            $text = Session::get('text');
+            Session::forget('text');
+        }
+
         return view('admin.index')
             ->with('visitors', $visitors)
             ->with('page', $request->page)
@@ -132,7 +139,7 @@ class AttendanceController extends Controller
             ->with('entry', $entry)
             ->with('status', [
                 'type' => 'success',
-                'text' => 'Attendances view read.'
+                'text' => $text
             ]);
     }
 

@@ -37,6 +37,13 @@ class AuthController extends Controller
             'paginate' => $request->paginate
         ]);
 
+        $text = '';
+
+        if (Session::has('status')) {
+            $text = Session::get('text');
+            Session::forget('text');
+        }
+
         return view('admin.users.index')
             ->with('users', $users)
             ->with('page', $request->page)
@@ -45,7 +52,7 @@ class AuthController extends Controller
             ->with('paginate', $request->paginate)
             ->with('status', [
                 'type' => 'success',
-                'text' => 'user view read.'
+                'text' => $text
             ]);
     }
 
@@ -63,10 +70,10 @@ class AuthController extends Controller
             'password' => bcrypt($fields['password']),
         ]);
 
-        $response = 'User registered';
+        Session::put('status', 'true');
+        Session::put('text', 'User record created successfully!');
 
-        return redirect('/users?orderBy=id&paginate=10&page=1')
-            ->with('status', [
+        return redirect('/users?page='.$request->page.'&paginate='.$request->paginate.'&orderBy='.$request->orderBy.'&searchVal='.$request->searchVal)->with('status', [
                 'type' => 'success',
                 'text' => 'User record created successfully!'
             ]);
@@ -82,7 +89,11 @@ class AuthController extends Controller
         $user = User::where('email', $fields['email'])->first();
 
         if(!$user || !Hash::check($fields['password'], $user->password)){
-            return redirect('/login')->with('status', [
+
+            Session::put('status', 'true');
+
+            return view('login.index')
+            ->with('status', [
                 'type' => 'fail',
                 'text' => 'Bad Credentials. Please try again.',
             ]);
@@ -90,7 +101,10 @@ class AuthController extends Controller
         else{
             $token = $user->createToken('kbtc_oid')->plainTextToken;
             Session::put('token', $token);
+            Session::put('status', 'true');
+            Session::put('text', 'User logged in successfully!');
         }
+
 
         return redirect('/?paginate=10&page=1&orderBy=attendances.created_at')->with('status', [
             'type' => 'success',
@@ -104,10 +118,13 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
 
-        return redirect('/login')->with('status', [
-            'type' => 'success',
-            'text' => 'User logged out successfully!'
-        ]);
+        Session::put('status', 'true');
+
+            return view('login.index')
+            ->with('status', [
+                'type' => 'fail',
+                'text' => 'Bad Credentials. Please try again.',
+            ]);
     }
 
     public function update(Request $request, $id)
@@ -173,6 +190,20 @@ class AuthController extends Controller
         return redirect('/users?page='.$request->page.'&paginate='.$request->paginate.'&orderBy='.$request->orderBy.'&searchVal='.$request->searchVal)->with('status', [
             'type' => 'success',
             'text' => 'user password changed successfully!'
+        ]);
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        Session::put('status', 'true');
+        Session::put('text', 'User deleted successfully!');
+
+        return redirect('/users?page='.$request->page.'&paginate='.$request->paginate.'&orderBy='.$request->orderBy.'&searchVal='.$request->searchVal)->with('status', [
+            'type' => 'success',
+            'text' => 'User deleted successfully!'
         ]);
     }
 }

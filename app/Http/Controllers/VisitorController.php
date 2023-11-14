@@ -42,6 +42,13 @@ class VisitorController extends Controller
             'paginate' => $request->paginate
         ]);
 
+        $text = '';
+
+        if (Session::has('status')) {
+            $text = Session::get('text');
+            Session::forget('text');
+        }
+
         return view('admin.visitors.index')
             ->with('visitors', $visitors)
             ->with('page', $request->page)
@@ -50,7 +57,7 @@ class VisitorController extends Controller
             ->with('paginate', $request->paginate)
             ->with('status', [
                 'type' => 'success',
-                'text' => 'Visitor view read.'
+                'text' => $text
             ]);
     }
 
@@ -99,6 +106,9 @@ class VisitorController extends Controller
 
         // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
         // exec($cmd);
+
+        Session::put('status', 'true');
+        Session::put('text', 'Visitor record created successfully!');
 
         return redirect('/visitors?page=1&paginate=10&orderBy=conf_id')->with('status', [
                 'type' => 'success',
@@ -198,6 +208,10 @@ class VisitorController extends Controller
 
         // $cmd = 'wkhtmltoimage --crop-h 1171 --crop-w 744 --crop-x 0 --crop-y 0 http://'.$this->domain.'/printables/employee/'.$row['card_id'].' employees/printables/'.$this->foldername.'/'.$row['card_id'].'.jpg';
         // exec($cmd);
+
+        Session::put('status', 'true');
+        Session::put('text', 'Visitor record updated successfully!');
+
         return redirect('/visitors/'.$id)->with('status', [
             'type' => 'success',
             'text' => 'Visitor record updated successfully!'
@@ -229,11 +243,19 @@ class VisitorController extends Controller
                 'text' => 'Visitor record deletion failed! Visitor not found.'
             ]);
         }
+
+        $text = '';
+
+        if (Session::has('status')) {
+            $text = Session::get('text');
+            Session::forget('text');
+        }
+
         return view('admin.visitors.update')
             ->with('visitor', $visitor)
             ->with('status', [
                 'type' => 'success',
-                'text' => 'Visitor Details read.'
+                'text' => $text
             ]
         );
     }

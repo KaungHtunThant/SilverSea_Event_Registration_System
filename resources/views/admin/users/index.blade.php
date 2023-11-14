@@ -53,6 +53,14 @@
     </div>
 @endsection
 @section('contents')
+    @if(Session::has('status'))
+    <div class="alert alert-success">
+        {{ $status['text'] }}
+    </div>
+        @php
+            Session::forget('status');
+        @endphp
+    @endif
 	<div class="row">
 		<div class="col-lg-8 grid-margin stretch-card">
             <div class="card">
@@ -231,7 +239,12 @@
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="{{ $user->id }}-details">
                                                 <a class="text-dark dropdown-item py-3" href="/users/{{ $user->id }}">Password reset</a>
-                                                <a class="text-danger dropdown-item py-3" href="#">Delete</a>
+                                                <!-- <a class="text-danger dropdown-item py-3" href="#">Delete</a> -->
+                                                <form action="users/{{$user->id}}" method="post"> 
+                                                    @csrf 
+                                                    @method("DELETE")         
+                                                    <input type="submit" value="Delete" class="text-danger dropdown-item py-3" />
+                                                </form>
                                             </div>
                                         </div>
                                     </td>

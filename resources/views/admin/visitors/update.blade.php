@@ -2,6 +2,14 @@
 @section('title', 'Power GLobal - Visitor Details')
 
 @section('contents')
+@if(Session::has('status'))
+<div class="alert alert-success">
+    {{ $status['text'] }}
+</div>
+    @php
+        Session::forget('status');
+    @endphp
+@endif
 <div class="row">
 	<div class="col-md-2"></div>
 	<div class="col-md-8 grid-margin stretch-card">

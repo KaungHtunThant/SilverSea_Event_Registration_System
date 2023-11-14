@@ -94,6 +94,14 @@
     </div>
 @endsection
 @section('contents')
+    @if(Session::has('status'))
+    <div class="alert alert-success">
+        {{ $status['text'] }}
+    </div>
+        @php
+            Session::forget('status');
+        @endphp
+    @endif
     <div class="row">
         <div class="col-12 col-md-4 col-lg-3 col-xl-2 mb-4 transparent stretch-card" id="settings-trigger2">
             <div class="card card-light-danger">
@@ -320,7 +328,7 @@
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="{{ $visitor->id }}-details">
                                                 <a class="text-danger dropdown-item py-3" href="/visitors/download/{{ $visitor->id }}">Download ID Card</a>
-                                                <a class="text-danger dropdown-item py-3" href="#">Delete</a>
+                                                <a class="text-secondary dropdown-item py-3" href="#" disabled>Delete</a>
                                             </div>
                                         </div>
                                     </td>

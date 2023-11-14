@@ -87,6 +87,14 @@
 	</style>
 </head>
 <body>
+	@if(Session::has('status'))
+	<div class="alert alert-danger">
+		{{ $status->text }}
+	</div>
+		@php
+			Session::forget('status');
+		@endphp
+	@endif
 	<div class="container-fluid p-0">
 		<div class="d-flex justify-content-center w-100">
 			<div class="card-bg w-max" id="printarea">

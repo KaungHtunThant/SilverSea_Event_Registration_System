@@ -24,15 +24,14 @@ use App\Http\Controllers\TestPreparer;
 Route::middleware(EnsurekeyExist::class)->group(function () {
     Route::get('/', [AttendanceController::class, 'index']);
 
+    //Users
     Route::get('/users', [AuthController::class, 'index']);
-
     Route::post('/users', [AuthController::class, 'register']);
-
     Route::get('/logout', [AuthController::class, 'logout']);
-
     Route::patch('/users/{id}', [AuthController::class, 'update']);
-
     Route::get('/users/{id}', [AuthController::class, 'pwreset']);
+    Route::patch('/users/{id}', [AuthController::class, 'update']);
+    Route::delete('/users/{id}', [AuthController::class, 'destroy']);
 
     //visitors
     Route::get('/visitors/export', [VisitorController::class, 'export']);
