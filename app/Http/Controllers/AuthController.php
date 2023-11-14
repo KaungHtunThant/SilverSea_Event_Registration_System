@@ -122,8 +122,8 @@ class AuthController extends Controller
 
             return view('login.index')
             ->with('status', [
-                'type' => 'fail',
-                'text' => 'Bad Credentials. Please try again.',
+                'type' => 'success',
+                'text' => 'Logout successfully.',
             ]);
     }
 
