@@ -104,7 +104,7 @@
               <span class="menu-title">Visitors</span>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="/winners?orderBy=id&paginate=10&page=1&orderBy=attendances.created_at" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>
               <span class="menu-title">Winners</span>
@@ -115,7 +115,7 @@
               <i class="icon-bar-graph menu-icon"></i>
               <span class="menu-title">Lottery</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="/users?orderBy=id&paginate=10&page=1" aria-expanded="false" aria-controls="charts">
               <i class="icon-head menu-icon"></i>
