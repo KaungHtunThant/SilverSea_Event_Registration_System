@@ -88,8 +88,8 @@
 </head>
 <body>
 	@if(Session::has('status'))
-	<div class="alert alert-danger">
-		{{ $status->text }}
+	<div class="alert alert-success">
+		{{ $status['text'] }}
 	</div>
 		@php
 			Session::forget('status');
