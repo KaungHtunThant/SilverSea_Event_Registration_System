@@ -35,6 +35,6 @@ class VisitorsExport implements FromCollection, WithHeadings, ShouldAutoSize
 
     public function headings(): array
     {
-        return ['ID', 'Name', 'Phone', 'Email', 'Company', 'Registered Date', 'interests'];
+        return ['ID', 'Name', 'Email', 'Phone', 'Company', 'Registered Date', 'interests'];
     }
 }
