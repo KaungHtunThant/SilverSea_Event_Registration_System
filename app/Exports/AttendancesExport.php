@@ -29,14 +29,14 @@ class AttendancesExport implements FromCollection, WithHeadings, ShouldAutoSize
                     )
                     ->join('interests', 'interests.vis_id', '=', 'attendances.vis_id')
                     ->join('visitors', 'visitors.id', '=', 'attendances.vis_id')
-                    ->groupBy('visitors.id')
-                    ->orderBy('visitors.id')
+                    ->groupBy('attendances.id')
+                    ->orderBy('attendances.id')
                     ->get();
         return $results;
     }
 
     public function headings(): array
     {
-        return ['ID', 'Name', 'Phone', 'Email', 'Company', 'Registered Date', 'interests'];
+        return ['ID', 'Name', 'Email', 'Phone', 'Company', 'Registered Date', 'interests'];
     }
 }
