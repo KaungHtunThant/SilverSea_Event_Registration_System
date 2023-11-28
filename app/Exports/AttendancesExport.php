@@ -30,7 +30,7 @@ class AttendancesExport implements FromCollection, WithHeadings, ShouldAutoSize
                     ->join('interests', 'interests.vis_id', '=', 'attendances.vis_id')
                     ->join('visitors', 'visitors.id', '=', 'attendances.vis_id')
                     ->groupBy('attendances.id')
-                    ->orderBy('attendances.id')
+                    ->orderBy('attendances.created_at')
                     ->get();
         return $results;
     }
