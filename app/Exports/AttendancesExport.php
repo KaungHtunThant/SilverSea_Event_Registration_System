@@ -17,26 +17,50 @@ class AttendancesExport implements FromCollection, WithHeadings, ShouldAutoSize
     */
     public function collection()
     {
+        $interests = DB::table('interests')
+                        ->select(
+                            DB::raw('group_concat(description separator ", ") as interests'),
+                            'vis_id',
+                        )
+                        ->groupBy('vis_id');
+
+        $visitors = DB::table('visitors')
+                        ->select(
+                            'id',
+                            'conf_id',
+                            'name',
+                            'email',
+                            'phone',
+                            'company',
+                            'created_at'
+                        );
+
         $results = DB::table('attendances')
+                    ->joinSub($interests, 'inter', function ($join){
+                        $join->on('attendances.vis_id', '=', 'inter.vis_id');
+                    })
+                    ->joinSub($visitors, 'vis', function ($join){
+                        $join->on('attendances.vis_id', '=', 'vis.id');
+                    })
                     ->select(
-                        'conf_id',
-                        'name', 
-                        'email', 
-                        'phone', 
-                        'company', 
-                        'visitors.created_at',
-                        DB::raw('group_concat(interests.description separator ", ")')
+                        DB::raw('DISTINCT attendances.vis_id'),
+                        'vis.conf_id as conf_id',
+                        'vis.name as name',
+                        'vis.email as email',
+                        'vis.phone as phone',
+                        'vis.company as company',
+                        'vis.created_at as registered_date',
+                        'attendances.created_at as enry_date',
+                        'inter.interests as interests'
                     )
-                    ->join('interests', 'interests.vis_id', '=', 'attendances.vis_id')
-                    ->join('visitors', 'visitors.id', '=', 'attendances.vis_id')
                     ->groupBy('attendances.id')
-                    ->orderBy('attendances.created_at')
                     ->get();
+
         return $results;
     }
 
     public function headings(): array
     {
-        return ['ID', 'Name', 'Email', 'Phone', 'Company', 'Registered Date', 'interests'];
+        return ['ID', 'Visitor ID', 'Name', 'Email', 'Phone', 'Company', 'Registered Date', 'Entry Date', 'interests'];
     }
 }
