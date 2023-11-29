@@ -31,6 +31,7 @@ class AttendanceController extends Controller
                 ->join('visitors', 'attendances.vis_id', '=', 'visitors.id')
                 ->select(
                     'attendances.id as id',
+                    'attendances.vis_id as vis_id',
                     'visitors.conf_id as conf_id',
                     'visitors.name as name',
                     'visitors.email as email',
@@ -50,6 +51,7 @@ class AttendanceController extends Controller
                 ->join('visitors', 'attendances.vis_id', '=', 'visitors.id')
                 ->select(
                     'attendances.id as id',
+                    'attendances.vis_id as vis_id',
                     'visitors.conf_id as conf_id',
                     'visitors.name as name',
                     'visitors.email as email',
