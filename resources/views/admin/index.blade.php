@@ -327,7 +327,7 @@
                                                 <i class="mdi mdi-dots-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="{{ $visitor->vis_id }}-details">
-                                                <a class="text-danger dropdown-item py-3" href="/visitors/download/{{ $visitor->id }}">Download ID Card</a>
+                                                <a class="text-danger dropdown-item py-3" href="/visitors/download/{{ $visitor->vis_id }}">Download ID Card</a>
                                                 <form action="attendance/{{$visitor->id}}" method="post"> 
                                                     @csrf 
                                                     @method("DELETE")
