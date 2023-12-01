@@ -15,10 +15,18 @@ class AttendancesExport implements FromCollection, WithHeadings, ShouldAutoSize
     /**
     * @return \Illuminate\Support\Collection
     */
+    
+    private $date;
+
+    public function __construct($date)
+    {
+        $this->date = $date;
+    }
+
     public function collection()
     {
-        if ($request->date == '1900-01-01' || $request->date == 'None') {
-            $request->date = '1900-01-01';
+        if ($this->date == '1900-01-01' || $this->date == 'None') {
+            $this->date = '1900-01-01';
             $opp = '!=';
         }
         else{
@@ -61,7 +69,7 @@ class AttendancesExport implements FromCollection, WithHeadings, ShouldAutoSize
                         'attendances.created_at as enry_date',
                         'inter.interests as interests'
                     )
-                    ->whereDate('attendances.created_at', $opp, $request->date)
+                    ->whereDate('attendances.created_at', $opp, $this->date)
                     ->groupBy('attendances.id')
                     ->get();
 

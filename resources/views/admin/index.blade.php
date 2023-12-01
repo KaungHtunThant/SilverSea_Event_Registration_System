@@ -158,7 +158,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-3 mb-3">
+                                        <div class="col-md-2 mb-3">
                                             <input type="hidden" name="orderBy" value="{{ $orderBy }}">
                                             <input type="hidden" name="page" value="1">
                                             <input type="hidden" name="date" value="{{ $date }}">
@@ -221,7 +221,7 @@
                                 <input type="hidden" name="date" value="">
                                 <input type="submit" name="reset" value="Reset" class="btn btn-danger float-right">
                             </form>
-                            <a href="/attendance/export" class="btn btn-danger mr-4 mb-4 float-right">Export</a>
+                            <a href="/attendance/export?date={{ $date }}" class="btn btn-danger mr-4 mb-4 float-right">Export</a>
                         </div>
                     </div>
                     <div class="d-md-none mb-4"> </div>
