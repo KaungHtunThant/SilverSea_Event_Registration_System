@@ -17,6 +17,14 @@ class AttendancesExport implements FromCollection, WithHeadings, ShouldAutoSize
     */
     public function collection()
     {
+        if ($request->date == '1900-01-01' || $request->date == 'None') {
+            $request->date = '1900-01-01';
+            $opp = '!=';
+        }
+        else{
+            $opp = '=';
+        }
+
         $interests = DB::table('interests')
                         ->select(
                             DB::raw('group_concat(description separator ", ") as interests'),
@@ -53,6 +61,7 @@ class AttendancesExport implements FromCollection, WithHeadings, ShouldAutoSize
                         'attendances.created_at as enry_date',
                         'inter.interests as interests'
                     )
+                    ->whereDate('attendances.created_at', $opp, $request->date)
                     ->groupBy('attendances.id')
                     ->get();
 

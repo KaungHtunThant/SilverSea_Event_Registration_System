@@ -25,6 +25,13 @@ class AttendanceController extends Controller
         if (!isset($request->page)) {
             $request->page = '1';
         }
+        if (!isset($request->date) || $request->date == '1900-01-01' || $request->date == 'None') {
+            $request->date = '1900-01-01';
+            $opp = '!=';
+        }
+        else{
+            $opp = '=';
+        }
 
         if ($request->searchVal != '') {
             $visitors =  DB::table('attendances')
@@ -43,6 +50,7 @@ class AttendanceController extends Controller
                 )->where('conf_id', 'LIKE', '%'.$request->searchVal.'%')
                 ->orwhere('name', 'LIKE', '%'.$request->searchVal.'%')
                 ->orwhere('phone', 'LIKE', '%'.$request->searchVal.'%')
+                ->whereDate('attendances.created_at', $opp, $request->date)
                 ->orderBy($request->orderBy, 'DESC')
                 ->paginate($request->paginate);
         }
@@ -61,6 +69,7 @@ class AttendanceController extends Controller
                     'attendances.created_at as att_created_at',
                     'visitors.created_at as vis_created_at',
                 )
+                ->whereDate('attendances.created_at', $opp, $request->date)
                 ->orderBy($request->orderBy, 'DESC')
                 ->paginate($request->paginate);
         }
@@ -129,12 +138,17 @@ class AttendanceController extends Controller
             Session::forget('text');
         }
 
+        if (!isset($request->date) || $request->date == '1900-01-01') {
+            $request->date = 'None';
+        }
+
         return view('admin.index')
             ->with('visitors', $visitors)
             ->with('page', $request->page)
             ->with('searchVal', $request->searchVal)
             ->with('orderBy', $request->orderBy)
             ->with('paginate', $request->paginate)
+            ->with('date', $request->date)
             ->with('Vtotal', $Vtotal)
             ->with('Vtoday', $Vtoday)
             ->with('intr', $intr)

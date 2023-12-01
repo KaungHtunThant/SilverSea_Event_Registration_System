@@ -153,7 +153,7 @@
                 <div class="card-body">
                     <h4 class="card-title mb-4">Visitors' Attendance List</h4>
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <form action="/" method="GET">
                                 @csrf
                                 <div class="form-group">
@@ -161,6 +161,7 @@
                                         <div class="col-md-3 mb-3">
                                             <input type="hidden" name="orderBy" value="{{ $orderBy }}">
                                             <input type="hidden" name="page" value="1">
+                                            <input type="hidden" name="date" value="{{ $date }}">
                                             <div class="input-group">
                                                 <div class="input-group-prepend" style="margin-top: -1px;">
                                                     <span class="input-group-text" style="padding-bottom: 10px;">
@@ -187,6 +188,18 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <input type="hidden" name="orderBy" value="{{ $orderBy }}">
+                                            <input type="hidden" name="page" value="1">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend" style="margin-top: -1px;">
+                                                    <span class="input-group-text" style="padding-bottom: 10px;">
+                                                        <i class=" mdi mdi-calendar-account"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" name="date" class="form-control form-control-sm" onfocus="(this.type='date')" value="{{ $date }}">
+                                            </div>
+                                        </div>
                                         <div class="col-md">
                                             <div class="input-group">
                                                 <input type="text" name="searchVal" class="form-control form-control-sm" value="{{ $searchVal }}">
@@ -199,15 +212,16 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <form action="/">
                                 @csrf
                                 <input type="hidden" name="paginate" value="10">
                                 <input type="hidden" name="orderBy" value="attendances.created_at">
                                 <input type="hidden" name="page" value="1">
+                                <input type="hidden" name="date" value="">
                                 <input type="submit" name="reset" value="Reset" class="btn btn-danger float-right">
-                                <a href="/attendance/export" class="btn btn-danger mr-4 mb-4 float-right">Export</a> 
                             </form>
+                            <a href="/attendance/export" class="btn btn-danger mr-4 mb-4 float-right">Export</a>
                         </div>
                     </div>
                     <div class="d-md-none mb-4"> </div>
