@@ -76,7 +76,8 @@ class AttendanceController extends Controller
         $visitors->appends([
             'orderBy' => $request->orderBy,
             'searchVal' => $request->searchVal,
-            'paginate' => $request->paginate
+            'paginate' => $request->paginate,
+            'date' => $request->date
         ]);
 
         $intr = [
