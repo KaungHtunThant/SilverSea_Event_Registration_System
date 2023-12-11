@@ -58,17 +58,17 @@ Route::get('/login', function () {
 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::post('/winners', [WinnerController::class, 'rng']);
+// Route::post('/winners', [WinnerController::class, 'rng']);
 
-Route::get('/barcode', function () {
-    return view('test.index');
-});
+// Route::get('/barcode', function () {
+//     return view('test.index');
+// });
 
-Route::get('/form', function () {
-    return view('form.index');
-});
+// Route::get('/form', function () {
+//     return view('form.index');
+// });
 
-Route::post('/form', [VisitorController::class, 'form_add']);
+// Route::post('/form', [VisitorController::class, 'form_add']);
 
 //attendance
 Route::get('/id/{id}', [VisitorController::class, 'id'])
