@@ -44,10 +44,6 @@ Route::middleware(EnsurekeyExist::class)->group(function () {
     //lottery
     Route::get('/lottery', [WinnerController::class, 'rng']);
 
-    //attendance
-    Route::get('/id/{id}', [AttendanceController::class, 'store']);
-
-
 });
 
 //Public routes
@@ -64,6 +60,10 @@ Route::get('/barcode', function () {
     return view('test.index');
 });
 
+Route::middleware(AttendancePermission::class)->group(function () {
+//attendance
+    Route::get('/id/{id}', [AttendanceController::class, 'store']);
+});
 // Route::get('/form', function () {
     // return view('form.index');
 // });
