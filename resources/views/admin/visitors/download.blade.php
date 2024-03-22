@@ -19,7 +19,6 @@
 		}
 
 		.card-bg{
-			width: 4in;
 			background-image: url('{{ url("images/bg2.jpg") }}');
 			background-repeat: no-repeat;
 			background-size: contain;
@@ -29,13 +28,19 @@
 			width: 4in;
 			height: 3in;
 			text-align: center;
-			
+			padding-top: 125px;
 			font-family: "Calibri", sans-serif;
 		}
 
 		.box{
 			width: 100%;
-			height: 15px;
+			height: 30px;
+		}
+
+		.qrbox{
+			width: 100%;
+			text-align: left;
+			margin-left: 280px;
 		}
 
 		h1{
@@ -43,14 +48,14 @@
 				$len = strlen($visitor->name);
 			@endphp
 			@if($len > 28)
-				font-size: 16px;
+				font-size: 27px;
 			@else
-				font-size: 20px;
+				font-size: 32px;
 			@endif
 		}
 
 		h2{
-			font-size: 16px;
+			font-size: 23px;
 		}
 	</style>
 </head>
@@ -61,15 +66,14 @@
 				<h1>{{ $visitor->name }}</h1>
 			</div>
 			<div class="box">
-				<h2>{{ $visitor->position }}</h2>
-			</div>
-			<div class="box">
 				<h2>{{ $visitor->company }}</h2>
 			</div>
 			<br>
-			<div class="box">
+			<div class="qrbox">
+				
+					<!-- echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1000) . '-b' , 'C128' , 2,40) . '" alt="QRcode"/>'; -->
 				@php
-					echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1000) . '-b' , 'C128' , 2,40) . '" alt="QRcode"/>';
+					echo '<img class="qr" src="data:image/png;base64,' . DNS2D::getBarcodePNG('http://127.0.0.1:8000/id/'.$visitor->id, 'QRCODE',2.5,2.5) . '" alt="barcode"/>';
 				@endphp
 			</div>
 		</div>
