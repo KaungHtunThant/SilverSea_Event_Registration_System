@@ -6,31 +6,28 @@
 	<title>IMS Silver Sea - ID Card</title>
 	<style type="text/css">
 		html{
-			width: 8.3in;
-			height: 11.7in;
+			width: 4in;
+			height: 3in;
 			margin: 0px;
 			padding: 0px;
 		}
 		body{
-			width: 8.3in;
+			width: 4in;
 			margin: 0px;
 			padding: 0px;
 /*			text-align: center;*/
 		}
 
 		.card-bg{
-			width: 2.99in;
-			margin-left: 2.405in;
-			padding-top: 100px;
-			background-image: url('{{ url("images/bg.jpg") }}');
+			width: 4in;
+			background-image: url('{{ url("images/bg2.jpg") }}');
 			background-repeat: no-repeat;
 			background-size: contain;
 		}
 
 		.card-body{
-			width: 2.99in;
-			height: 4in;
-/*			margin-left: 2.655in;*/
+			width: 4in;
+			height: 3in;
 			text-align: center;
 			
 			font-family: "Calibri", sans-serif;
@@ -72,7 +69,7 @@
 			<br>
 			<div class="box">
 				@php
-					echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1000) . '-b' , 'C128' , 2,40) . '" alt="barcode"/>';
+					echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1000) . '-b' , 'C128' , 2,40) . '" alt="QRcode"/>';
 				@endphp
 			</div>
 		</div>
