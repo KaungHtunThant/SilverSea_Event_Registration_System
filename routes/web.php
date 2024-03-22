@@ -7,6 +7,7 @@ use App\Http\Controllers\WinnerController;
 use App\Http\Controllers\VisitorController;
 use App\Http\Middleware\EnsurekeyExist;
 use App\Http\Middleware\ReturntoDashboard;
+use App\Http\Middleware\AttendancePermission;
 use App\Http\Controllers\TestPreparer;
 
 /*
