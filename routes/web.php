@@ -64,11 +64,11 @@ Route::post('/login', [AuthController::class, 'login']);
 //     return view('test.index');
 // });
 
-// Route::get('/form', function () {
-//     return view('form.index');
-// });
+Route::get('/form', function () {
+    return view('form.index');
+});
 
-// Route::post('/form', [VisitorController::class, 'form_add']);
+Route::post('/form', [VisitorController::class, 'form_add']);
 
 //attendance
 Route::get('/id/{id}', [VisitorController::class, 'id'])
