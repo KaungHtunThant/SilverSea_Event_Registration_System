@@ -22,6 +22,6 @@ class AttendancePermission
         // elseif (Auth::guard('api')->check()) {
         //     // code...
         // }
-        return redirect('/');
+        return $next($request);
     }
 }

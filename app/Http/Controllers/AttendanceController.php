@@ -161,6 +161,6 @@ class AttendanceController extends Controller
             'type' => 'success',
             'text' => 'Attendance of '.$id.' recorded successfully.'
         ];
-        return response($response, 200);
+        return redirect('/');
     }
 }
