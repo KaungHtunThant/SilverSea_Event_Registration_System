@@ -73,7 +73,7 @@
 				
 					<!-- echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(($visitor->id + 1000) . '-b' , 'C128' , 2,40) . '" alt="QRcode"/>'; -->
 				@php
-					echo '<img class="qr" src="data:image/png;base64,' . DNS2D::getBarcodePNG('http://40.121.217.184/id/'.$visitor->id, 'QRCODE',2.5,2.5) . '" alt="barcode"/>';
+					echo '<img class="qr" src="data:image/png;base64,' . DNS2D::getBarcodePNG('http://40.121.217.184/id/'.$visitor->conf_id, 'QRCODE',2.5,2.5) . '" alt="barcode"/>';
 				@endphp
 			</div>
 		</div>
