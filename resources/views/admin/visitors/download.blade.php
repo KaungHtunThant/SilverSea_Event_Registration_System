@@ -7,7 +7,7 @@
 	<style type="text/css">
 		html{
 			width: 4in;
-			height: 3in;
+			height: 3.5in;
 			margin: 0px;
 			padding: 0px;
 		}
@@ -26,7 +26,7 @@
 
 		.card-body{
 			width: 4in;
-			height: 3in;
+			height: 3.5in;
 			text-align: center;
 			padding-top: 125px;
 			font-family: "Calibri", sans-serif;
