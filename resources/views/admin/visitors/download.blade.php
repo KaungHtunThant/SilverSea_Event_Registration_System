@@ -27,14 +27,15 @@
 
 		.card-body{
 			width: 4in;
-			text-align: center;
+			height: 3.5in;
 			padding-top: 125px;
+			text-align: center;
 			font-family: "Calibri", sans-serif;
 		}
 
 		.box{
 			width: 100%;
-			height: 27px;
+			height: 30px;
 		}
 
 		.qrbox{
