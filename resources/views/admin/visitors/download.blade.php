@@ -6,10 +6,11 @@
 	<title>IMS Silver Sea - ID Card</title>
 	<style type="text/css">
 		html{
-			width: 4in;
+			width: 6in;
 			height: 3.5in;
 			margin: 0px;
 			padding: 0px;
+			padding-left: 2.2in;
 		}
 		body{
 			width: 4in;
@@ -26,7 +27,6 @@
 
 		.card-body{
 			width: 4in;
-			height: 3.5in;
 			text-align: center;
 			padding-top: 125px;
 			font-family: "Calibri", sans-serif;
