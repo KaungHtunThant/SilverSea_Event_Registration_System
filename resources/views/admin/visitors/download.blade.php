@@ -6,13 +6,13 @@
 	<style type="text/css">
 		html{
 			width: 384px;
-			height: 336in;
+			height: 336px;
 			margin: 0px;
 			padding: 0px;
 /*			padding-left: 4.2in;*/
 		}
 		body{
-			width: 384in;
+			width: 384px;
 			margin: 0px;
 			padding: 0px;
 /*			text-align: center;*/
@@ -25,8 +25,8 @@
 		}
 
 		.card-body{
-			width: 384in;
-			height: 336in;
+			width: 384px;
+			height: 336px;
 			padding-top: 125px;
 			padding-bottom: -125px;
 			text-align: center;
