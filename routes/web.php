@@ -65,8 +65,8 @@ Route::middleware(AttendancePermission::class)->group(function () {
 //attendance
     Route::get('/id/{id}', [AttendanceController::class, 'store']);
 });
-// Route::get('/form', function () {
-    // return view('form.index');
-// });
+Route::get('/form', function () {
+    return view('form.index');
+});
 
-// Route::post('/form', [VisitorController::class, 'form_add']);
+Route::post('/form', [VisitorController::class, 'form_add']);
