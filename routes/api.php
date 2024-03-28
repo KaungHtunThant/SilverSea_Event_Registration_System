@@ -21,9 +21,9 @@ Route::middleware('auth:sanctum')->get('/users', function (Request $request) {
     return $request->users();
 });
 
-Route::post('/initA', [TestPreparer::class, 'createAdmin']);
-Route::post('/initV', [TestPreparer::class, 'createVisitors']);
-Route::post('/initAtt', [TestPreparer::class, 'createAttendances']);
+// Route::post('/initA', [TestPreparer::class, 'createAdmin']);
+// Route::post('/initV', [TestPreparer::class, 'createVisitors']);
+// Route::post('/initAtt', [TestPreparer::class, 'createAttendances']);
 
 // Route::get('/test', [TestPreparer::class, 'test']);
 
