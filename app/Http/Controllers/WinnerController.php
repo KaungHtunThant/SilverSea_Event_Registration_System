@@ -82,9 +82,13 @@ class WinnerController extends Controller
     {
         // $visitors = Visitor::factory()->count(10)->create(); //delete me after testing
 
-        $visitor = Attendance::whereDate('created_at', date('Y-m-d'))
+        // $visitor = Attendance::whereDate('created_at',date('Y-m-d', ))
+        //             ->inRandomOrder()
+        //             ->first();
+        $visitor = Attendance::whereDate('created_at', '>',date('Y-m-d', strtotime('-3 days')))
                     ->inRandomOrder()
                     ->first();
+
                     // ->get();
 
         // echo('<script>console.log("'. var_dump($visitor) .'")</script>');
