@@ -41,7 +41,7 @@ class AttendanceController extends Controller
                 )->where('conf_id', 'LIKE', '%'.$request->searchVal.'%')
                 ->orwhere('name', 'LIKE', '%'.$request->searchVal.'%')
                 ->orwhere('phone', 'LIKE', '%'.$request->searchVal.'%')
-                ->whereDate('visitors.created_at', date('Y-m-d', strtotime('2024-03-30')))
+                ->whereDate('visitors.created_at', date('Y-m-d', strtotime('2024-03-31')))
                 ->orderBy($request->orderBy, 'DESC')
                 ->paginate($request->paginate);
         }
@@ -61,7 +61,7 @@ class AttendanceController extends Controller
                     'attendances.created_at as att_created_at',
                     'visitors.created_at as vis_created_at',
                 )
-                ->whereDate('visitors.created_at', date('Y-m-d', strtotime('2024-03-30')))
+                ->whereDate('visitors.created_at', date('Y-m-d', strtotime('2024-03-31')))
                 ->orderBy($request->orderBy, 'DESC')
                 ->paginate($request->paginate);
         }
@@ -72,47 +72,47 @@ class AttendanceController extends Controller
         ]);
 
         $intr = [
-            'rep' => Interest::where('desc','Real Estate and Properties')->whereDate('created_at', date('Y-m-d', strtotime('2024-03-30')))->count(),
-            'cons' => Interest::where('desc','Constructions')->whereDate('created_at', date('Y-m-d', strtotime('2024-03-30')))->count(),
-            'ev' => Interest::where('desc','Renewable Energy and EV')->whereDate('created_at', date('Y-m-d', strtotime('2024-03-30')))->count()
+            'rep' => Interest::where('desc','Real Estate and Properties')->whereDate('created_at', date('Y-m-d', strtotime('2024-03-31')))->count(),
+            'cons' => Interest::where('desc','Constructions')->whereDate('created_at', date('Y-m-d', strtotime('2024-03-31')))->count(),
+            'ev' => Interest::where('desc','Renewable Energy and EV')->whereDate('created_at', date('Y-m-d', strtotime('2024-03-31')))->count()
         ];
 
         $entry = [
-            '9am' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-30 9am')))
-                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-30 10am')))
-                        ->whereDate('created_at', date('Y-m-d', strtotime('30 March 2024')))
+            '9am' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-31 9am')))
+                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-31 10am')))
+                        ->whereDate('created_at', date('Y-m-d', strtotime('31 March 2024')))
                         ->count(),
-            '10am' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-30 10am')))
-                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-30 11am')))
-                        ->whereDate('created_at', date('Y-m-d', strtotime('30 March 2024')))
+            '10am' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-31 10am')))
+                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-31 11am')))
+                        ->whereDate('created_at', date('Y-m-d', strtotime('31 March 2024')))
                         ->count(),
-            '11am' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-30 11am')))
-                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-30 12pm')))
-                        ->whereDate('created_at', date('Y-m-d', strtotime('30 March 2024')))
+            '11am' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-31 11am')))
+                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-31 12pm')))
+                        ->whereDate('created_at', date('Y-m-d', strtotime('31 March 2024')))
                         ->count(),
-            '12pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-30 12pm')))
-                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-30 1pm')))
-                        ->whereDate('created_at', date('Y-m-d', strtotime('30 March 2024')))
+            '12pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-31 12pm')))
+                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-31 1pm')))
+                        ->whereDate('created_at', date('Y-m-d', strtotime('31 March 2024')))
                         ->count(),
-            '1pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-30 1pm')))
-                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-30 2pm')))
-                        ->whereDate('created_at', date('Y-m-d', strtotime('30 March 2024')))
+            '1pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-31 1pm')))
+                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-31 2pm')))
+                        ->whereDate('created_at', date('Y-m-d', strtotime('31 March 2024')))
                         ->count(),
-            '2pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-30 2pm')))
-                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-30 3pm')))
-                        ->whereDate('created_at', date('Y-m-d', strtotime('30 March 2024')))
+            '2pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-31 2pm')))
+                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-31 3pm')))
+                        ->whereDate('created_at', date('Y-m-d', strtotime('31 March 2024')))
                         ->count(),
-            '3pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-30 3pm')))
-                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-30 4pm')))
-                        ->whereDate('created_at', date('Y-m-d', strtotime('30 March 2024')))
+            '3pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-31 3pm')))
+                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-31 4pm')))
+                        ->whereDate('created_at', date('Y-m-d', strtotime('31 March 2024')))
                         ->count(),
-            '4pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-30 4pm')))
-                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-30 5pm')))
-                        ->whereDate('created_at', date('Y-m-d', strtotime('30 March 2024')))
+            '4pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-31 4pm')))
+                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-31 5pm')))
+                        ->whereDate('created_at', date('Y-m-d', strtotime('31 March 2024')))
                         ->count(),
-            '8pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-30 5pm')))
-                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-30 8pm')))
-                        ->whereDate('created_at', date('Y-m-d', strtotime('30 March 2024')))    
+            '8pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-31 5pm')))
+                        ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-31 8pm')))
+                        ->whereDate('created_at', date('Y-m-d', strtotime('31 March 2024')))    
                         ->count(),
         ];
         
@@ -120,13 +120,13 @@ class AttendanceController extends Controller
         // $Vtotal = Visitor::whereDate('created_at', '>',date('Y-m-d', strtotime('2024-03-28')))
         //             ->whereDate('created_at', '<',date('Y-m-d', strtotime('2024-04-1')))
         //             ->count();
-        $Vtotal = Visitor::whereDate('created_at', date('Y-m-d', strtotime('2024-03-30')))
+        $Vtotal = Visitor::whereDate('created_at', date('Y-m-d', strtotime('2024-03-31')))
                     ->count();
-        $Vtoday = Visitor::whereDate('created_at', date('Y-m-d', strtotime('2024-03-30')))
+        $Vtoday = Visitor::whereDate('created_at', date('Y-m-d', strtotime('2024-03-31')))
                     ->count();
 
-        $Mtotal = Visitor::where('sex','Male')->whereDate('created_at', date('Y-m-d', strtotime('2024-03-30')))->count();
-        $Ftotal = Visitor::where('sex','Female')->whereDate('created_at', date('Y-m-d', strtotime('2024-03-30')))->count();
+        $Mtotal = Visitor::where('sex','Male')->whereDate('created_at', date('Y-m-d', strtotime('2024-03-31')))->count();
+        $Ftotal = Visitor::where('sex','Female')->whereDate('created_at', date('Y-m-d', strtotime('2024-03-31')))->count();
 
         return view('admin.index')
             ->with('visitors', $visitors)
