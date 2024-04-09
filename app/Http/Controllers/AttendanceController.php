@@ -112,7 +112,7 @@ class AttendanceController extends Controller
                         ->count(),
             '8pm' => Visitor::whereTime('created_at', '>',date('Y-m-d H:i:s', strtotime('2024-03-29 5pm')))
                         ->whereTime('created_at', '<',date('Y-m-d H:i:s', strtotime('2024-03-29 8pm')))
-                        ->whereDate('created_at', date('Y-m-d', strtotime('29 March 2024')))
+                        ->whereDate('created_at', date('Y-m-d', strtotime('29 March 2024')))    
                         ->count(),
         ];
         
