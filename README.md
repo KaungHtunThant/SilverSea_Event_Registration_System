@@ -1,69 +1,143 @@
 
-# SilverSea_Event_Registration_System
+# Event Pass System
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Project Installation
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Tested System Requirements
+1. PHP 8.1
+2. Composer
+3. Apache 2
+4. MySQL
+5. Ubuntu 20.04
+6. Git
 
-## About Laravel
+### Steps For Installation
+- Environment Setup (If already setup, skip)
+    1. Install Imagick Extention
+        ```bash
+        username@localhost:~$ sudo apt update && sudo apt upgrade
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+        username@localhost:~$ sudo apt install imagemagick
+        ```
+    2. Install PHP 8.1 and its dependancies
+        ```bash
+        username@localhost:~$ sudo apt update && sudo apt upgrade
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+        username@localhost:~$ sudo apt install software-properties-common apt-transport-https -y
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+        username@localhost:~$ sudo add-apt-repository ppa:ondrej/php -y
 
-## Learning Laravel
+        username@localhost:~$ sudo apt install php8.1-fpm php8.1-common php8.1-mysql php8.1-xml php8.1-xmlrpc php8.1-curl php8.1-gd php8.1-imagick php8.1-cli php8.1-dev php8.1-imap php8.1-mbstring php8.1-opcache php8.1-soap php8.1-zip php8.1-intl php8.1-bcmath
+        ```
+    3. Install Composer (use vpn if download failed)
+        ```bash
+        username@localhost:~$ sudo apt install unzip
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+        username@localhost:~$ cd ~
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+        username@localhost:~$ curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+        username@localhost:~$ HASH=`curl -sS https://composer.github.io/installer.sig`
 
-## Laravel Sponsors
+        username@localhost:~$ php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+        username@localhost:~$ sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
-### Premium Partners
+        username@localhost:~$ composer
+        ```
+    4. Install MySQL
+        ```bash
+        username@localhost:~$ sudo apt install mysql-server
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+        username@localhost:~$ sudo mysql
 
-## Contributing
+        mysql> create user 'your_username'@'localhost' identified by 'your_password';
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+        mysql> grant all privileges on *.* to 'your_username'@'localhost';
 
-## Code of Conduct
+        mysql> create database `your_database_name`;
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+        mysql> exit;
+        ```
+    5. Install And Setup Apache 2
+        ```bash
+        username@localhost:~$ sudo apt install apache2
+        username@localhost:~$ cd /etc/apache2/sites-available
+        username@localhost:/etc/apache2/sites-available$ sudo nano event_pass.conf
+        ```
+        Paste the following configuration
+        ```
+        <VirtualHost *:80>
+                ServerAdmin webmaster@localhost
+                DocumentRoot /var/www/html/SilverSea_Event_Registration_System/public
 
-## Security Vulnerabilities
+                <Directory "/var/www/html/SilverSea_Event_Registration_System/public">
+                    Options Indexes FollowSymLinks MultiViews
+                    AllowOverride All
+                    Require all granted
+                    Order allow,deny
+                    Allow from all
+                </Directory>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+        </VirtualHost>
+        ```
+        Save (Ctrl+S) and close the editor (Ctrl+X)
+    6. Install Git
+        ```bash
+        username@localhost:~$ sudo apt install git
+        ```
+    7. SSH for Github
+        SSH key generate (If already has one, skip)
+        ```bash
+        username@localhost:~$ ssh-keygen
+        ```
 
-## License
+        SSH import to Github (use the existing ssh key if already generated)
+        ```bash
+        username@localhost:~$ ssh-add ~/.ssh/id_rsa
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+        username@localhost:~$ cat ~/.ssh/id_rsa.pub
+        ```
+        Copy the contents and paste to github ssh keys here
+        <br><a href="https://github.com/settings/ssh/new">https://github.com/settings/ssh/new</a>
+
+- Project Installation And Setup
+    1. Clone project from github
+        ```bash
+        username@localhost:~$ cd /var/www/html
+
+        username@localhost:/var/www/html$ sudo chmod -R 777 ./
+
+        username@localhost:/var/www/html$ git clone git@github.com:KaungHtunThant/SilverSea_Event_Registration_System.git
+
+        username@localhost:/var/www/html$ cd SilverSea_Event_Registration_System
+
+        username@localhost:/var/www/html/SilverSea_Event_Registration_System$ composer install
+
+        username@localhost:/var/www/html/SilverSea_Event_Registration_System$ cp .env.example .env
+
+        username@localhost:/var/www/html/SilverSea_Event_Registration_System$ nano .env
+        ```
+        Add mysql username, password and database name in the file.
+
+        Save (Ctrl+S) and close the editor (Ctrl+X)
+        ```bash
+        username@localhost:/var/www/html/SilverSea_Event_Registration_System$ php artisan migrate --seed
+        ```
+    2. Enable site in Apache
+        ```bash
+        username@localhost:~$ sudo a2dissite 000-default.conf
+
+        username@localhost:~$ sudo a2ensite event_pass.conf
+
+        username@localhost:~$ sudo a2enmod rewrite
+
+        username@localhost:~$ sudo systemctl restart apache2
+        ```
+
+- Default username and password
+    >username: admin@email.com
+    <br>
+    >password: admin123!
