@@ -138,6 +138,4 @@
         ```
 
 - Default username and password
-    >username: admin@email.com
-    <br>
-    >password: admin123!
+    >username: admin@email.com<br>password: admin123!
