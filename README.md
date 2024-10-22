@@ -115,6 +115,8 @@
 
         cd SilverSea_Event_Registration_System
 
+        git checkout v1.0.0
+
         composer install
 
         cp .env.example .env
