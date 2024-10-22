@@ -51,6 +51,7 @@
 
         sudo mysql
         ```
+        In MySQL
         ```sql
         create user 'your_username'@'localhost' identified by 'your_password';
 
